@@ -6,6 +6,7 @@ ruby '2.6.3'
 gem 'grape'
 gem 'net-http'
 gem 'grape-api-generator'
+gem 'grape_on_rails_routes'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
