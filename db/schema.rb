@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_26_022856) do
+ActiveRecord::Schema.define(version: 2022_12_26_062056) do
+
+  create_table "group_playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "music_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_playlists_on_group_id"
+    t.index ["music_id"], name: "index_group_playlists_on_music_id"
+  end
+
+  create_table "group_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
 
   create_table "groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "group_name"
@@ -18,10 +36,30 @@ ActiveRecord::Schema.define(version: 2022_12_26_022856) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "playlist_name"
+  create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "music_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["music_id"], name: "index_likes_on_music_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.string "artist"
+    t.string "album"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_playlists", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "music_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["music_id"], name: "index_user_playlists_on_music_id"
+    t.index ["user_id"], name: "index_user_playlists_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -30,4 +68,12 @@ ActiveRecord::Schema.define(version: 2022_12_26_022856) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "group_playlists", "groups"
+  add_foreign_key "group_playlists", "musics"
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
+  add_foreign_key "likes", "musics"
+  add_foreign_key "likes", "users"
+  add_foreign_key "user_playlists", "musics"
+  add_foreign_key "user_playlists", "users"
 end

@@ -239,3 +239,1642 @@ puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
 Started GET "/api/v1/groups" for ::1 at 2022-12-26 11:31:56 +0900
   [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
   [1m[36mGroup Load (0.9ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateGroupUsers (20221226023252)
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE `group_users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `group_id` bigint, `user_id` bigint, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_group_users_on_group_id` (`group_id`), INDEX `index_group_users_on_user_id` (`user_id`), CONSTRAINT `fk_rails_a9d5f48449`
+FOREIGN KEY (`group_id`)
+  REFERENCES `groups` (`id`)
+, CONSTRAINT `fk_rails_1486913327`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226023252')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/api/v1/groups" for ::1 at 2022-12-26 11:34:30 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mGroup Load (0.8ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
+Started GET "/api/v1/group_users" for ::1 at 2022-12-26 11:34:33 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/group_users"):
+  
+Started GET "/api/v1/group_user" for ::1 at 2022-12-26 11:34:37 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/group_user"):
+  
+Started GET "/api/v1/group_user" for ::1 at 2022-12-26 11:34:54 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/api/ringle_music/base.rb:7: syntax error, unexpected tSYMBEG
+...       mount RingleMusic::V1:::GroupUsers
+...                              ^):
+  
+app/api/ringle_music/base.rb:7: syntax error, unexpected tSYMBEG
+app/api/ringle_music/base.rb:7: syntax error, unexpected tSYMBEG
+app/api/ringle_music/base.rb:7: syntax error, unexpected tSYMBEG
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/group_user" for ::1 at 2022-12-26 11:35:03 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/group_user"):
+  
+Started GET "/api/v1/group_users" for ::1 at 2022-12-26 11:35:06 +0900
+  [1m[36mGroupUser Load (0.9ms)[0m  [1m[34mSELECT `group_users`.* FROM `group_users`[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroup Create (0.5ms)[0m  [1m[32mINSERT INTO `groups` (`group_name`, `created_at`, `updated_at`) VALUES ('group1', '2022-12-26 02:35:56.522172', '2022-12-26 02:35:56.522172')[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Create (0.9ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 02:36:22.025954', '2022-12-26 02:36:22.025954')[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/group_users" for ::1 at 2022-12-26 11:36:24 +0900
+  [1m[36mGroupUser Load (0.7ms)[0m  [1m[34mSELECT `group_users`.* FROM `group_users`[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Create (0.5ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 02:36:37.465356', '2022-12-26 02:36:37.465356')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/group_users" for ::1 at 2022-12-26 11:36:38 +0900
+  [1m[36mGroupUser Load (0.9ms)[0m  [1m[34mSELECT `group_users`.* FROM `group_users`[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
+Started GET "/api/v1/group_users" for ::1 at 2022-12-26 11:40:05 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mGroupUser Load (0.9ms)[0m  [1m[34mSELECT `group_users`.* FROM `group_users`[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Create (0.4ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 02:40:10.897006', '2022-12-26 02:40:10.897006')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/group_users" for ::1 at 2022-12-26 11:40:12 +0900
+  [1m[36mGroupUser Load (0.8ms)[0m  [1m[34mSELECT `group_users`.* FROM `group_users`[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Create (0.7ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 03:52:45.655531', '2022-12-26 03:52:45.655531')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Create (0.4ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 03:54:05.593180', '2022-12-26 03:54:05.593180')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGroup Load (0.3ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Create (0.4ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 03:55:10.370237', '2022-12-26 03:55:10.370237')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Create (0.5ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 03:55:26.901771', '2022-12-26 03:55:26.901771')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`user_id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`user_id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`user_id` = 2 LIMIT 1[0m
+  [1m[36mGroupUser Create (0.4ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 2, '2022-12-26 03:58:04.743473', '2022-12-26 03:58:04.743473')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGroupUser Destroy (2.0ms)[0m  [1m[31mDELETE FROM `group_users` WHERE `group_users`.`id` = 2[0m
+  [1m[36mGroupUser Destroy (2.3ms)[0m  [1m[31mDELETE FROM `group_users` WHERE `group_users`.`id` = 3[0m
+  [1m[36mGroupUser Destroy (2.0ms)[0m  [1m[31mDELETE FROM `group_users` WHERE `group_users`.`id` = 4[0m
+  [1m[36mGroupUser Destroy (2.1ms)[0m  [1m[31mDELETE FROM `group_users` WHERE `group_users`.`id` = 5[0m
+  [1m[36mGroupUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM `group_users` WHERE `group_users`.`id` = 5[0m
+  [1m[36mGroupUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM `group_users` WHERE `group_users`.`id` = 5[0m
+  [1m[36mGroupUser Destroy (2.0ms)[0m  [1m[31mDELETE FROM `group_users` WHERE `group_users`.`id` = 6[0m
+  [1m[36mGroupUser Destroy (2.0ms)[0m  [1m[31mDELETE FROM `group_users` WHERE `group_users`.`id` = 7[0m
+  [1m[36mGroupUser Destroy (2.0ms)[0m  [1m[31mDELETE FROM `group_users` WHERE `group_users`.`id` = 8[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`user_id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`user_id` = 2 LIMIT 1[0m
+  [1m[36mGroupUser Create (0.4ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 2, '2022-12-26 03:59:17.662642', '2022-12-26 03:59:17.662642')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroup Create (0.3ms)[0m  [1m[32mINSERT INTO `groups` (`group_name`, `created_at`, `updated_at`) VALUES ('group2', '2022-12-26 04:03:40.306300', '2022-12-26 04:03:40.306300')[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`user_id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroup Create (0.6ms)[0m  [1m[32mINSERT INTO `groups` (`group_name`, `created_at`, `updated_at`) VALUES ('group2', '2022-12-26 04:04:17.259429', '2022-12-26 04:04:17.259429')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 3 LIMIT 1[0m
+  [1m[36mGroup Destroy (1.4ms)[0m  [1m[31mDELETE FROM `groups` WHERE `groups`.`id` = 3[0m
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroup Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` = 'group2' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroup Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` = 'group3' LIMIT 1[0m
+  [1m[36mGroup Create (0.4ms)[0m  [1m[32mINSERT INTO `groups` (`group_name`, `created_at`, `updated_at`) VALUES ('group3', '2022-12-26 04:09:42.412104', '2022-12-26 04:09:42.412104')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGroup Load (0.7ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`user_id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mGroup Load (0.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`group_id` = 2 AND `group_users`.`user_id` = 2 LIMIT 1[0m
+  [1m[36mGroupUser Create (0.3ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (2, 2, '2022-12-26 04:12:52.297662', '2022-12-26 04:12:52.297662')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`group_id` = 2 AND `group_users`.`user_id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mGroup Load (0.2ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`group_id` = 2 AND `group_users`.`user_id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`group_id` = 2 AND `group_users`.`user_id` = 3 LIMIT 1[0m
+  [1m[36mGroupUser Create (0.4ms)[0m  [1m[32mINSERT INTO `group_users` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (2, 3, '2022-12-26 04:13:33.765997', '2022-12-26 04:13:33.765997')[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUserPlaylists (20221226041631)
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE `user_playlists` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `playlist_id` bigint, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_user_playlists_on_user_id` (`user_id`), INDEX `index_user_playlists_on_playlist_id` (`playlist_id`), CONSTRAINT `fk_rails_e084a4b45c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_f5c983f2d9`
+FOREIGN KEY (`playlist_id`)
+  REFERENCES `playlists` (`id`)
+)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226041631')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGroupPlaylists (20221226041647)
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE `group_playlists` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `group_id` bigint, `playlist_id` bigint, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_group_playlists_on_group_id` (`group_id`), INDEX `index_group_playlists_on_playlist_id` (`playlist_id`), CONSTRAINT `fk_rails_63043119c9`
+FOREIGN KEY (`group_id`)
+  REFERENCES `groups` (`id`)
+, CONSTRAINT `fk_rails_7a857bb888`
+FOREIGN KEY (`playlist_id`)
+  REFERENCES `playlists` (`id`)
+)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226041647')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroupUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `group_users` WHERE `group_users`.`group_id` = 2 AND `group_users`.`user_id` = 3 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`user_name` = 'leejungin' LIMIT 1[0m
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO `users` (`user_name`, `created_at`, `updated_at`) VALUES ('leejungin', '2022-12-26 04:33:59.949908', '2022-12-26 04:33:59.949908')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`user_name` = 'leejungin' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `playlists` (`playlist_name`, `created_at`, `updated_at`) VALUES ('taeheon\'s playlist', '2022-12-26 04:38:10.728835', '2022-12-26 04:38:10.728835')[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPlaylist Create (0.6ms)[0m  [1m[32mINSERT INTO `playlists` (`playlist_name`, `created_at`, `updated_at`) VALUES ('taeheon\'s playlist', '2022-12-26 04:38:11.752470', '2022-12-26 04:38:11.752470')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPlaylist Destroy (1.6ms)[0m  [1m[31mDELETE FROM `playlists` WHERE `playlists`.`id` = 2[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPlaylist Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `playlists` WHERE `playlists`.`playlist_name` = 'taeheon\'s playlist' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPlaylist Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `playlists` WHERE `playlists`.`playlist_name` = 'jiyong\'s playlist' LIMIT 1[0m
+  [1m[36mPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `playlists` (`playlist_name`, `created_at`, `updated_at`) VALUES ('jiyong\'s playlist', '2022-12-26 04:39:00.889535', '2022-12-26 04:39:00.889535')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT `playlists`.* FROM `playlists` WHERE `playlists`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserPlaylist Create (0.5ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `playlist_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 04:40:14.754236', '2022-12-26 04:40:14.754236')[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserPlaylist Create (0.7ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `playlist_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 04:41:41.060509', '2022-12-26 04:41:41.060509')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUserPlaylist Destroy (1.7ms)[0m  [1m[31mDELETE FROM `user_playlists` WHERE `user_playlists`.`id` = 2[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT `playlists`.* FROM `playlists` WHERE `playlists`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `playlist_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 04:42:40.553976', '2022-12-26 04:42:40.553976')[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUserPlaylist Destroy (2.0ms)[0m  [1m[31mDELETE FROM `user_playlists` WHERE `user_playlists`.`id` = 3[0m
+  [1m[36mPlaylist Load (0.3ms)[0m  [1m[34mSELECT `playlists`.* FROM `playlists` WHERE `playlists`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mPlaylist Load (0.5ms)[0m  [1m[34mSELECT `playlists`.* FROM `playlists` WHERE `playlists`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserPlaylist Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1 AND `user_playlists`.`playlist_id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mPlaylist Load (0.7ms)[0m  [1m[34mSELECT `playlists`.* FROM `playlists` WHERE `playlists`.`id` = 2 LIMIT 1[0m
+  [1m[36mPlaylist Load (0.8ms)[0m  [1m[34mSELECT `playlists`.* FROM `playlists` WHERE `playlists`.`id` = 3 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserPlaylist Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1 AND `user_playlists`.`playlist_id` = 3 LIMIT 1[0m
+  [1m[36mUserPlaylist Create (0.5ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `playlist_id`, `created_at`, `updated_at`) VALUES (1, 3, '2022-12-26 04:45:28.466249', '2022-12-26 04:45:28.466249')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserPlaylist Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `user_playlists` WHERE `user_playlists`.`user_id` = 2 AND `user_playlists`.`playlist_id` = 3 LIMIT 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `playlist_id`, `created_at`, `updated_at`) VALUES (2, 3, '2022-12-26 04:45:41.609845', '2022-12-26 04:45:41.609845')[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUserPlaylist Destroy (1.0ms)[0m  [1m[31mDELETE FROM `user_playlists` WHERE `user_playlists`.`id` = 4[0m
+  [1m[36mUserPlaylist Destroy (0.7ms)[0m  [1m[31mDELETE FROM `user_playlists` WHERE `user_playlists`.`id` = 3[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mPlaylist Load (0.4ms)[0m  [1m[34mSELECT `playlists`.* FROM `playlists` WHERE `playlists`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPlaylist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `playlists` WHERE `playlists`.`playlist_name` = 'jaejun\'s playlist' LIMIT 1[0m
+  [1m[36mPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `playlists` (`playlist_name`, `created_at`, `updated_at`) VALUES ('jaejun\'s playlist', '2022-12-26 04:55:28.902472', '2022-12-26 04:55:28.902472')[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`user_name` = 'hanjaejun' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `playlist_id`, `created_at`, `updated_at`) VALUES (3, 4, '2022-12-26 04:56:53.154690', '2022-12-26 04:56:53.154690')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGroup Load (0.9ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` /* loading for inspect */ LIMIT 11[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGroup Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` = 'group3' LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateMusics (20221226052106)
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE `musics` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `group_id` bigint, `title` varchar(255), `artist` varchar(255), `album` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_musics_on_user_id` (`user_id`), INDEX `index_musics_on_group_id` (`group_id`), CONSTRAINT `fk_rails_95f0e95309`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_0dfcfc152f`
+FOREIGN KEY (`group_id`)
+  REFERENCES `groups` (`id`)
+)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226052106')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateMusics (20221226052627)
+  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE `musics` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `artist` varchar(255), `album` varchar(255), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226052627')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUserPlaylists (20221226052838)
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE `user_playlists` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `music_id` bigint, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_user_playlists_on_user_id` (`user_id`), INDEX `index_user_playlists_on_music_id` (`music_id`), CONSTRAINT `fk_rails_e084a4b45c`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_fb2136d3cf`
+FOREIGN KEY (`music_id`)
+  REFERENCES `musics` (`id`)
+)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226052838')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateGroupPlaylists (20221226052849)
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE `group_playlists` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `group_id` bigint, `music_id` bigint, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_group_playlists_on_group_id` (`group_id`), INDEX `index_group_playlists_on_music_id` (`music_id`), CONSTRAINT `fk_rails_63043119c9`
+FOREIGN KEY (`group_id`)
+  REFERENCES `groups` (`id`)
+, CONSTRAINT `fk_rails_d25c07a17e`
+FOREIGN KEY (`music_id`)
+  REFERENCES `musics` (`id`)
+)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226052849')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.3ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('creep', 'RadioHead', 'creepAlbum', '2022-12-26 05:32:49.320881', '2022-12-26 05:32:49.320881')[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.5ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.5ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.3ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:37:31.671553', '2022-12-26 05:37:31.671553')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:37:45.648360', '2022-12-26 05:37:45.648360')[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:37:49.023902', '2022-12-26 05:37:49.023902')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:37:49.246320', '2022-12-26 05:37:49.246320')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:37:49.454010', '2022-12-26 05:37:49.454010')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:37:49.672005', '2022-12-26 05:37:49.672005')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:37:49.910331', '2022-12-26 05:37:49.910331')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:37:50.135418', '2022-12-26 05:37:50.135418')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:37:50.639570', '2022-12-26 05:37:50.639570')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.3ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:37:50.911337', '2022-12-26 05:37:50.911337')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:38:20.773620', '2022-12-26 05:38:20.773620')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.478316', '2022-12-26 05:39:16.478316')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.482662', '2022-12-26 05:39:16.482662')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.3ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.485941', '2022-12-26 05:39:16.485941')[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.3ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.489057', '2022-12-26 05:39:16.489057')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.492024', '2022-12-26 05:39:16.492024')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.494708', '2022-12-26 05:39:16.494708')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.496915', '2022-12-26 05:39:16.496915')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.498968', '2022-12-26 05:39:16.498968')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.500922', '2022-12-26 05:39:16.500922')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.502662', '2022-12-26 05:39:16.502662')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.504408', '2022-12-26 05:39:16.504408')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.506077', '2022-12-26 05:39:16.506077')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.507753', '2022-12-26 05:39:16.507753')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.509715', '2022-12-26 05:39:16.509715')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.3ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.511580', '2022-12-26 05:39:16.511580')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.513728', '2022-12-26 05:39:16.513728')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.515420', '2022-12-26 05:39:16.515420')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.517017', '2022-12-26 05:39:16.517017')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.518582', '2022-12-26 05:39:16.518582')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.520354', '2022-12-26 05:39:16.520354')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.521807', '2022-12-26 05:39:16.521807')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.523288', '2022-12-26 05:39:16.523288')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.524938', '2022-12-26 05:39:16.524938')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.526630', '2022-12-26 05:39:16.526630')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.528196', '2022-12-26 05:39:16.528196')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.529711', '2022-12-26 05:39:16.529711')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.531368', '2022-12-26 05:39:16.531368')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.532864', '2022-12-26 05:39:16.532864')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.534412', '2022-12-26 05:39:16.534412')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.535938', '2022-12-26 05:39:16.535938')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.537405', '2022-12-26 05:39:16.537405')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.538776', '2022-12-26 05:39:16.538776')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.540219', '2022-12-26 05:39:16.540219')[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.541591', '2022-12-26 05:39:16.541591')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.543267', '2022-12-26 05:39:16.543267')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.544967', '2022-12-26 05:39:16.544967')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.546588', '2022-12-26 05:39:16.546588')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.548109', '2022-12-26 05:39:16.548109')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.549575', '2022-12-26 05:39:16.549575')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.550978', '2022-12-26 05:39:16.550978')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.552380', '2022-12-26 05:39:16.552380')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.553959', '2022-12-26 05:39:16.553959')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.555528', '2022-12-26 05:39:16.555528')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.557061', '2022-12-26 05:39:16.557061')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.558566', '2022-12-26 05:39:16.558566')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.560073', '2022-12-26 05:39:16.560073')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.561573', '2022-12-26 05:39:16.561573')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.563450', '2022-12-26 05:39:16.563450')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.565407', '2022-12-26 05:39:16.565407')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.566884', '2022-12-26 05:39:16.566884')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.568461', '2022-12-26 05:39:16.568461')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.569992', '2022-12-26 05:39:16.569992')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.571637', '2022-12-26 05:39:16.571637')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.573111', '2022-12-26 05:39:16.573111')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.574629', '2022-12-26 05:39:16.574629')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.576173', '2022-12-26 05:39:16.576173')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.577947', '2022-12-26 05:39:16.577947')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.579507', '2022-12-26 05:39:16.579507')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.581054', '2022-12-26 05:39:16.581054')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.582575', '2022-12-26 05:39:16.582575')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.584247', '2022-12-26 05:39:16.584247')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.585761', '2022-12-26 05:39:16.585761')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.587312', '2022-12-26 05:39:16.587312')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.588786', '2022-12-26 05:39:16.588786')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.590267', '2022-12-26 05:39:16.590267')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.591715', '2022-12-26 05:39:16.591715')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.593432', '2022-12-26 05:39:16.593432')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.595024', '2022-12-26 05:39:16.595024')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.596582', '2022-12-26 05:39:16.596582')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.598249', '2022-12-26 05:39:16.598249')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.599744', '2022-12-26 05:39:16.599744')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.601226', '2022-12-26 05:39:16.601226')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.602746', '2022-12-26 05:39:16.602746')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.604282', '2022-12-26 05:39:16.604282')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.605897', '2022-12-26 05:39:16.605897')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.607767', '2022-12-26 05:39:16.607767')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.609343', '2022-12-26 05:39:16.609343')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.611235', '2022-12-26 05:39:16.611235')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.2ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.612915', '2022-12-26 05:39:16.612915')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.1ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:16.614567', '2022-12-26 05:39:16.614567')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.6ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:29.158811', '2022-12-26 05:39:29.158811')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:29.646555', '2022-12-26 05:39:29.646555')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.6ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:29.886850', '2022-12-26 05:39:29.886850')[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.5ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:30.134609', '2022-12-26 05:39:30.134609')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:30.470667', '2022-12-26 05:39:30.470667')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:30.878768', '2022-12-26 05:39:30.878768')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:31.334510', '2022-12-26 05:39:31.334510')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:36.126966', '2022-12-26 05:39:36.126966')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:43.302777', '2022-12-26 05:39:43.302777')[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Load (0.5ms)[0m  [1m[34mSELECT `user_playlists`.* FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1 ORDER BY `user_playlists`.`created_at` ASC LIMIT 1[0m
+  [1m[36mUserPlaylist Destroy (0.4ms)[0m  [1m[31mDELETE FROM `user_playlists` WHERE `user_playlists`.`id` = 1[0m
+  [1m[36mUserPlaylist Create (0.6ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:39:48.569610', '2022-12-26 05:39:48.569610')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1[0m
+  [1m[36mUserPlaylist Load (0.4ms)[0m  [1m[34mSELECT `user_playlists`.* FROM `user_playlists` WHERE `user_playlists`.`user_id` = 1 ORDER BY `user_playlists`.`created_at` ASC LIMIT 1[0m
+  [1m[36mUserPlaylist Destroy (0.4ms)[0m  [1m[31mDELETE FROM `user_playlists` WHERE `user_playlists`.`id` = 2[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 05:40:08.136839', '2022-12-26 05:40:08.136839')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 2[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 1, '2022-12-26 05:40:35.447882', '2022-12-26 05:40:35.447882')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 2[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 1, '2022-12-26 05:40:43.857128', '2022-12-26 05:40:43.857128')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlists` WHERE `user_playlists`.`user_id` = 2[0m
+  [1m[36mUserPlaylist Create (0.4ms)[0m  [1m[32mINSERT INTO `user_playlists` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 1, '2022-12-26 05:40:44.978855', '2022-12-26 05:40:44.978855')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddIndexToUserPlaylists (20221226060005)
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE `user_playlists` ADD `user_id` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddIndexToUserPlaylists (20221226060005)
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX `index_user_playlists_on_user_id` ON `user_playlists` (`user_id`)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddIndexToUserPlaylists (20221226060005)
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX `index_user_playlists_on_user_id` ON `user_playlists` (`user_id`)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateLikes (20221226062056)
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE `likes` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `user_id` bigint, `music_id` bigint, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL, INDEX `index_likes_on_user_id` (`user_id`), INDEX `index_likes_on_music_id` (`music_id`), CONSTRAINT `fk_rails_1e09b5dabf`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_7fa5d47432`
+FOREIGN KEY (`music_id`)
+  REFERENCES `musics` (`id`)
+)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226062056')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddUniqueIndexToLikes (20221226062536)
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE `likes` ADD `user_id` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.3ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('missing you', 'Gdragon', '2집', '2022-12-26 06:30:28.988855', '2022-12-26 06:30:28.988855')[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 2, '2022-12-26 06:31:07.403867', '2022-12-26 06:31:07.403867')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 2, '2022-12-26 06:31:11.319585', '2022-12-26 06:31:11.319585')[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.4ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('missing you', 'Gdragon', '2집', '2022-12-26 06:31:43.209801', '2022-12-26 06:31:43.209801')[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 3, '2022-12-26 06:31:45.595471', '2022-12-26 06:31:45.595471')[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLike Destroy (2.0ms)[0m  [1m[31mDELETE FROM `likes` WHERE `likes`.`id` = 2[0m
+  [1m[36mLike Destroy (2.1ms)[0m  [1m[31mDELETE FROM `likes` WHERE `likes`.`id` = 3[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.4ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('missing you', 'Gdragon', '2집', '2022-12-26 06:32:20.702658', '2022-12-26 06:32:20.702658')[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 4 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 4, '2022-12-26 06:32:27.406443', '2022-12-26 06:32:27.406443')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 4 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 4 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/" for ::1 at 2022-12-26 15:52:01 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ki99/.rvm/gems/ruby-2.6.3/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ki99/.rvm/gems/ruby-2.6.3/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 6.7ms | Allocations: 350)
+Completed 200 OK in 24ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 2554)
+
+
+Started GET "/api/v1/musics_api?q=%22Gdragon%22" for ::1 at 2022-12-26 15:53:57 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/musics_api"):
+  
+Started GET "/api/v1/musics_api" for ::1 at 2022-12-26 15:54:09 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/musics_api"):
+  
+Started GET "/api/v1/playlists" for ::1 at 2022-12-26 15:54:15 +0900
+  
+NameError (uninitialized constant RingleMusic::V1::Playlists::Playlist):
+  
+app/api/ringle_music/v1/playlists.rb:11:in `block (2 levels) in <class:Playlists>'
+Started GET "/api/v1/users" for ::1 at 2022-12-26 15:54:22 +0900
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users`[0m
+Started GET "/api/v1/search" for ::1 at 2022-12-26 15:54:45 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/search"):
+  
+Started GET "/api/v1/search" for ::1 at 2022-12-26 15:55:06 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/search"):
+  
+Started GET "/api/v1/search" for ::1 at 2022-12-26 15:58:54 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/search"):
+  
+Started GET "/api/v1/musics?q=rock&sort=likes" for ::1 at 2022-12-26 16:00:16 +0900
+  
+NameError (undefined local variable or method `song' for #<#<Class:0x00007f9e2ed7f608>:0x00007f9e37010630>):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics?q=rock&sort=likes" for ::1 at 2022-12-26 16:00:55 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=creep&sort=likes" for ::1 at 2022-12-26 16:01:07 +0900
+  [1m[36mMusic Load (1.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=creep&sort=created_date" for ::1 at 2022-12-26 16:01:25 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/search?q=creep&sort=created_date" for ::1 at 2022-12-26 16:01:35 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/search"):
+  
+Started GET "/api/v1/search?q=creep&sort=created_date" for ::1 at 2022-12-26 16:01:56 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/search"):
+  
+Started GET "/api/v1/music?q=creep&sort=created_date" for ::1 at 2022-12-26 16:07:18 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/music"):
+  
+Started GET "/api/v1/musics?q=creep&sort=created_date" for ::1 at 2022-12-26 16:07:22 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=missing%20you&sort=created_date" for ::1 at 2022-12-26 16:07:31 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=missingyou%20you&sort=created_date" for ::1 at 2022-12-26 16:07:35 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=missingyou%20you&sort=created_date" for ::1 at 2022-12-26 16:07:52 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=rock&sort=created_date" for ::1 at 2022-12-26 16:08:59 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  [1m[36mMusic Destroy (3.6ms)[0m  [1m[31mDELETE FROM `musics` WHERE `musics`.`id` = 2[0m
+  [1m[36mMusic Destroy (2.5ms)[0m  [1m[31mDELETE FROM `musics` WHERE `musics`.`id` = 3[0m
+  [1m[36mMusic Destroy (3.1ms)[0m  [1m[31mDELETE FROM `musics` WHERE `musics`.`id` = 4[0m
+  [1m[36mMusic Destroy (2.9ms)[0m  [1m[31mDELETE FROM `musics` WHERE `musics`.`id` = 4[0m
+  [1m[36mMusic Load (0.5ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 4 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Destroy (0.9ms)[0m  [1m[31mDELETE FROM `musics` WHERE `musics`.`id` = 4[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 4 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Destroy (0.3ms)[0m  [1m[31mDELETE FROM `likes` WHERE `likes`.`music_id` = 4[0m
+  [1m[36mMusic Destroy (0.2ms)[0m  [1m[31mDELETE FROM `musics` WHERE `musics`.`id` = 4[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 3 LIMIT 1[0m
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Destroy (0.6ms)[0m  [1m[31mDELETE FROM `likes` WHERE `likes`.`music_id` = 2[0m
+  [1m[36mMusic Destroy (0.4ms)[0m  [1m[31mDELETE FROM `musics` WHERE `musics`.`id` = 2[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.4ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('rock', 'jannabi', 'janalbum', '2022-12-26 07:13:04.166330', '2022-12-26 07:13:04.166330')[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/musics?q=rock&sort=created_date" for ::1 at 2022-12-26 16:13:14 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=rock&sort=created_date" for ::1 at 2022-12-26 16:13:16 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=rock&sort=created_date" for ::1 at 2022-12-26 16:13:17 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=creep&sort=created_date" for ::1 at 2022-12-26 16:13:23 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=creep&sort=created_date" for ::1 at 2022-12-26 16:14:45 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (1.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title ILIKE '%creep%' OR artist ILIKE '%creep%' OR album ILIKE '%creep%') ORDER BY `musics`.`created_at` DESC[0m
+  
+ActiveRecord::StatementInvalid (Mysql2::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ILIKE '%creep%' OR artist ILIKE '%creep%' OR album ILIKE '%creep%') ORDER BY `mu' at line 1):
+  
+mysql2 (0.5.4) lib/mysql2/client.rb:148:in `_query'
+mysql2 (0.5.4) lib/mysql2/client.rb:148:in `block in query'
+mysql2 (0.5.4) lib/mysql2/client.rb:147:in `handle_interrupt'
+mysql2 (0.5.4) lib/mysql2/client.rb:147:in `query'
+rack-mini-profiler (2.3.4) lib/patches/db/mysql2/alias_method.rb:25:in `block in query'
+rack-mini-profiler (2.3.4) lib/patches/sql_patches.rb:12:in `record_sql'
+rack-mini-profiler (2.3.4) lib/patches/db/mysql2/alias_method.rb:24:in `query'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:206:in `block (2 levels) in execute'
+activesupport (6.1.7) lib/active_support/dependencies/interlock.rb:48:in `block in permit_concurrent_loads'
+activesupport (6.1.7) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (6.1.7) lib/active_support/dependencies/interlock.rb:47:in `permit_concurrent_loads'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:205:in `block in execute'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_adapter.rb:696:in `block (2 levels) in log'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_adapter.rb:695:in `block in log'
+activesupport (6.1.7) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_adapter.rb:687:in `log'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:204:in `execute'
+activerecord (6.1.7) lib/active_record/connection_adapters/mysql/database_statements.rb:52:in `execute'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:215:in `execute_and_free'
+activerecord (6.1.7) lib/active_record/connection_adapters/mysql/database_statements.rb:57:in `exec_query'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/database_statements.rb:532:in `select'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/database_statements.rb:69:in `select_all'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:101:in `block in select_all'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:118:in `block in cache_sql'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:109:in `cache_sql'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:101:in `select_all'
+activerecord (6.1.7) lib/active_record/connection_adapters/mysql/database_statements.rb:12:in `select_all'
+activerecord (6.1.7) lib/active_record/querying.rb:47:in `find_by_sql'
+activerecord (6.1.7) lib/active_record/relation.rb:843:in `block in exec_queries'
+activerecord (6.1.7) lib/active_record/relation.rb:861:in `skip_query_cache_if_necessary'
+activerecord (6.1.7) lib/active_record/relation.rb:828:in `exec_queries'
+activerecord (6.1.7) lib/active_record/relation.rb:631:in `load'
+activerecord (6.1.7) lib/active_record/relation.rb:249:in `records'
+activerecord (6.1.7) lib/active_record/relation/delegation.rb:88:in `as_json'
+activesupport (6.1.7) lib/active_support/json/encoding.rb:35:in `encode'
+activesupport (6.1.7) lib/active_support/json/encoding.rb:22:in `encode'
+activesupport (6.1.7) lib/active_support/core_ext/object/json.rb:43:in `to_json'
+grape (1.7.0) lib/grape/formatter/json.rb:8:in `call'
+grape (1.7.0) lib/grape/middleware/formatter.rb:48:in `block (2 levels) in build_formatted_response'
+grape (1.7.0) lib/grape/middleware/formatter.rb:48:in `collect'
+grape (1.7.0) lib/grape/middleware/formatter.rb:48:in `block in build_formatted_response'
+activesupport (6.1.7) lib/active_support/notifications.rb:205:in `instrument'
+grape (1.7.0) lib/grape/middleware/formatter.rb:47:in `build_formatted_response'
+grape (1.7.0) lib/grape/middleware/formatter.rb:31:in `after'
+grape (1.7.0) lib/grape/middleware/base.rb:39:in `call!'
+grape (1.7.0) lib/grape/middleware/base.rb:29:in `call'
+grape (1.7.0) lib/grape/middleware/base.rb:36:in `call!'
+grape (1.7.0) lib/grape/middleware/base.rb:29:in `call'
+grape (1.7.0) lib/grape/middleware/error.rb:39:in `block in call!'
+grape (1.7.0) lib/grape/middleware/error.rb:38:in `catch'
+grape (1.7.0) lib/grape/middleware/error.rb:38:in `call!'
+grape (1.7.0) lib/grape/middleware/base.rb:29:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+grape (1.7.0) lib/grape/endpoint.rb:225:in `call!'
+grape (1.7.0) lib/grape/endpoint.rb:219:in `call'
+grape (1.7.0) lib/grape/router/route.rb:58:in `exec'
+grape (1.7.0) lib/grape/router.rb:120:in `process_route'
+grape (1.7.0) lib/grape/router.rb:74:in `block in identity'
+grape (1.7.0) lib/grape/router.rb:94:in `transaction'
+grape (1.7.0) lib/grape/router.rb:72:in `identity'
+grape (1.7.0) lib/grape/router.rb:56:in `block in call'
+grape (1.7.0) lib/grape/router.rb:136:in `with_optimization'
+grape (1.7.0) lib/grape/router.rb:55:in `call'
+grape (1.7.0) lib/grape/api/instance.rb:165:in `call'
+grape (1.7.0) lib/grape/api/instance.rb:70:in `call!'
+grape (1.7.0) lib/grape/api/instance.rb:65:in `call'
+grape (1.7.0) lib/grape/api.rb:81:in `call'
+actionpack (6.1.7) lib/action_dispatch/routing/mapper.rb:20:in `block in <class:Constraints>'
+actionpack (6.1.7) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+actionpack (6.1.7) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.7) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.7) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.7) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (6.1.7) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.7) lib/action_dispatch/http/content_security_policy.rb:19:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (6.1.7) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.4) lib/rack/proxy.rb:78:in `call'
+railties (6.1.7) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/api/v1/musics?q=creep&sort=created_date" for ::1 at 2022-12-26 16:17:03 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%creep%' OR artist LIKE '%creep%' OR album LIKE '%creep%') ORDER BY `musics`.`created_at` DESC[0m
+Started GET "/api/v1/musics?q=cree&sort=created_date" for ::1 at 2022-12-26 16:17:07 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%cree%' OR artist LIKE '%cree%' OR album LIKE '%cree%') ORDER BY `musics`.`created_at` DESC[0m
+Started GET "/api/v1/musics?q=rock&sort=created_date" for ::1 at 2022-12-26 16:17:13 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%rock%' OR artist LIKE '%rock%' OR album LIKE '%rock%') ORDER BY `musics`.`created_at` DESC[0m
+Started GET "/api/v1/musics?q=ro&sort=created_date" for ::1 at 2022-12-26 16:17:16 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%ro%' OR artist LIKE '%ro%' OR album LIKE '%ro%') ORDER BY `musics`.`created_at` DESC[0m
+Started GET "/api/v1/musics?q=jan&sort=created_date" for ::1 at 2022-12-26 16:17:19 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%jan%' OR artist LIKE '%jan%' OR album LIKE '%jan%') ORDER BY `musics`.`created_at` DESC[0m
+Started GET "/api/v1/musics?q=bum&sort=created_date" for ::1 at 2022-12-26 16:17:25 +0900
+  [1m[36mMusic Load (1.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%bum%' OR artist LIKE '%bum%' OR album LIKE '%bum%') ORDER BY `musics`.`created_at` DESC[0m
+Started GET "/api/v1/musics?q=bum&sort=likes" for ::1 at 2022-12-26 16:18:04 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%bum%' OR artist LIKE '%bum%' OR album LIKE '%bum%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics?q=bum&sort=likes" for ::1 at 2022-12-26 16:19:13 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%bum%' OR artist LIKE '%bum%' OR album LIKE '%bum%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics?q=bum&sort=created_date" for ::1 at 2022-12-26 16:19:19 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%bum%' OR artist LIKE '%bum%' OR album LIKE '%bum%') ORDER BY `musics`.`created_at` DESC[0m
+Started GET "/api/v1/musics?q=bum&sort=likes" for ::1 at 2022-12-26 16:19:20 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%bum%' OR artist LIKE '%bum%' OR album LIKE '%bum%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 1 LIMIT 1[0m
+  [1m[36mLike Create (0.2ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 1, '2022-12-26 07:20:18.849531', '2022-12-26 07:20:18.849531')[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/musics?q=bum&sort=likes" for ::1 at 2022-12-26 16:20:22 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%bum%' OR artist LIKE '%bum%' OR album LIKE '%bum%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 2 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 3 LIMIT 1[0m
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 4 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 5 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 5 LIMIT 1[0m
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 5, '2022-12-26 07:20:44.712111', '2022-12-26 07:20:44.712111')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 2 AND `likes`.`music_id` = 5 LIMIT 1[0m
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 5, '2022-12-26 07:20:49.680714', '2022-12-26 07:20:49.680714')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/musics?q=bum&sort=likes" for ::1 at 2022-12-26 16:20:51 +0900
+  [1m[36mMusic Load (1.4ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%bum%' OR artist LIKE '%bum%' OR album LIKE '%bum%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 16:21:07 +0900
+  
+ActiveRecord::UnknownAttributeReference (Query method called with non-attribute argument(s): "title LIKE ? DESC, artist LIKE ? DESC, album LIKE ? DESC"):
+  
+app/api/ringle_music/v1/musics.rb:28:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics?q=bum&sort=likes" for ::1 at 2022-12-26 16:21:10 +0900
+  [1m[36mMusic Load (1.5ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%bum%' OR artist LIKE '%bum%' OR album LIKE '%bum%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/group_users" for ::1 at 2022-12-26 16:24:03 +0900
+  [1m[36mGroupUser Load (0.7ms)[0m  [1m[34mSELECT `group_users`.* FROM `group_users`[0m
+Started GET "/api/v1/group_users?q=rock" for ::1 at 2022-12-26 16:24:17 +0900
+  [1m[36mGroupUser Load (0.8ms)[0m  [1m[34mSELECT `group_users`.* FROM `group_users`[0m
+Started GET "/api/v1/musics?q=bum&sort=likes" for ::1 at 2022-12-26 16:24:28 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=creep&sort=likes" for ::1 at 2022-12-26 16:24:42 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics/search?q=creep&sort=likes" for ::1 at 2022-12-26 16:25:08 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%creep%' OR artist LIKE '%creep%' OR album LIKE '%creep%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 16:25:28 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%%' OR artist LIKE '%%' OR album LIKE '%%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 16:25:43 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%%' OR artist LIKE '%%' OR album LIKE '%%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 16:27:23 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%%' OR artist LIKE '%%' OR album LIKE '%%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 16:27:29 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%%' OR artist LIKE '%%' OR album LIKE '%%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 16:27:59 +0900
+  [1m[36mMusic Load (1.3ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%%' OR artist LIKE '%%' OR album LIKE '%%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 16:28:01 +0900
+  [1m[36mMusic Load (0.5ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count, musics.liker FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+  
+ActiveRecord::StatementInvalid (Mysql2::Error: Unknown column 'musics.liker' in 'field list'):
+  
+mysql2 (0.5.4) lib/mysql2/client.rb:148:in `_query'
+mysql2 (0.5.4) lib/mysql2/client.rb:148:in `block in query'
+mysql2 (0.5.4) lib/mysql2/client.rb:147:in `handle_interrupt'
+mysql2 (0.5.4) lib/mysql2/client.rb:147:in `query'
+rack-mini-profiler (2.3.4) lib/patches/db/mysql2/alias_method.rb:25:in `block in query'
+rack-mini-profiler (2.3.4) lib/patches/sql_patches.rb:12:in `record_sql'
+rack-mini-profiler (2.3.4) lib/patches/db/mysql2/alias_method.rb:24:in `query'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:206:in `block (2 levels) in execute'
+activesupport (6.1.7) lib/active_support/dependencies/interlock.rb:48:in `block in permit_concurrent_loads'
+activesupport (6.1.7) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (6.1.7) lib/active_support/dependencies/interlock.rb:47:in `permit_concurrent_loads'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:205:in `block in execute'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_adapter.rb:696:in `block (2 levels) in log'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_adapter.rb:695:in `block in log'
+activesupport (6.1.7) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_adapter.rb:687:in `log'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:204:in `execute'
+activerecord (6.1.7) lib/active_record/connection_adapters/mysql/database_statements.rb:52:in `execute'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:215:in `execute_and_free'
+activerecord (6.1.7) lib/active_record/connection_adapters/mysql/database_statements.rb:57:in `exec_query'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/database_statements.rb:532:in `select'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/database_statements.rb:69:in `select_all'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:101:in `block in select_all'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:118:in `block in cache_sql'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:109:in `cache_sql'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:101:in `select_all'
+activerecord (6.1.7) lib/active_record/connection_adapters/mysql/database_statements.rb:12:in `select_all'
+activerecord (6.1.7) lib/active_record/querying.rb:47:in `find_by_sql'
+activerecord (6.1.7) lib/active_record/relation.rb:843:in `block in exec_queries'
+activerecord (6.1.7) lib/active_record/relation.rb:861:in `skip_query_cache_if_necessary'
+activerecord (6.1.7) lib/active_record/relation.rb:828:in `exec_queries'
+activerecord (6.1.7) lib/active_record/relation.rb:631:in `load'
+activerecord (6.1.7) lib/active_record/relation.rb:249:in `records'
+activerecord (6.1.7) lib/active_record/relation/delegation.rb:88:in `as_json'
+activesupport (6.1.7) lib/active_support/json/encoding.rb:35:in `encode'
+activesupport (6.1.7) lib/active_support/json/encoding.rb:22:in `encode'
+activesupport (6.1.7) lib/active_support/core_ext/object/json.rb:43:in `to_json'
+grape (1.7.0) lib/grape/formatter/json.rb:8:in `call'
+grape (1.7.0) lib/grape/middleware/formatter.rb:48:in `block (2 levels) in build_formatted_response'
+grape (1.7.0) lib/grape/middleware/formatter.rb:48:in `collect'
+grape (1.7.0) lib/grape/middleware/formatter.rb:48:in `block in build_formatted_response'
+activesupport (6.1.7) lib/active_support/notifications.rb:205:in `instrument'
+grape (1.7.0) lib/grape/middleware/formatter.rb:47:in `build_formatted_response'
+grape (1.7.0) lib/grape/middleware/formatter.rb:31:in `after'
+grape (1.7.0) lib/grape/middleware/base.rb:39:in `call!'
+grape (1.7.0) lib/grape/middleware/base.rb:29:in `call'
+grape (1.7.0) lib/grape/middleware/base.rb:36:in `call!'
+grape (1.7.0) lib/grape/middleware/base.rb:29:in `call'
+grape (1.7.0) lib/grape/middleware/error.rb:39:in `block in call!'
+grape (1.7.0) lib/grape/middleware/error.rb:38:in `catch'
+grape (1.7.0) lib/grape/middleware/error.rb:38:in `call!'
+grape (1.7.0) lib/grape/middleware/base.rb:29:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+grape (1.7.0) lib/grape/endpoint.rb:225:in `call!'
+grape (1.7.0) lib/grape/endpoint.rb:219:in `call'
+grape (1.7.0) lib/grape/router/route.rb:58:in `exec'
+grape (1.7.0) lib/grape/router.rb:120:in `process_route'
+grape (1.7.0) lib/grape/router.rb:74:in `block in identity'
+grape (1.7.0) lib/grape/router.rb:94:in `transaction'
+grape (1.7.0) lib/grape/router.rb:72:in `identity'
+grape (1.7.0) lib/grape/router.rb:56:in `block in call'
+grape (1.7.0) lib/grape/router.rb:136:in `with_optimization'
+grape (1.7.0) lib/grape/router.rb:55:in `call'
+grape (1.7.0) lib/grape/api/instance.rb:165:in `call'
+grape (1.7.0) lib/grape/api/instance.rb:70:in `call!'
+grape (1.7.0) lib/grape/api/instance.rb:65:in `call'
+grape (1.7.0) lib/grape/api.rb:81:in `call'
+actionpack (6.1.7) lib/action_dispatch/routing/mapper.rb:20:in `block in <class:Constraints>'
+actionpack (6.1.7) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+actionpack (6.1.7) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.7) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.7) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.7) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (6.1.7) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.7) lib/action_dispatch/http/content_security_policy.rb:19:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (6.1.7) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.4) lib/rack/proxy.rb:78:in `call'
+railties (6.1.7) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 16:28:23 +0900
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count, musics.likers FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+  
+ActiveRecord::StatementInvalid (Mysql2::Error: Unknown column 'musics.likers' in 'field list'):
+  
+mysql2 (0.5.4) lib/mysql2/client.rb:148:in `_query'
+mysql2 (0.5.4) lib/mysql2/client.rb:148:in `block in query'
+mysql2 (0.5.4) lib/mysql2/client.rb:147:in `handle_interrupt'
+mysql2 (0.5.4) lib/mysql2/client.rb:147:in `query'
+rack-mini-profiler (2.3.4) lib/patches/db/mysql2/alias_method.rb:25:in `block in query'
+rack-mini-profiler (2.3.4) lib/patches/sql_patches.rb:12:in `record_sql'
+rack-mini-profiler (2.3.4) lib/patches/db/mysql2/alias_method.rb:24:in `query'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:206:in `block (2 levels) in execute'
+activesupport (6.1.7) lib/active_support/dependencies/interlock.rb:48:in `block in permit_concurrent_loads'
+activesupport (6.1.7) lib/active_support/concurrency/share_lock.rb:187:in `yield_shares'
+activesupport (6.1.7) lib/active_support/dependencies/interlock.rb:47:in `permit_concurrent_loads'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:205:in `block in execute'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_adapter.rb:696:in `block (2 levels) in log'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_adapter.rb:695:in `block in log'
+activesupport (6.1.7) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_adapter.rb:687:in `log'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:204:in `execute'
+activerecord (6.1.7) lib/active_record/connection_adapters/mysql/database_statements.rb:52:in `execute'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract_mysql_adapter.rb:215:in `execute_and_free'
+activerecord (6.1.7) lib/active_record/connection_adapters/mysql/database_statements.rb:57:in `exec_query'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/database_statements.rb:532:in `select'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/database_statements.rb:69:in `select_all'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:101:in `block in select_all'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:118:in `block in cache_sql'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:26:in `block (2 levels) in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:25:in `block in synchronize'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `handle_interrupt'
+activesupport (6.1.7) lib/active_support/concurrency/load_interlock_aware_monitor.rb:21:in `synchronize'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:109:in `cache_sql'
+activerecord (6.1.7) lib/active_record/connection_adapters/abstract/query_cache.rb:101:in `select_all'
+activerecord (6.1.7) lib/active_record/connection_adapters/mysql/database_statements.rb:12:in `select_all'
+activerecord (6.1.7) lib/active_record/querying.rb:47:in `find_by_sql'
+activerecord (6.1.7) lib/active_record/relation.rb:843:in `block in exec_queries'
+activerecord (6.1.7) lib/active_record/relation.rb:861:in `skip_query_cache_if_necessary'
+activerecord (6.1.7) lib/active_record/relation.rb:828:in `exec_queries'
+activerecord (6.1.7) lib/active_record/relation.rb:631:in `load'
+activerecord (6.1.7) lib/active_record/relation.rb:249:in `records'
+activerecord (6.1.7) lib/active_record/relation/delegation.rb:88:in `as_json'
+activesupport (6.1.7) lib/active_support/json/encoding.rb:35:in `encode'
+activesupport (6.1.7) lib/active_support/json/encoding.rb:22:in `encode'
+activesupport (6.1.7) lib/active_support/core_ext/object/json.rb:43:in `to_json'
+grape (1.7.0) lib/grape/formatter/json.rb:8:in `call'
+grape (1.7.0) lib/grape/middleware/formatter.rb:48:in `block (2 levels) in build_formatted_response'
+grape (1.7.0) lib/grape/middleware/formatter.rb:48:in `collect'
+grape (1.7.0) lib/grape/middleware/formatter.rb:48:in `block in build_formatted_response'
+activesupport (6.1.7) lib/active_support/notifications.rb:205:in `instrument'
+grape (1.7.0) lib/grape/middleware/formatter.rb:47:in `build_formatted_response'
+grape (1.7.0) lib/grape/middleware/formatter.rb:31:in `after'
+grape (1.7.0) lib/grape/middleware/base.rb:39:in `call!'
+grape (1.7.0) lib/grape/middleware/base.rb:29:in `call'
+grape (1.7.0) lib/grape/middleware/base.rb:36:in `call!'
+grape (1.7.0) lib/grape/middleware/base.rb:29:in `call'
+grape (1.7.0) lib/grape/middleware/error.rb:39:in `block in call!'
+grape (1.7.0) lib/grape/middleware/error.rb:38:in `catch'
+grape (1.7.0) lib/grape/middleware/error.rb:38:in `call!'
+grape (1.7.0) lib/grape/middleware/base.rb:29:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+grape (1.7.0) lib/grape/endpoint.rb:225:in `call!'
+grape (1.7.0) lib/grape/endpoint.rb:219:in `call'
+grape (1.7.0) lib/grape/router/route.rb:58:in `exec'
+grape (1.7.0) lib/grape/router.rb:120:in `process_route'
+grape (1.7.0) lib/grape/router.rb:74:in `block in identity'
+grape (1.7.0) lib/grape/router.rb:94:in `transaction'
+grape (1.7.0) lib/grape/router.rb:72:in `identity'
+grape (1.7.0) lib/grape/router.rb:56:in `block in call'
+grape (1.7.0) lib/grape/router.rb:136:in `with_optimization'
+grape (1.7.0) lib/grape/router.rb:55:in `call'
+grape (1.7.0) lib/grape/api/instance.rb:165:in `call'
+grape (1.7.0) lib/grape/api/instance.rb:70:in `call!'
+grape (1.7.0) lib/grape/api/instance.rb:65:in `call'
+grape (1.7.0) lib/grape/api.rb:81:in `call'
+actionpack (6.1.7) lib/action_dispatch/routing/mapper.rb:20:in `block in <class:Constraints>'
+actionpack (6.1.7) lib/action_dispatch/routing/mapper.rb:49:in `serve'
+actionpack (6.1.7) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.7) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.7) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.7) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.4) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.4) lib/rack/head.rb:12:in `call'
+actionpack (6.1.7) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.7) lib/action_dispatch/http/content_security_policy.rb:19:in `call'
+rack (2.2.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/cookies.rb:689:in `call'
+activerecord (6.1.7) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.3) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.4) lib/rack/proxy.rb:78:in `call'
+railties (6.1.7) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 16:28:47 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 16:28:53 +0900
+  
+LoadError (Unable to autoload constant RingleMusic::V1::Search, expected /Users/ki99/Ringle_Music_MVC/app/api/ringle_music/v1/search.rb to define it):
+  
+app/api/ringle_music/base.rb:8:in `<class:Base>'
+app/api/ringle_music/base.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/base.rb:1:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 16:28:58 +0900
+  [1m[36mMusic Load (0.5ms)[0m  [1m[34mSELECT musics.id, musics.title, musics.artist, musics.album, COUNT(likes.id) AS likes_count FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 16:30:17 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 16:53:40 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 16:53:55 +0900
+  
+NameError (uninitialized constant RingleMusic::Entities):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 16:54:20 +0900
+  
+NameError (uninitialized constant RingleMusic::Entities):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 16:56:59 +0900
+  
+NameError (uninitialized constant RingleMusic::Entities):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 16:59:17 +0900
+  
+NameError (uninitialized constant Entities::Music):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:01:17 +0900
+  
+NameError (uninitialized constant Entities::Music):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:01:28 +0900
+  
+NameError (uninitialized constant Entities::V1::Music):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:01:53 +0900
+  
+NameError (uninitialized constant Entities::V1::Music):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:02:05 +0900
+  
+LoadError (Unable to autoload constant Entities::V1::MusicEntity, expected /Users/ki99/Ringle_Music_MVC/app/api/entities/v1/music_entity.rb to define it):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:02:53 +0900
+  
+NameError (uninitialized constant Entities::MusicEntity):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:03:06 +0900
+  
+LoadError (Unable to autoload constant Entities::V1::MusicEntity, expected /Users/ki99/Ringle_Music_MVC/app/api/entities/v1/music_entity.rb to define it):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:04:53 +0900
+  
+NameError (uninitialized constant RingleMusic::V1::MusicEntity):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:04:58 +0900
+  
+LoadError (Unable to autoload constant Entities::V1::MusicEntity, expected /Users/ki99/Ringle_Music_MVC/app/api/entities/v1/music_entity.rb to define it):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:06:22 +0900
+  
+NameError (undefined local variable or method `mount' for RingleMusic::V1::MusicEntity:Class):
+  
+app/api/entities/v1/music_entity.rb:4:in `<class:MusicEntity>'
+app/api/entities/v1/music_entity.rb:3:in `<module:V1>'
+app/api/entities/v1/music_entity.rb:2:in `<module:RingleMusic>'
+app/api/entities/v1/music_entity.rb:1:in `<main>'
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:06:39 +0900
+  
+NameError (uninitialized constant RingleMusic::V1::Base
+Did you mean?  RingleMusic::Base):
+  
+app/api/entities/v1/music_entity.rb:4:in `<class:MusicEntity>'
+app/api/entities/v1/music_entity.rb:3:in `<module:V1>'
+app/api/entities/v1/music_entity.rb:2:in `<module:RingleMusic>'
+app/api/entities/v1/music_entity.rb:1:in `<main>'
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:06:51 +0900
+  
+LoadError (Unable to autoload constant Entities::V1::MusicEntity, expected /Users/ki99/Ringle_Music_MVC/app/api/entities/v1/music_entity.rb to define it):
+  
+app/api/ringle_music/v1/musics.rb:12:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-26 17:16:24 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics?q=creep&sort=created_date" for ::1 at 2022-12-26 17:17:15 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics/search?q=creep&sort=created_date" for ::1 at 2022-12-26 17:17:28 +0900
+Started GET "/api/v1/musics/search?q=creep&sort=likes" for ::1 at 2022-12-26 17:17:57 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%creep%' OR artist LIKE '%creep%' OR album LIKE '%creep%') GROUP BY `musics`.`id` /* loading for inspect */ ORDER BY COUNT(likes.id) DESC LIMIT 11[0m
+  
+NoMethodError (undefined method `end' for #<Music::ActiveRecord_Relation:0x00007fd10d61a0b8>
+Did you mean?  send
+               and):
+  
+app/api/ringle_music/v1/musics.rb:32:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=creep&sort=likes" for ::1 at 2022-12-26 17:18:22 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%creep%' OR artist LIKE '%creep%' OR album LIKE '%creep%') GROUP BY `musics`.`id` /* loading for inspect */ ORDER BY COUNT(likes.id) DESC LIMIT 11[0m
+  
+NoMethodError (undefined method `end' for #<Music::ActiveRecord_Relation:0x00007fd10dd7f268>
+Did you mean?  send
+               and):
+  
+app/api/ringle_music/v1/musics.rb:33:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=creep&sort=accuracy" for ::1 at 2022-12-26 17:18:27 +0900
+  
+ActiveRecord::UnknownAttributeReference (Query method called with non-attribute argument(s): "title LIKE ? DESC, artist LIKE ? DESC, album LIKE ? DESC"):
+  
+app/api/ringle_music/v1/musics.rb:29:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=creep&sort=likes" for ::1 at 2022-12-26 17:20:03 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/api/ringle_music/v1/musics.rb:40: syntax error, unexpected end, expecting end-of-input):
+  
+app/api/ringle_music/v1/musics.rb:40: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/v1/musics.rb:40: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/v1/musics.rb:40: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/base.rb:4:in `<class:Base>'
+app/api/ringle_music/base.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/base.rb:1:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/musics/search?q=creep&sort=likes" for ::1 at 2022-12-26 17:21:33 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (1.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` WHERE (title LIKE '%creep%' OR artist LIKE '%creep%' OR album LIKE '%creep%') GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 17:21:44 +0900
+  [1m[36mMusic Load (1.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 17:23:18 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:23:22 +0900
+  
+ActiveRecord::UnknownAttributeReference (Query method called with non-attribute argument(s): "title LIKE ? DESC, artist LIKE ? DESC, album LIKE ? DESC"):
+  
+app/api/ringle_music/v1/musics.rb:29:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:25:47 +0900
+  
+ActiveRecord::UnknownAttributeReference (Query method called with non-attribute argument(s): "title LIKE ? DESC, artist LIKE ? DESC, album LIKE ? DESC"):
+  
+app/api/ringle_music/v1/musics.rb:29:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:27:30 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input):
+  
+app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/base.rb:4:in `<class:Base>'
+app/api/ringle_music/base.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/base.rb:1:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:27:34 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input):
+  
+app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/base.rb:4:in `<class:Base>'
+app/api/ringle_music/base.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/base.rb:1:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:28:10 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input):
+  
+app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/v1/musics.rb:42: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/base.rb:4:in `<class:Base>'
+app/api/ringle_music/base.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/base.rb:1:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:28:14 +0900
+  
+ActiveRecord::UnknownAttributeReference (Query method called with non-attribute argument(s): "title LIKE ? DESC, artist LIKE ? DESC, album LIKE ? DESC"):
+  
+app/api/ringle_music/v1/musics.rb:29:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=created_date" for ::1 at 2022-12-26 17:29:33 +0900
+Started GET "/api/v1/musics/search?sort=created_date" for ::1 at 2022-12-26 17:29:44 +0900
+Started GET "/api/v1/musics/search?sort=created_date" for ::1 at 2022-12-26 17:29:44 +0900
+Started GET "/api/v1/musics/search?sort=created_date" for ::1 at 2022-12-26 17:29:51 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`created_at` DESC[0m
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:30:49 +0900
+  
+ActiveRecord::UnknownAttributeReference (Query method called with non-attribute argument(s): "title LIKE ? DESC, artist LIKE ? DESC, album LIKE ? DESC"):
+  
+app/api/ringle_music/v1/musics.rb:29:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:32:28 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC[0m
+Started GET "/" for ::1 at 2022-12-26 17:32:57 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ki99/.rvm/gems/ruby-2.6.3/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ki99/.rvm/gems/ruby-2.6.3/gems/railties-6.1.7/lib/rails/templates/rails/welcome/index.html.erb (Duration: 5.6ms | Allocations: 233)
+Completed 200 OK in 15ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 1791)
+
+
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:37:02 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC[0m
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:37:10 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC[0m
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:37:10 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC[0m
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:37:30 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC[0m
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-26 17:37:34 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 17:37:57 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 17:39:29 +0900
+  [1m[36mMusic Load (1.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
