@@ -1878,3 +1878,964 @@ Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 17:37:57 +0
   [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
 Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 17:39:29 +0900
   [1m[36mMusic Load (1.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 17:55:22 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (2.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-26 17:55:22 +0900
+  [1m[36mMusic Load (1.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  
+NameError (undefined local variable or method `music' for #<#<Class:0x00007f8a5d299390>:0x00007f8a5ebdf728>
+Did you mean?  musics):
+  
+app/api/ringle_music/v1/musics.rb:29:in `block (2 levels) in <class:Musics>'
+  
+NameError (undefined local variable or method `music' for #<#<Class:0x00007f8a5d299390>:0x00007f8a5a648b60>
+Did you mean?  musics):
+  
+app/api/ringle_music/v1/musics.rb:29:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 17:55:27 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  
+NameError (undefined local variable or method `music' for #<#<Class:0x00007f8a5d299390>:0x00007f8a5a726438>
+Did you mean?  musics):
+  
+app/api/ringle_music/v1/musics.rb:29:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 17:55:32 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rock" for ::1 at 2022-12-26 17:55:38 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%rock%' OR artist LIKE '%rock%' OR album LIKE '%rock%')[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 17:55:44 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddLikesToMusics (20221226085703)
+  [1m[35m (11.5ms)[0m  [1m[35mALTER TABLE `musics` ADD `likes` int[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226085703')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:07:10 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 5[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:07:12 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  [1m[36mLike Load (1.0ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 5[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:07:13 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 5[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:07:14 +0900
+  [1m[36mMusic Load (1.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mLike Load (1.5ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  [1m[36mLike Load (1.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 5[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:07:14 +0900
+  [1m[36mMusic Load (1.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 5[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:07:15 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mLike Load (1.5ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 5[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:07:20 +0900
+  [1m[36mMusic Load (1.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 5[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:07:21 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 5[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:11:06 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  
+NoMethodError (undefined method `arter_destroy' for #<Class:0x00007ff47c2abe58>
+Did you mean?  after_destroy
+               around_destroy):
+  
+app/models/like.rb:7:in `<class:Like>'
+app/models/like.rb:1:in `<main>'
+app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:11:18 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  
+NoMethodError (undefined method `arter_destroy' for #<Class:0x00007ff48294dcd8>
+Did you mean?  after_destroy
+               around_destroy):
+  
+app/models/like.rb:7:in `<class:Like>'
+app/models/like.rb:1:in `<main>'
+app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-26 18:11:26 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 1[0m
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 5[0m
+  [1m[36mMusic Destroy (2.2ms)[0m  [1m[31mDELETE FROM `musics`[0m
+  [1m[36mLike Destroy (1.5ms)[0m  [1m[31mDELETE FROM `likes`[0m
+  [1m[36mMusic Destroy (2.6ms)[0m  [1m[31mDELETE FROM `musics`[0m
+  [1m[36mUserPlaylist Destroy (3.0ms)[0m  [1m[31mDELETE FROM `user_playlists`[0m
+  [1m[36mMusic Destroy (1.3ms)[0m  [1m[31mDELETE FROM `musics`[0m
+  [1m[36mLike Destroy (0.5ms)[0m  [1m[31mDELETE FROM `likes`[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.4ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('rock', 'Queen', 'Queen\'s album', '2022-12-26 09:17:39.962363', '2022-12-26 09:17:39.962363')[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to ChangeLikesDefault (20221226092026)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226092026')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Destroy (1.9ms)[0m  [1m[31mDELETE FROM `musics`[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.4ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('rock', 'Queen', 'Queen\'s album', '2022-12-26 09:20:41.845298', '2022-12-26 09:20:41.845298')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.6ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('queen\'s song', 'Queen', 'Queen\'s album', '2022-12-26 09:20:51.533141', '2022-12-26 09:20:51.533141')[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Destroy (2.1ms)[0m  [1m[31mDELETE FROM `musics`[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.4ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('queen\'s song', 'Queen', 'Queen\'s album', '2022-12-26 09:22:07.148223', '2022-12-26 09:22:07.148223')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.4ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('rock', 'Queen', 'Queen\'s album', '2022-12-26 09:22:10.748546', '2022-12-26 09:22:10.748546')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 10 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 10, '2022-12-26 09:22:54.964594', '2022-12-26 09:22:54.964594')[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 10[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:24:15.851263', '2022-12-26 09:24:15.851263')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:25:35.818297', '2022-12-26 09:25:35.818297')[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:30:58.997678', '2022-12-26 09:30:58.997678')[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 10 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 10 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 10, '2022-12-26 09:32:32.469283', '2022-12-26 09:32:32.469283')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:33:31.764290', '2022-12-26 09:33:31.764290')[0m
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:38:05.471542', '2022-12-26 09:38:05.471542')[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:44:30.124975', '2022-12-26 09:44:30.124975')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:44:49.341562', '2022-12-26 09:44:49.341562')[0m
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:46:42.694006', '2022-12-26 09:46:42.694006')[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.5ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:48:58.071685', '2022-12-26 09:48:58.071685')[0m
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 18 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:49:55.208400', '2022-12-26 09:49:55.208400')[0m
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:50:40.120970', '2022-12-26 09:50:40.120970')[0m
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:51:37.905643', '2022-12-26 09:51:37.905643')[0m
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:51:51.675290', '2022-12-26 09:51:51.675290')[0m
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:52:36.707203', '2022-12-26 09:52:36.707203')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:54:17.476291', '2022-12-26 09:54:17.476291')[0m
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:55:00.001428', '2022-12-26 09:55:00.001428')[0m
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:55:36.174122', '2022-12-26 09:55:36.174122')[0m
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 09:58:01.038778', '2022-12-26 09:58:01.038778')[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 10:02:44.675155', '2022-12-26 10:02:44.675155')[0m
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to ChangeLikesColumnInMusics (20221226100410)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226100410')[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 10:04:27.267850', '2022-12-26 10:04:27.267850')[0m
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 9[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to IncrementLikesCountTrigger (20221226101104)
+  [1m[35m (2.4ms)[0m  [1m[35m      CREATE TRIGGER increment_likes_count AFTER INSERT ON likes
+      FOR EACH ROW
+      BEGIN
+          UPDATE music
+          SET likes = likes + 1
+          WHERE music.id = NEW.music_id;
+      END;
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226101104')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DecrementLikesCountTrigger (20221226101126)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DecrementLikesCountTrigger (20221226101126)
+  [1m[35m (3.0ms)[0m  [1m[35m        CREATE TRIGGER decrement_likes_count AFTER DELETE ON likes
+        FOR EACH ROW
+        BEGIN
+            UPDATE music
+            SET likes = likes - 1
+            WHERE music.id = OLD.music_id;
+        END;
+[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226101126')[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (1.4ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 10:12:28.870943', '2022-12-26 10:12:28.870943')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DecrementLikesCountTrigger (20221226101126)
+  [1m[35m (2.7ms)[0m  [1m[35m        DROP TRIGGER decrement_likes_count;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.7ms)[0m  [1m[31mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20221226101126'[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to IncrementLikesCountTrigger (20221226101104)
+  [1m[35m (2.8ms)[0m  [1m[35m      DROP TRIGGER increment_likes_count;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.7ms)[0m  [1m[31mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20221226101104'[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to IncrementLikesCountTrigger (20221226101104)
+  [1m[35m (2.2ms)[0m  [1m[35m      CREATE TRIGGER increment_likes_count AFTER INSERT ON likes
+      FOR EACH ROW
+      BEGIN
+          UPDATE musics
+          SET likes = likes + 1
+          WHERE music.id = NEW.music_id;
+      END;
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226101104')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DecrementLikesCountTrigger (20221226101126)
+  [1m[35m (2.7ms)[0m  [1m[35m        CREATE TRIGGER decrement_likes_count AFTER DELETE ON likes
+        FOR EACH ROW
+        BEGIN
+            UPDATE musics
+            SET likes = likes - 1
+            WHERE music.id = OLD.music_id;
+        END;
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226101126')[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.8ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 10:14:04.198148', '2022-12-26 10:14:04.198148')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DecrementLikesCountTrigger (20221226101126)
+  [1m[35m (3.0ms)[0m  [1m[35m        DROP TRIGGER decrement_likes_count;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.6ms)[0m  [1m[31mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20221226101126'[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to IncrementLikesCountTrigger (20221226101104)
+  [1m[35m (2.8ms)[0m  [1m[35m      DROP TRIGGER increment_likes_count;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.6ms)[0m  [1m[31mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20221226101104'[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to IncrementLikesCountTrigger (20221226101104)
+  [1m[35m (2.4ms)[0m  [1m[35m      CREATE TRIGGER increment_likes_count AFTER INSERT ON likes
+      FOR EACH ROW
+      BEGIN
+          UPDATE musics
+          SET likes = likes + 1
+          WHERE music.music_id = NEW.music_id;
+      END;
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226101104')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DecrementLikesCountTrigger (20221226101126)
+  [1m[35m (2.5ms)[0m  [1m[35m        CREATE TRIGGER decrement_likes_count AFTER DELETE ON likes
+        FOR EACH ROW
+        BEGIN
+            UPDATE musics
+            SET likes = likes - 1
+            WHERE music.music_id = OLD.music_id;
+        END;
+[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226101126')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.8ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 10:15:32.652970', '2022-12-26 10:15:32.652970')[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DecrementLikesCountTrigger (20221226101126)
+  [1m[35m (2.4ms)[0m  [1m[35m        DROP TRIGGER decrement_likes_count;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.7ms)[0m  [1m[31mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20221226101126'[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to IncrementLikesCountTrigger (20221226101104)
+  [1m[35m (2.3ms)[0m  [1m[35m      DROP TRIGGER increment_likes_count;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.6ms)[0m  [1m[31mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20221226101104'[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to IncrementLikesCountTrigger (20221226101104)
+  [1m[35m (2.6ms)[0m  [1m[35m      CREATE TRIGGER increment_likes_count AFTER INSERT ON likes
+      FOR EACH ROW
+      BEGIN
+          UPDATE musics
+          SET likes = likes + 1
+          WHERE music_id = NEW.music_id;
+      END;
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226101104')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DecrementLikesCountTrigger (20221226101126)
+  [1m[35m (2.6ms)[0m  [1m[35m        CREATE TRIGGER decrement_likes_count AFTER DELETE ON likes
+        FOR EACH ROW
+        BEGIN
+            UPDATE musics
+            SET likes = likes - 1
+            WHERE music_id = OLD.music_id;
+        END;
+[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221226101126')[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.8ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 10:16:06.142416', '2022-12-26 10:16:06.142416')[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DecrementLikesCountTrigger (20221226101126)
+  [1m[35m (2.7ms)[0m  [1m[35m        DROP TRIGGER decrement_likes_count;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.6ms)[0m  [1m[31mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20221226101126'[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to IncrementLikesCountTrigger (20221226101104)
+  [1m[35m (2.8ms)[0m  [1m[35m      DROP TRIGGER increment_likes_count;
+[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.6ms)[0m  [1m[31mDELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20221226101104'[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 9, '2022-12-26 10:25:16.380649', '2022-12-26 10:25:16.380649')[0m
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mMusic Load (11.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 9 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mMusic Destroy (12.3ms)[0m  [1m[31mDELETE FROM `musics`[0m
+  [1m[36mLike Destroy (5.5ms)[0m  [1m[31mDELETE FROM `likes`[0m
+  [1m[36mMusic Destroy (1.7ms)[0m  [1m[31mDELETE FROM `musics`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddLikesCountToMusic (20221227010804)
+  [1m[35m (31.9ms)[0m  [1m[35mALTER TABLE `musics` ADD `likes_count` int[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221227010804')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (8.8ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (1.5ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('rock', 'Queen', 'Queen\'s album', '2022-12-27 01:13:03.968737', '2022-12-27 01:13:03.968737')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 11 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 11, '2022-12-27 01:13:20.932046', '2022-12-27 01:13:20.932046')[0m
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 11 /* loading for inspect */ LIMIT 11[0m
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 11 /* loading for inspect */ LIMIT 11[0m
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 11 /* loading for inspect */ LIMIT 11[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 11 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 2 AND `likes`.`music_id` = 11 LIMIT 1[0m
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 11, '2022-12-27 01:16:34.925207', '2022-12-27 01:16:34.925207')[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLike Load (0.9ms)[0m  [1m[34mSELECT `likes`.* FROM `likes` WHERE `likes`.`music_id` = 11 /* loading for inspect */ LIMIT 11[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to RemoveLikesFromMusic (20221227012258)
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE `music` DROP COLUMN `likes`[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to RemoveLikesFromMusic (20221227012258)
+  [1m[35m (12.6ms)[0m  [1m[35mALTER TABLE `musics` DROP COLUMN `likes`[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221227012258')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.4ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`, `likes_count`) VALUES ('acheme', 'acheme', 'acheme\'s album', '2022-12-27 01:24:51.979108', '2022-12-27 01:24:51.979108', 0)[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMusic Destroy (3.6ms)[0m  [1m[31mDELETE FROM `musics` WHERE `musics`.`id` = 11[0m
+  [1m[36mLike Destroy (1.5ms)[0m  [1m[31mDELETE FROM `likes`[0m
+  [1m[36mMusic Destroy (1.6ms)[0m  [1m[31mDELETE FROM `musics` WHERE `musics`.`id` = 11[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 12 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 12, '2022-12-27 01:26:27.159975', '2022-12-27 01:26:27.159975')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to RemoveLikesCountFromMusic (20221227013331)
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE `music` DROP COLUMN `likes_count`[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to RemoveLikesCountFromMusic (20221227013331)
+  [1m[35m (13.7ms)[0m  [1m[35mALTER TABLE `musics` DROP COLUMN `likes_count`[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221227013331')[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddLikesCountToMusic (20221227013532)
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE `music` ADD `likes_count` int DEFAULT 0[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('5598229979724243750', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddLikesCountToMusic (20221227013532)
+  [1m[35m (18.5ms)[0m  [1m[35mALTER TABLE `musics` ADD `likes_count` int DEFAULT 0[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20221227013532')[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('5598229979724243750')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mLike Destroy (1.5ms)[0m  [1m[31mDELETE FROM `likes`[0m
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 12 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 12, '2022-12-27 01:37:38.952433', '2022-12-27 01:37:38.952433')[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 12 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` DESC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 4 AND `likes`.`music_id` = 12 LIMIT 1[0m
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (4, 12, '2022-12-27 01:39:33.373529', '2022-12-27 01:39:33.373529')[0m
+  [1m[36mMusic Update All (0.6ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`likes_count` = COALESCE(`musics`.`likes_count`, 0) + 1 WHERE `musics`.`id` = 12[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMusic Destroy (1.5ms)[0m  [1m[31mDELETE FROM `musics`[0m
+  [1m[36mLike Destroy (1.4ms)[0m  [1m[31mDELETE FROM `likes`[0m
+  [1m[36mMusic Destroy (2.0ms)[0m  [1m[31mDELETE FROM `musics`[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-27 10:41:05 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (1.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.3ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('rock', 'Queen', 'Queens\'s first album', '2022-12-27 01:41:35.587727', '2022-12-27 01:41:35.587727')[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Create (0.5ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('bohemian rhapsody', 'Queen', 'Queens\'s first album', '2022-12-27 01:42:25.178037', '2022-12-27 01:42:25.178037')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 14 LIMIT 1[0m
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 14, '2022-12-27 01:42:38.396598', '2022-12-27 01:42:38.396598')[0m
+  [1m[36mMusic Update All (0.4ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`likes_count` = COALESCE(`musics`.`likes_count`, 0) + 1 WHERE `musics`.`id` = 14[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-27 10:42:43 +0900
+  [1m[36mMusic Load (1.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 13[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 14[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` INNER JOIN `likes` ON `users`.`id` = `likes`.`user_id` WHERE `likes`.`music_id` = 14 /* loading for inspect */ LIMIT 11[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:43:14 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 13[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 14[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` DESC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 4 AND `likes`.`music_id` = 14 LIMIT 1[0m
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (4, 14, '2022-12-27 01:43:26.042294', '2022-12-27 01:43:26.042294')[0m
+  [1m[36mMusic Update All (0.4ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`likes_count` = COALESCE(`musics`.`likes_count`, 0) + 1 WHERE `musics`.`id` = 14[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:43:27 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 13[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 14[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`id` DESC LIMIT 1[0m
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`id` ASC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 4 AND `likes`.`music_id` = 13 LIMIT 1[0m
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (4, 13, '2022-12-27 01:43:50.457396', '2022-12-27 01:43:50.457396')[0m
+  [1m[36mMusic Update All (0.4ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`likes_count` = COALESCE(`musics`.`likes_count`, 0) + 1 WHERE `musics`.`id` = 13[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 1 AND `likes`.`music_id` = 13 LIMIT 1[0m
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 13, '2022-12-27 01:43:54.801344', '2022-12-27 01:43:54.801344')[0m
+  [1m[36mMusic Update All (0.4ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`likes_count` = COALESCE(`musics`.`likes_count`, 0) + 1 WHERE `musics`.`id` = 13[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`user_name` = 'kimsehyeon' LIMIT 1[0m
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO `users` (`user_name`, `created_at`, `updated_at`) VALUES ('kimsehyeon', '2022-12-27 01:44:29.593131', '2022-12-27 01:44:29.593131')[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 5 AND `likes`.`music_id` = 13 LIMIT 1[0m
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (5, 13, '2022-12-27 01:44:31.440287', '2022-12-27 01:44:31.440287')[0m
+  [1m[36mMusic Update All (0.4ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`likes_count` = COALESCE(`musics`.`likes_count`, 0) + 1 WHERE `musics`.`id` = 13[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:44:33 +0900
+  [1m[36mMusic Load (1.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 13[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 14[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:44:39 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `sort_by'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 13[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `likes` WHERE `likes`.`music_id` = 14[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:45:51 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` LEFT OUTER JOIN `likes` ON `likes`.`music_id` = `musics`.`id` GROUP BY `musics`.`id` ORDER BY COUNT(likes.id) DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:49:18 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.`title`, `musics`.`artist`, `musics`.`album`, `musics`.`likes_count` FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:51:09 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.`title`, `musics`.`artist`, `musics`.`album`, `musics`.`likes_count` FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:51:11 +0900
+  [1m[36mMusic Load (1.2ms)[0m  [1m[34mSELECT `musics`.`title`, `musics`.`artist`, `musics`.`album`, `musics`.`likes_count` FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:51:25 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.`title`, `musics`.`artist`, `musics`.`album`, `musics`.`likes_count` FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:51:28 +0900
+  
+NoMethodError (undefined method `except' for [:title, :artist, :album, :likes_count]:Array):
+  
+app/api/ringle_music/v1/musics.rb:37:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:51:33 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.`title`, `musics`.`artist`, `musics`.`album`, `musics`.`likes_count` FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:52:31 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.`title`, `musics`.`artist`, `musics`.`album`, `musics`.`likes_count` FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:52:32 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.`title`, `musics`.`artist`, `musics`.`album`, `musics`.`likes_count` FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:53:02 +0900
+  
+NoMethodError (undefined method `attributes_names' for #<Class:0x00007fa6ce4567e0>
+Did you mean?  attribute_names
+               attribute_types):
+  
+app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:53:42 +0900
+  
+NoMethodError (undefined method `except' for #<Array:0x00007fa6d39b1c30>):
+  
+app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:53:59 +0900
+  [1m[36mMusic Load (0.5ms)[0m  [1m[34mSELECT `musics`.`title`, `musics`.`artist`, `musics`.`album`, `musics`.`likes_count`, `musics`.`title`, `musics`.`artist`, `musics`.`album`, `musics`.`created_at`, `musics`.`updated_at`, `musics`.`likes_count` FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:54:52 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:37:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:55:00 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:37:in `block (2 levels) in <class:Musics>'
+  
+NameError (undefined local variable or method `music' for #<#<Class:0x00007fa6ce5fd9e0>:0x00007fa6cb752c80>
+Did you mean?  musics):
+  
+app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:55:06 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:37:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=%22rock%22&sort=likes" for ::1 at 2022-12-27 10:55:17 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%\"rock\"%' OR artist LIKE '%\"rock\"%' OR album LIKE '%\"rock\"%') ORDER BY `musics`.`likes_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:37:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:55:28 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:37:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=%22rock%22&sort=likes" for ::1 at 2022-12-27 10:55:30 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%\"rock\"%' OR artist LIKE '%\"rock\"%' OR album LIKE '%\"rock\"%') ORDER BY `musics`.`likes_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:37:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 10:55:39 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`likes_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:37:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-27 10:55:47 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:37:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/" for ::1 at 2022-12-27 10:55:51 +0900
+  [1m[36mMusic Load (1.5ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+Started GET "/api/v1/musics/" for ::1 at 2022-12-27 10:56:05 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:13:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-27 10:56:13 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rock" for ::1 at 2022-12-27 10:56:20 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%rock%' OR artist LIKE '%rock%' OR album LIKE '%rock%')[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rock&sort=likes" for ::1 at 2022-12-27 10:56:29 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%rock%' OR artist LIKE '%rock%' OR album LIKE '%rock%') ORDER BY `musics`.`likes_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=album" for ::1 at 2022-12-27 10:56:35 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%album%' OR artist LIKE '%album%' OR album LIKE '%album%')[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=Queen" for ::1 at 2022-12-27 10:56:40 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%Queen%' OR artist LIKE '%Queen%' OR album LIKE '%Queen%')[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=queen" for ::1 at 2022-12-27 10:56:43 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%queen%' OR artist LIKE '%queen%' OR album LIKE '%queen%')[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/" for ::1 at 2022-12-27 11:00:45 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:13:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-27 11:00:49 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`id` DESC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLike Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `likes` WHERE `likes`.`user_id` = 3 AND `likes`.`music_id` = 14 LIMIT 1[0m
+  [1m[36mLike Create (0.3ms)[0m  [1m[32mINSERT INTO `likes` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (3, 14, '2022-12-27 02:11:10.738608', '2022-12-27 02:11:10.738608')[0m
+  [1m[36mMusic Update All (0.3ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`likes_count` = COALESCE(`musics`.`likes_count`, 0) + 1 WHERE `musics`.`id` = 14[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m

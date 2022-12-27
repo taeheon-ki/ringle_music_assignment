@@ -10,6 +10,7 @@ module RingleMusic
             get do
               # Return all musics if no parameters are specified
               musics = Music.all
+              musics = musics.as_json(only: [:title, :artist, :album, :likes_count])
               present musics
             end
           
@@ -26,14 +27,16 @@ module RingleMusic
               # Sort musics by accuracy of searching string, likes, or created_date
               case params[:sort]
               when "accuracy"
-
                 musics = musics.order(title: :desc)
+                musics = musics.order(artist: :desc)
+                musics = musics.order(album: :desc)
               when "likes"
-                musics = musics.left_joins(:likes).group(:id).order("COUNT(likes.id) DESC")
+                musics = musics.order(likes_count: :desc)
               when "created_date"
                 musics = musics.order(created_at: :desc)
               end
-              
+              musics = musics.as_json(only: [:title, :artist, :album, :likes_count])
+              present musics
             end
         end
       end
