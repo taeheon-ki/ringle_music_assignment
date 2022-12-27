@@ -1,11 +1,13 @@
 class Music < ApplicationRecord
-    has_many :likes, counter_cache: true
-    has_many :likers, through: :likes, source: :user
-    # has_and_belongs_to_many :user_playlists see again
+    validates_uniqueness_of :title, :artist, :album, scope: [:title, :artist, :album], message: "Music must be unique"
+
+    has_many :user_likes_musics, counter_cache: :user_likes_musics_count
+    has_many :user_playlist_musics
+    has_many :group_playlist_musics
     before_create :set_default_likes_count
 
     def set_default_likes_count
-        self.likes_count ||=0
+        self.user_likes_musics_count ||=0
     end
 
 

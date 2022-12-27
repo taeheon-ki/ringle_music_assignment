@@ -10,7 +10,7 @@ module RingleMusic
             get do
               # Return all musics if no parameters are specified
               musics = Music.all
-              musics = musics.as_json(only: [:title, :artist, :album, :likes_count])
+              musics = musics.as_json(only: [:title, :artist, :album, :user_likes_musics_count])
               present musics
             end
           
@@ -35,7 +35,7 @@ module RingleMusic
               when "created_date"
                 musics = musics.order(created_at: :desc)
               end
-              musics = musics.as_json(only: [:title, :artist, :album, :likes_count])
+              musics = musics.as_json(only: [:title, :artist, :album, :user_likes_musics_count])
               present musics
             end
         end
