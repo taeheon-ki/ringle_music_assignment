@@ -1,44 +1,58 @@
 module RingleMusic
     module V1
-      class Musics < Grape::API
-        version 'v1', using: :path
-        format :json
-        prefix :api
+        class Musics < Grape::API
+            require 'string/similarity'
+            version 'v1', using: :path
+            format :json
+            prefix :api
 
-        resource :musics do
-            desc 'Return list of songs'
-            get do
+            resource :musics do
+                desc 'Return list of songs'
+                get do
               # Return all musics if no parameters are specified
-              musics = Music.all
-              musics = musics.as_json(only: [:title, :artist, :album, :user_likes_musics_count])
-              present musics
-            end
-          
-            desc 'Search and sort musics'
-            params do
-              optional :q, type: String, desc: 'Search term'
-              optional :sort, type: String, desc: 'Sort criteria (accuracy, likes, created_date)'
-            end
-            get :search do
-              # Search for musics by title, artist, or album
-              musics = Music.all
-              musics = musics.where("title LIKE ? OR artist LIKE ? OR album LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%") if params[:q].present?
-          
-              # Sort musics by accuracy of searching string, likes, or created_date
-              case params[:sort]
-              when "accuracy"
-                musics = musics.order(title: :desc)
-                musics = musics.order(artist: :desc)
-                musics = musics.order(album: :desc)
-              when "likes"
-                musics = musics.order(user_likes_musics_count: :desc)
-              when "created_date"
-                musics = musics.order(created_at: :desc)
-              end
-              musics = musics.as_json(only: [:title, :artist, :album, :user_likes_musics_count])
-              present musics
+                musics = Music.all
+                musics = musics.as_json(only: [:title, :artist, :album, :user_likes_musics_count])
+                present musics
+                end
+            
+                desc 'Search and sort musics'
+                params do
+                    optional :q, type: String, desc: 'Search term'
+                    optional :sort, type: String, desc: 'Sort criteria (accuracy, likes, created_date)'
+                end
+                get :search do
+                    # Search for musics by title, artist, or album
+                    musics = Music.all
+                    if params[:q].present?
+                        musics = musics.select do |music|
+                            String::Similarity.levenshtein_distance(music.title, params[:q]) <= 2 ||
+                            String::Similarity.levenshtein_distance(music.artist, params[:q]) <= 2 ||
+                            String::Similarity.levenshtein_distance(music.album, params[:q]) <= 2
+                        end
+                    end
+                # Sort musics by accuracy of searching string, likes, or created_date
+                    case params[:sort]
+                    when "accuracy"
+                        if params[:q].present?
+                            musics = musics.sort_by do |music|
+                                [-String::Similarity.cosine(music.title, params[:q]),
+                                -String::Similarity.cosine(music.artist, params[:q]),
+                                -String::Similarity.cosine(music.album, params[:q])]
+                            end
+                        end
+                    when "likes"
+                        musics = musics.sort_by do |music|
+                            [music.user_likes_musics_count]
+                        end.reverse
+                    when "created_at"
+                        musics = musics.sort_by do |music|
+                            [music.created_at]
+                        end.reverse
+                    end
+                    musics = musics.as_json(only: [:title, :artist, :album, :user_likes_musics_count])
+                    present musics
+                end
             end
         end
-      end
     end
 end

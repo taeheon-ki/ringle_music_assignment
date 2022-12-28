@@ -3247,3 +3247,298 @@ Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 17:22:07 +0
 Started GET "/api/v1/musics/search?sort=created_date" for ::1 at 2022-12-27 18:33:02 +0900
   [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`created_at` DESC[0m
   ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/users" for ::1 at 2022-12-28 10:45:26 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/users"):
+  
+Started GET "/api/v1/musics" for ::1 at 2022-12-28 10:45:31 +0900
+  [1m[36mMusic Load (2.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:13:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-28 10:45:42 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-28 10:45:48 +0900
+  [1m[36mMusic Load (1.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=created_date" for ::1 at 2022-12-28 10:47:24 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`created_at` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=created_date" for ::1 at 2022-12-28 11:02:25 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`created_at` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:39:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-28 11:02:30 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:31:in `sort_by'
+  
+NameError (uninitialized constant RingleMusic::V1::Musics::StringSimilarity
+Did you mean?  StringScanner):
+  
+app/api/ringle_music/v1/musics.rb:32:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:31:in `sort_by'
+app/api/ringle_music/v1/musics.rb:31:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-28 11:02:30 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:31:in `sort_by'
+  
+NameError (uninitialized constant RingleMusic::V1::Musics::StringSimilarity
+Did you mean?  StringScanner):
+  
+app/api/ringle_music/v1/musics.rb:32:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:31:in `sort_by'
+app/api/ringle_music/v1/musics.rb:31:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-28 11:03:37 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:31:in `sort_by'
+  
+NameError (uninitialized constant RingleMusic::V1::Musics::StringSimilarity
+Did you mean?  StringScanner):
+  
+app/api/ringle_music/v1/musics.rb:32:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:31:in `sort_by'
+app/api/ringle_music/v1/musics.rb:31:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-28 11:04:15 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:32:in `sort_by'
+  
+NameError (uninitialized constant RingleMusic::V1::Musics::StringSimilarity
+Did you mean?  StringScanner):
+  
+app/api/ringle_music/v1/musics.rb:33:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:32:in `sort_by'
+app/api/ringle_music/v1/musics.rb:32:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-28 11:05:34 +0900
+  
+NameError (uninitialized constant RingleMusic::V1::Musics::StringSimilarity):
+  
+app/api/ringle_music/v1/musics.rb:4:in `<class:Musics>'
+app/api/ringle_music/v1/musics.rb:3:in `<module:V1>'
+app/api/ringle_music/v1/musics.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/v1/musics.rb:1:in `<main>'
+app/api/ringle_music/base.rb:4:in `<class:Base>'
+app/api/ringle_music/base.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/base.rb:1:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-28 11:08:08 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:32:in `sort_by'
+  
+NoMethodError (undefined method `empty?' for nil:NilClass):
+  
+app/api/ringle_music/v1/musics.rb:33:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:32:in `sort_by'
+app/api/ringle_music/v1/musics.rb:32:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-28 11:08:47 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/api/ringle_music/v1/musics.rb:34: syntax error, unexpected when, expecting end
+              when "likes"
+              ^~~~):
+  
+app/api/ringle_music/v1/musics.rb:34: syntax error, unexpected when, expecting end
+app/api/ringle_music/v1/musics.rb:34: syntax error, unexpected when, expecting end
+app/api/ringle_music/v1/musics.rb:34: syntax error, unexpected when, expecting end
+app/api/ringle_music/base.rb:4:in `<class:Base>'
+app/api/ringle_music/base.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/base.rb:1:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-28 11:09:01 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/api/ringle_music/v1/musics.rb:33: syntax error, unexpected when, expecting end
+              when "likes"
+              ^~~~):
+  
+app/api/ringle_music/v1/musics.rb:33: syntax error, unexpected when, expecting end
+app/api/ringle_music/v1/musics.rb:33: syntax error, unexpected when, expecting end
+app/api/ringle_music/v1/musics.rb:33: syntax error, unexpected when, expecting end
+app/api/ringle_music/base.rb:4:in `<class:Base>'
+app/api/ringle_music/base.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/base.rb:1:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/musics/search?sort=accuracy" for ::1 at 2022-12-28 11:09:44 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:31:in `sort_by'
+  
+NoMethodError (undefined method `empty?' for nil:NilClass):
+  
+app/api/ringle_music/v1/musics.rb:32:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:31:in `sort_by'
+app/api/ringle_music/v1/musics.rb:31:in `block (2 levels) in <class:Musics>'
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` /* loading for inspect */ LIMIT 11[0m
+Started GET "/api/v1/musics/search?q=rock&sort=accuracy" for ::1 at 2022-12-28 11:11:45 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%rock%' OR artist LIKE '%rock%' OR album LIKE '%rock%')[0m
+  ↳ app/api/ringle_music/v1/musics.rb:31:in `sort_by'
+Started GET "/api/v1/musics/search?q=rock&sort=accuracy" for ::1 at 2022-12-28 11:13:39 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+  
+NameError (uninitialized constant RingleMusic::V1::Musics::StringSimilarity
+Did you mean?  StringScanner):
+  
+app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rock&sort=accuracy" for ::1 at 2022-12-28 11:14:31 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/api/ringle_music/v1/musics.rb:30: syntax error, unexpected end, expecting ')'
+              end          
+              ^~~
+/Users/ki99/Ringle_Music_MVC/app/api/ringle_music/v1/musics.rb:48: syntax error, unexpected end-of-input, expecting end):
+  
+app/api/ringle_music/v1/musics.rb:30: syntax error, unexpected end, expecting ')'
+app/api/ringle_music/v1/musics.rb:48: syntax error, unexpected end-of-input, expecting end
+app/api/ringle_music/v1/musics.rb:30: syntax error, unexpected end, expecting ')'
+app/api/ringle_music/v1/musics.rb:48: syntax error, unexpected end-of-input, expecting end
+app/api/ringle_music/v1/musics.rb:30: syntax error, unexpected end, expecting ')'
+app/api/ringle_music/v1/musics.rb:48: syntax error, unexpected end-of-input, expecting end
+app/api/ringle_music/base.rb:4:in `<class:Base>'
+app/api/ringle_music/base.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/base.rb:1:in `<main>'
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/musics/search?q=rock&sort=accuracy" for ::1 at 2022-12-28 11:14:39 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rock&sort=accuracy" for ::1 at 2022-12-28 11:14:51 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rock&sort=accuracy" for ::1 at 2022-12-28 11:15:04 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=roc&sort=accuracy" for ::1 at 2022-12-28 11:15:09 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocks&sort=accuracy" for ::1 at 2022-12-28 11:15:15 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocks&sort=accuracy" for ::1 at 2022-12-28 11:15:25 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rock&sort=accuracy" for ::1 at 2022-12-28 11:15:29 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=roc&sort=accuracy" for ::1 at 2022-12-28 11:15:32 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=roca&sort=accuracy" for ::1 at 2022-12-28 11:15:37 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=roca&sort=accuracy" for ::1 at 2022-12-28 11:16:11 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=roca&sort=accuracy" for ::1 at 2022-12-28 11:16:20 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=roc&sort=accuracy" for ::1 at 2022-12-28 11:16:34 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocn&sort=accuracy" for ::1 at 2022-12-28 11:16:38 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=roc&sort=accuracy" for ::1 at 2022-12-28 11:16:41 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocp&sort=accuracy" for ::1 at 2022-12-28 11:16:42 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocp&sort=accuracy" for ::1 at 2022-12-28 11:19:26 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocp&sort=accuracy" for ::1 at 2022-12-28 11:23:42 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocp&sort=accuracy" for ::1 at 2022-12-28 11:23:47 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-28 11:24:19 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+  
+NoMethodError (undefined method `empty?' for nil:NilClass):
+  
+app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-28 11:24:20 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+  
+NoMethodError (undefined method `empty?' for nil:NilClass):
+  
+app/api/ringle_music/v1/musics.rb:27:in `block (3 levels) in <class:Musics>'
+app/api/ringle_music/v1/musics.rb:26:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-28 11:25:56 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:46:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-28 11:26:01 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:46:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rock&sort=likes" for ::1 at 2022-12-28 11:26:11 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+  
+NoMethodError (undefined method `order' for #<Array:0x00007f95c58af770>):
+  
+app/api/ringle_music/v1/musics.rb:42:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rock&sort=likes" for ::1 at 2022-12-28 11:32:07 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-28 11:32:15 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:42:in `sort_by'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-28 11:32:27 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:42:in `sort_by'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-28 11:32:32 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:42:in `sort_by'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-28 11:32:46 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:42:in `sort_by'
+Started GET "/api/v1/musics/search?sort=created_date" for ::1 at 2022-12-28 11:32:54 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:46:in `sort_by'
+Started GET "/api/v1/musics/search?sort=created_at" for ::1 at 2022-12-28 11:33:03 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:46:in `sort_by'
+Started GET "/api/v1/musics/search?sort=created_at" for ::1 at 2022-12-28 11:34:43 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:48:in `sort_by'
+Started GET "/api/v1/musics/search?q=roc&sort=created_at" for ::1 at 2022-12-28 11:34:58 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=roc&sort=accuracy" for ::1 at 2022-12-28 11:35:17 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=roc&sort=accuracy" for ::1 at 2022-12-28 11:36:43 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocq&sort=accuracy" for ::1 at 2022-12-28 11:36:48 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocqs&sort=accuracy" for ::1 at 2022-12-28 11:36:50 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocqs&sort=accuracy" for ::1 at 2022-12-28 11:37:01 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocqs&sort=accuracy" for ::1 at 2022-12-28 11:37:02 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=rocqs&sort=accuracy" for ::1 at 2022-12-28 11:37:17 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=ros&sort=accuracy" for ::1 at 2022-12-28 11:37:21 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=%ED%94%BC%EB%82%98&sort=accuracy" for ::1 at 2022-12-28 11:37:28 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=thornspaple&sort=accuracy" for ::1 at 2022-12-28 11:37:36 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=thornspaple&sort=accuracy" for ::1 at 2022-12-28 11:38:30 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
