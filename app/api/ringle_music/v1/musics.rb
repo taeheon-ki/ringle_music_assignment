@@ -31,7 +31,7 @@ module RingleMusic
                 musics = musics.order(artist: :desc)
                 musics = musics.order(album: :desc)
               when "likes"
-                musics = musics.order(likes_count: :desc)
+                musics = musics.order(user_likes_musics_count: :desc)
               when "created_date"
                 musics = musics.order(created_at: :desc)
               end

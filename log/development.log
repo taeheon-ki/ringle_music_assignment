@@ -3122,3 +3122,128 @@ Migrating to RenameGroupPlaylistToGroupPlaylistMusics (20221227071150)
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
   [1m[36mUserPlaylistMusic Load (0.6ms)[0m  [1m[34mSELECT `user_playlist_musics`.* FROM `user_playlist_musics` WHERE `user_playlist_musics`.`user_id` = 1 /* loading for inspect */ LIMIT 11[0m
   [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlist_musics` WHERE `user_playlist_musics`.`user_id` = 1[0m
+Started GET "/api/v1/musics/search?q=queen" for ::1 at 2022-12-27 16:45:39 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%queen%' OR artist LIKE '%queen%' OR album LIKE '%queen%') ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` DESC LIMIT 1[0m
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`id` DESC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserLikesMusic Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 5 AND `user_likes_musics`.`music_id` = 16 LIMIT 1[0m
+  [1m[36mUserLikesMusic Create (0.3ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (5, 16, '2022-12-27 07:46:07.538768', '2022-12-27 07:46:07.538768')[0m
+  [1m[36mMusic Update All (1.6ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) + 1 WHERE `musics`.`id` = 16[0m
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/musics/search?q=queen" for ::1 at 2022-12-27 16:46:11 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%queen%' OR artist LIKE '%queen%' OR album LIKE '%queen%') ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:46:30 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC, `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:47:18 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC, `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`id` ASC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserLikesMusic Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 5 AND `user_likes_musics`.`music_id` = 13 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserLikesMusic Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` = 13 LIMIT 1[0m
+  [1m[36mUserLikesMusic Create (0.5ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 13, '2022-12-27 07:47:40.448821', '2022-12-27 07:47:40.448821')[0m
+  [1m[36mMusic Update All (0.4ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) + 1 WHERE `musics`.`id` = 13[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:47:44 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC, `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:48:15 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC, `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:36:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=%22likes%22" for ::1 at 2022-12-27 16:48:35 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=%22likes%22" for ::1 at 2022-12-27 16:48:36 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=%22thorn%22&sort=%22likes%22" for ::1 at 2022-12-27 16:48:54 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (title LIKE '%\"thorn\"%' OR artist LIKE '%\"thorn\"%' OR album LIKE '%\"thorn\"%') ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=%22likes%22" for ::1 at 2022-12-27 16:49:08 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-27 16:49:40 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=%22likes%22" for ::1 at 2022-12-27 16:50:14 +0900
+  [1m[36mMusic Load (1.5ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:50:18 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC, `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-27 16:51:22 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:51:26 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC, `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:35:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:52:32 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `likes_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+  
+ActiveRecord::StatementInvalid (Mysql2::Error: Unknown column 'likes_count' in 'order clause'):
+  
+app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:52:50 +0900
+  [1m[36mMusic Load (0.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `likes_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+  
+ActiveRecord::StatementInvalid (Mysql2::Error: Unknown column 'likes_count' in 'order clause'):
+  
+app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:53:08 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:53:26 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC, `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:37:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:53:30 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`title` DESC, `musics`.`artist` DESC, `musics`.`album` DESC, `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:36:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 16:53:35 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=created_date" for ::1 at 2022-12-27 16:54:17 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`created_at` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMusic Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM `musics` WHERE `musics`.`title` = 'creep' AND `musics`.`title` = 'creep' AND `musics`.`artist` = 'Radiohead' AND `musics`.`album` = 'creep' LIMIT 1[0m
+  [1m[36mMusic Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `musics` WHERE `musics`.`artist` = 'Radiohead' AND `musics`.`title` = 'creep' AND `musics`.`artist` = 'Radiohead' AND `musics`.`album` = 'creep' LIMIT 1[0m
+  [1m[36mMusic Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM `musics` WHERE `musics`.`album` = 'creep' AND `musics`.`title` = 'creep' AND `musics`.`artist` = 'Radiohead' AND `musics`.`album` = 'creep' LIMIT 1[0m
+  [1m[36mMusic Create (0.2ms)[0m  [1m[32mINSERT INTO `musics` (`title`, `artist`, `album`, `created_at`, `updated_at`) VALUES ('creep', 'Radiohead', 'creep', '2022-12-27 08:20:54.081350', '2022-12-27 08:20:54.081350')[0m
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserLikesMusic Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 1 AND `user_likes_musics`.`music_id` = 17 LIMIT 1[0m
+  [1m[36mUserLikesMusic Create (0.3ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 17, '2022-12-27 08:21:15.437423', '2022-12-27 08:21:15.437423')[0m
+  [1m[36mMusic Update All (0.3ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) + 1 WHERE `musics`.`id` = 17[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 17:21:43 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` ORDER BY `users`.`id` DESC LIMIT 1[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserLikesMusic Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 5 AND `user_likes_musics`.`music_id` = 17 LIMIT 1[0m
+  [1m[36mUserLikesMusic Create (0.4ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (5, 17, '2022-12-27 08:21:57.049007', '2022-12-27 08:21:57.049007')[0m
+  [1m[36mMusic Update All (0.4ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) + 1 WHERE `musics`.`id` = 17[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUserLikesMusic Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` = 17 LIMIT 1[0m
+  [1m[36mUserLikesMusic Create (0.4ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 17, '2022-12-27 08:22:03.168678', '2022-12-27 08:22:03.168678')[0m
+  [1m[36mMusic Update All (0.5ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) + 1 WHERE `musics`.`id` = 17[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/musics/search?sort=likes" for ::1 at 2022-12-27 17:22:07 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`user_likes_musics_count` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?sort=created_date" for ::1 at 2022-12-27 18:33:02 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` ORDER BY `musics`.`created_at` DESC[0m
+  ↳ app/api/ringle_music/v1/musics.rb:38:in `block (2 levels) in <class:Musics>'
