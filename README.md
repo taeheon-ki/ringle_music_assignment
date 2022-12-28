@@ -19,8 +19,7 @@ Requirements
   - [x] 음원 검색 API
     * 정확도순, 인기순, 최신순
     * http://localhost:3000/api/v1/musics/ : 모든 음원 목록
-    * http://localhost:3000/api/v1/musics/search : 모든 음원 목록
-    * http://localhost:3000/api/v1/musics/search?q=xxx&sort=accuracy : xxx를 검색하여 accuracy로 정렬. sort에는 accuracy, likes, created_at이 들어갈 수 있음.
+    * http://localhost:3000/api/v1/musics?q=xxx&sort=accuracy : xxx를 검색하여 accuracy로 정렬. sort에는 accuracy, likes, created_at이 들어갈 수 있음.
 
 
 * 플레이리스트

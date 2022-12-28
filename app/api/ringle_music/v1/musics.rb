@@ -7,20 +7,13 @@ module RingleMusic
             prefix :api
 
             resource :musics do
-                desc 'Return list of songs'
-                get do
-              # Return all musics if no parameters are specified
-                musics = Music.all
-                musics = musics.as_json(only: [:title, :artist, :album, :user_likes_musics_count])
-                present musics
-                end
             
                 desc 'Search and sort musics'
                 params do
                     optional :q, type: String, desc: 'Search term'
                     optional :sort, type: String, desc: 'Sort criteria (accuracy, likes, created_date)'
                 end
-                get :search do
+                get do
                     # Search for musics by title, artist, or album
                     musics = Music.all
                     if params[:q].present?
