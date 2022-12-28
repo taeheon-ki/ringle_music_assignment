@@ -3572,3 +3572,26 @@ Started GET "/api/v1/musics" for ::1 at 2022-12-28 15:04:04 +0900
 Started GET "/api/v1/musics?sort=likes" for ::1 at 2022-12-28 15:04:10 +0900
   [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
   ↳ app/api/ringle_music/v1/musics.rb:37:in `sort_by'
+Started GET "/api/v1/musics?sort=likes" for ::1 at 2022-12-28 15:05:34 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:37:in `sort_by'
+Started GET "/api/v1/musics?sort=likes" for ::1 at 2022-12-28 15:23:09 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:23:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?sort=likes" for ::1 at 2022-12-28 15:23:12 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:23:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?sort=likes" for ::1 at 2022-12-28 15:23:12 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:23:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-28 15:23:20 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:23:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?sort=likes" for ::1 at 2022-12-28 15:23:27 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:23:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?sort=likes" for ::1 at 2022-12-28 15:23:58 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/services/music_search_service.rb:25:in `sort_by'
