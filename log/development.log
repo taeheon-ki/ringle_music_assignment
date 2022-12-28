@@ -3542,3 +3542,13 @@ Started GET "/api/v1/musics/search?q=thornspaple&sort=accuracy" for ::1 at 2022-
 Started GET "/api/v1/musics/search?q=thornspaple&sort=accuracy" for ::1 at 2022-12-28 11:38:30 +0900
   [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
   ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search?q=thornspaple&sort=accuracy" for ::1 at 2022-12-28 11:44:48 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (1.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:27:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/search" for ::1 at 2022-12-28 11:44:52 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:52:in `block (2 levels) in <class:Musics>'
+Started GET "/api/v1/musics/" for ::1 at 2022-12-28 11:44:58 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/musics.rb:14:in `block (2 levels) in <class:Musics>'

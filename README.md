@@ -16,12 +16,12 @@ Install
 Requirements
 * 음원
 
-  - [ ] 음원 검색 API
+  - [x] 음원 검색 API
     * 정확도순, 인기순, 최신순
+    * http://localhost:3000/api/v1/musics/ : 모든 음원 목록
+    * http://localhost:3000/api/v1/musics/search : 모든 음원 목록
+    * http://localhost:3000/api/v1/musics/search?q=xxx&sort=accuracy : xxx를 검색하여 accuracy로 정렬. sort에는 accuracy, likes, created_at이 들어갈 수 있음.
 
-  - [ ] 좋아요 API 
-    * 유저는 특정 음원에 좋아요 표시가능
-    * 특정 음원에 좋아요 누른 사람 확인 가능
 
 * 플레이리스트
 
@@ -46,3 +46,9 @@ Requirements
   - [ ] 그룹 목록 조회 API
     * 그룹에 속한 유저만 조회가능
   - [ ] 그룹 만들기 API
+
+API
+
+- http://localhost:3000/api/v1/musics/search?sort=likes : 좋아요 순 정렬
+- http://localhost:3000/api/v1/musics/search?sort=created_date : 최신 순 정렬
+- 
