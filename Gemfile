@@ -9,6 +9,8 @@ gem 'grape-api-generator'
 gem 'grape_on_rails_routes'
 gem 'grape-entity'
 gem 'string-similarity'
+gem 'devise'
+gem 'jwt'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
