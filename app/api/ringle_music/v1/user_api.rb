@@ -7,6 +7,8 @@ module RingleMusic
 
             resource :users do
 
+                
+
                 get "playlist" do
                     user = jwt token으로 validate
                     playlists = UserPlaylistMusic.where(user: user)

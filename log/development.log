@@ -5996,3 +5996,85 @@ Started POST "/api/v1/musics/create?music_id=2" for ::1 at 2022-12-29 10:39:22 +
   ↳ app/api/ringle_music/v1/music_api.rb:34:in `block (2 levels) in <class:MusicApi>'
   [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlist_musics` WHERE `user_playlist_musics`.`user_id` = 12[0m
   ↳ app/api/ringle_music/v1/music_api.rb:34:in `block (2 levels) in <class:MusicApi>'
+Started POST "/api/v1/users/signin?email=xogjs19@naver.com&password=[FILTERED]" for ::1 at 2022-12-29 11:17:41 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'xogjs19@naver.com' LIMIT 1[0m
+  ↳ app/api/ringle_music/v1/user_api.rb:51:in `block (2 levels) in <class:UserApi>'
+Started POST "/api/v1/musics/create?music_id=2" for ::1 at 2022-12-29 11:17:49 +0900
+  
+JWT::DecodeError (No verification key available):
+  
+app/models/user.rb:25:in `validate_jwt_token'
+app/api/ringle_music/v1/music_api.rb:24:in `block (2 levels) in <class:MusicApi>'
+Started POST "/api/v1/users/signin?email=xogjs19@naver.com&password=[FILTERED]" for ::1 at 2022-12-29 11:20:56 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'xogjs19@naver.com' LIMIT 1[0m
+  ↳ app/api/ringle_music/v1/user_api.rb:51:in `block (2 levels) in <class:UserApi>'
+Started POST "/api/v1/musics/create?music_id=2" for ::1 at 2022-12-29 11:21:15 +0900
+  
+JWT::DecodeError (No verification key available):
+  
+app/models/user.rb:25:in `validate_jwt_token'
+app/api/ringle_music/v1/music_api.rb:24:in `block (2 levels) in <class:MusicApi>'
+Started POST "/api/v1/users/signin?email=xogjs19@naver.com&password=[FILTERED]" for ::1 at 2022-12-29 11:22:00 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'xogjs19@naver.com' LIMIT 1[0m
+  ↳ app/api/ringle_music/v1/user_api.rb:51:in `block (2 levels) in <class:UserApi>'
+Started POST "/api/v1/musics/create?music_id=2" for ::1 at 2022-12-29 11:22:11 +0900
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlist_musics` WHERE `user_playlist_musics`.`user_id` = 7[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[36mUserPlaylistMusic Create (0.9ms)[0m  [1m[32mINSERT INTO `user_playlist_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (7, 2, '2022-12-29 02:22:11.581147', '2022-12-29 02:22:11.581147')[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:33:in `block (2 levels) in <class:MusicApi>'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:33:in `block (2 levels) in <class:MusicApi>'
+Started POST "/api/v1/musics/create?music_id=2" for ::1 at 2022-12-29 11:22:14 +0900
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlist_musics` WHERE `user_playlist_musics`.`user_id` = 7[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[36mUserPlaylistMusic Create (1.9ms)[0m  [1m[32mINSERT INTO `user_playlist_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (7, 2, '2022-12-29 02:22:14.644382', '2022-12-29 02:22:14.644382')[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:33:in `block (2 levels) in <class:MusicApi>'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:33:in `block (2 levels) in <class:MusicApi>'
+Started POST "/api/v1/musics/create?music_id=2" for ::1 at 2022-12-29 11:22:15 +0900
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlist_musics` WHERE `user_playlist_musics`.`user_id` = 7[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[36mUserPlaylistMusic Create (0.8ms)[0m  [1m[32mINSERT INTO `user_playlist_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (7, 2, '2022-12-29 02:22:15.302505', '2022-12-29 02:22:15.302505')[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:33:in `block (2 levels) in <class:MusicApi>'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:33:in `block (2 levels) in <class:MusicApi>'
+Started POST "/api/v1/users/signin?email=xogjs19@naver.com&password=[FILTERED]" for ::1 at 2022-12-29 11:22:20 +0900
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'xogjs19@naver.com' LIMIT 1[0m
+  ↳ app/api/ringle_music/v1/user_api.rb:51:in `block (2 levels) in <class:UserApi>'
+Started POST "/api/v1/musics/create?music_id=2" for ::1 at 2022-12-29 11:22:24 +0900
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlist_musics` WHERE `user_playlist_musics`.`user_id` = 7[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[36mUserPlaylistMusic Create (1.6ms)[0m  [1m[32mINSERT INTO `user_playlist_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (7, 2, '2022-12-29 02:22:24.483266', '2022-12-29 02:22:24.483266')[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:33:in `block (2 levels) in <class:MusicApi>'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:33:in `block (2 levels) in <class:MusicApi>'
+Started POST "/api/v1/musics/create?music_id=2" for ::1 at 2022-12-29 11:22:34 +0900
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_playlist_musics` WHERE `user_playlist_musics`.`user_id` = 7[0m
+  ↳ app/models/user_playlist_music.rb:10:in `check_playlist_size'
+  [1m[36mUserPlaylistMusic Create (1.6ms)[0m  [1m[32mINSERT INTO `user_playlist_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (7, 2, '2022-12-29 02:22:34.056907', '2022-12-29 02:22:34.056907')[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:33:in `block (2 levels) in <class:MusicApi>'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:33:in `block (2 levels) in <class:MusicApi>'

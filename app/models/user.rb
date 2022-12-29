@@ -15,7 +15,7 @@ class User < ApplicationRecord
   def self.create_jwt_token(user_id)
     payload = {
       user_id: user_id,
-      exp_date: Time.new.to_i + 5.hours
+      exp_date: Time.new.to_i + 10.hours
     }
     token = JWT.encode(payload, SOME_SECRET_KEY, 'HS256')
     return token
