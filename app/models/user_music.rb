@@ -3,8 +3,9 @@ class UserMusic < ApplicationRecord
   belongs_to :music
 
 
-  def as_music_json()
+  def as_json_of_music()
     {
+      id: music.id,
       title: music.title,
       artist: music.artist,
       album: music.album,

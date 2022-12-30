@@ -69,7 +69,7 @@ module RingleMusic
                     return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result
 
-                    unless GroupUser.exists?(user_id: user_id, group_id: params[:group_id])
+                    unless UserGroup.exists?(user_id: user_id, group_id: params[:group_id])
                         return {success: false, message: "user is not existing in group. Validation Falied!"}
                     end
 
@@ -88,7 +88,7 @@ module RingleMusic
                     return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result
 
-                    unless GroupUser.exists?(user_id: user_id, group_id: params[:group_id])
+                    unless UserGroup.exists?(user_id: user_id, group_id: params[:group_id])
                         return {success: false, message: "user is not existing in group"}
                     end
 
@@ -107,7 +107,7 @@ module RingleMusic
                     return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result
 
-                    unless GroupUser.exists?(user_id: user_id, group_id: params[:group_id])
+                    unless UserGroup.exists?(user_id: user_id, group_id: params[:group_id])
                         return {success: false, message: "user is not existing in group"}
                     end
 

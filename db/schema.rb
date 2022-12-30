@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_30_021852) do
+ActiveRecord::Schema.define(version: 2022_12_30_055130) do
 
   create_table "group_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "group_id"
@@ -20,15 +20,6 @@ ActiveRecord::Schema.define(version: 2022_12_30_021852) do
     t.bigint "user_id"
     t.index ["group_id"], name: "index_group_musics_on_group_id"
     t.index ["music_id"], name: "index_group_musics_on_music_id"
-  end
-
-  create_table "group_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "group_id"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_id"], name: "index_group_users_on_group_id"
-    t.index ["user_id"], name: "index_group_users_on_user_id"
   end
 
   create_table "groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -44,6 +35,15 @@ ActiveRecord::Schema.define(version: 2022_12_30_021852) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_likes_musics_count", default: 0
+  end
+
+  create_table "user_groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_user_groups_on_group_id"
+    t.index ["user_id"], name: "index_user_groups_on_user_id"
   end
 
   create_table "user_likes_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 2022_12_30_021852) do
 
   add_foreign_key "group_musics", "groups"
   add_foreign_key "group_musics", "musics"
-  add_foreign_key "group_users", "groups"
-  add_foreign_key "group_users", "users"
+  add_foreign_key "user_groups", "groups"
+  add_foreign_key "user_groups", "users"
   add_foreign_key "user_likes_musics", "musics"
   add_foreign_key "user_likes_musics", "users"
   add_foreign_key "user_musics", "musics"

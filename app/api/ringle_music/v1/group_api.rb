@@ -23,7 +23,7 @@ module RingleMusic
                 desc 'List group'
                 get do
                     groups = Group.all
-                    present groups
+                    groups = groups.as_json(only:[:id, :group_name])
                 end
             end
         end

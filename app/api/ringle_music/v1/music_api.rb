@@ -15,7 +15,7 @@ module RingleMusic
                 get do
 
                     musics = MusicService::MusicSearcher.call(query: params[:query], sort: params[:sort])
-                    musics = musics.as_json(only: [:title, :artist, :album, :user_likes_musics_count])
+                    musics = musics.as_json(only: [:id, :title, :artist, :album, :user_likes_musics_count])
                     present musics
 
                 end

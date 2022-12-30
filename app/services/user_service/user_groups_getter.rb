@@ -5,8 +5,8 @@ module UserService
         end
 
         def call
-            user_groups = GroupUser.where(user_id: @user_id)
-            return user_groups
+            user_groups = UserGroup.where(user_id: @user_id)
+            user_groups.map(&:as_json_of_group)
         end
     end
 end

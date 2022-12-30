@@ -3,8 +3,9 @@ class UserLikesMusic < ApplicationRecord
   belongs_to :music, counter_cache: true
   validate :unique_membership
   
-  def as_music_json()
+  def as_json_of_music()
     {
+      id: music.id,
       title: music.title,
       artist: music.artist,
       album: music.album,

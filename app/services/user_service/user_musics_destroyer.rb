@@ -9,9 +9,13 @@ module UserService
             results = []
             @music_ids.each do |music_id|
                 result = { destroyed_music_id: music_id }
-
-                user = User.find(@user_id)
+                begin
+                    user = User.find(@user_id)
+                rescue
+                    return {success: false, message: "User Not Found"}
+                end
                 musics = user.user_musics.where(music_id: music_id).order(created_at: :asc).limit(1)
+                puts musics.empty?
                 if musics.empty?
                     result[:message] = "Not Existing Music So Cannot Destroy"
                     result[:success] = false
