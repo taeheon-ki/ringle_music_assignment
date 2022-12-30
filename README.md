@@ -35,7 +35,7 @@ Requirements
 
 * 유저
 
-  - [ ] 유저가 좋아요 누른 모든 음원 확인 API
+  - [x] 유저가 좋아요 누른 모든 음원 확인 API
     * 유저 자신것만 확인가능
   - [x] 로그인 회원가입 API
   - [x] 그룹에 조인, 나가기 API
@@ -44,25 +44,3 @@ Requirements
 
   - [x] 그룹 목록 조회 API
   - [x] 그룹 만들기 API
-
-API
-
-* Music
-  - get localhost:3000/api/v1/musics/search?sort=likes : 좋아요 순 정렬
-  - get localhost:3000/api/v1/musics/search?sort=created_date : 최신 순 정렬
-
-* User
-  - post localhost:3000/api/v1/users/signup?email=jiyong.jung@ringleplus.com&password=jung3202&user_name=jungjji : 회원가입
-  - post localhost:3000/api/v1/users/signin?email=xogjs19@naver.com&password=rl3202 : 로그인 : jwt token 받음
-  - 
-  - post localhost:3000/api/v1/users/addmusic : 유저의 플레이리스트에 음악 추가 : body에 음원 리스트 명시
-  - delete localhost:3000/api/v1/users/destroymusic : 유저의 플레이리스트에서 음악 삭제 : body에 음원 리스트 명시
-  - post localhost:3000/api/v1/users/addmusictogroup?group_id=2 : 유저가 그룹의 플레이리스트에 음원 추가 : body에 음원 리스트 명시
-  - delete localhost:3000/api/v1/users/destroymusicofgroup?group_id=2 : 유저가 그룹의 플레이리스트에 음원 삭제 : body에 음원 리스트 명시
-
-  - post localhost:3000/api/v1/users/joingroup?group_id=1 : 유저가 그룹에 join
-  - delete localhost:3000/api/v1/users/exitgroup?group_id=2 : 유저가 그룹에서 exit
-
-* Group
-  - post localhost:3000/api/v1/groups/create?group_name=인디밴드 : 그룹 생성
-  - get localhost:3000/api/v1/groups : 그룹 리스트 보기

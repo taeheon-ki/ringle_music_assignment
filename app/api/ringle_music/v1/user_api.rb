@@ -7,6 +7,14 @@ module RingleMusic
 
             resource :users do
 
+                get :usergroups do
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
+                    user_id = auth_result
+
+                    UserService::UserGroupsGetter.call(user_id: user_id)
+                end
+
                 params do
                     requires :music_id
                 end
@@ -47,7 +55,7 @@ module RingleMusic
                     return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result
 
-                    playlist = UserService::UserPlaylistMusicGetter.call(user_id: user_id)
+                    playlist = UserService::UserMusicsGetter.call(user_id: user_id)
 
                 end
 
@@ -65,7 +73,7 @@ module RingleMusic
                         return {success: false, message: "user is not existing in group. Validation Falied!"}
                     end
 
-                    playlist = UserService::UserGroupPlaylistGetter.call(user_id: user_id, group_id: params[:group_id])
+                    playlist = UserService::UserGroupMusicsGetter.call(user_id: user_id, group_id: params[:group_id])
 
                 end
 
@@ -84,7 +92,7 @@ module RingleMusic
                         return {success: false, message: "user is not existing in group"}
                     end
 
-                    UserService::UserGroupPlaylistMusicsAdder.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
+                    UserService::UserGroupMusicsAdder.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
 
                 end
 
@@ -103,7 +111,7 @@ module RingleMusic
                         return {success: false, message: "user is not existing in group"}
                     end
 
-                    UserService::UserGroupPlaylistMusicsDestroyer.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
+                    UserService::UserGroupMusicsDestroyer.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
 
 
                 end
@@ -145,7 +153,7 @@ module RingleMusic
                     return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result
 
-                    UserService::UserPlaylistMusicAdder.call(user_id: user_id, music_ids: params[:music_ids])
+                    UserService::UserMusicsAdder.call(user_id: user_id, music_ids: params[:music_ids])
 
                 end
 
@@ -159,7 +167,7 @@ module RingleMusic
                     return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result
 
-                    UserService::UserPlaylistMusicDestroyer.call(user_id: user_id, music_ids: params[:music_ids])
+                    UserService::UserMusicsDestroyer.call(user_id: user_id, music_ids: params[:music_ids])
 
                 end
 

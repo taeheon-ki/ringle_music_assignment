@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_28_065825) do
+ActiveRecord::Schema.define(version: 2022_12_30_021852) do
 
-  create_table "group_playlist_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "group_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "group_id"
     t.bigint "music_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.index ["group_id"], name: "index_group_playlist_musics_on_group_id"
-    t.index ["music_id"], name: "index_group_playlist_musics_on_music_id"
+    t.index ["group_id"], name: "index_group_musics_on_group_id"
+    t.index ["music_id"], name: "index_group_musics_on_music_id"
   end
 
   create_table "group_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -55,13 +55,13 @@ ActiveRecord::Schema.define(version: 2022_12_28_065825) do
     t.index ["user_id"], name: "index_user_likes_musics_on_user_id"
   end
 
-  create_table "user_playlist_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "user_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "music_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["music_id"], name: "index_user_playlist_musics_on_music_id"
-    t.index ["user_id"], name: "index_user_playlist_musics_on_user_id"
+    t.index ["music_id"], name: "index_user_musics_on_music_id"
+    t.index ["user_id"], name: "index_user_musics_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -77,12 +77,12 @@ ActiveRecord::Schema.define(version: 2022_12_28_065825) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "group_playlist_musics", "groups"
-  add_foreign_key "group_playlist_musics", "musics"
+  add_foreign_key "group_musics", "groups"
+  add_foreign_key "group_musics", "musics"
   add_foreign_key "group_users", "groups"
   add_foreign_key "group_users", "users"
   add_foreign_key "user_likes_musics", "musics"
   add_foreign_key "user_likes_musics", "users"
-  add_foreign_key "user_playlist_musics", "musics"
-  add_foreign_key "user_playlist_musics", "users"
+  add_foreign_key "user_musics", "musics"
+  add_foreign_key "user_musics", "users"
 end

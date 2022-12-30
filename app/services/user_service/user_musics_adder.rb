@@ -1,5 +1,5 @@
 module UserService
-    class UserPlaylistMusicAdder < ApplicationService
+    class UserMusicsAdder < ApplicationService
         def initialize(args)
             @user_id = args[:user_id]
             @music_ids = args[:music_ids]
@@ -10,11 +10,11 @@ module UserService
             @music_ids.each do |music_id|
                 result = { music_id: music_id}
                 begin
-                    UserPlaylistMusic.create!({user_id: @user_id, music_id: music_id})
+                    UserMusic.create!({user_id: @user_id, music_id: music_id})
                     user = User.find(@user_id)
-                    user_playlist_musics = user.user_playlist_musics
-                    if user_playlist_musics.count >= 100
-                        destroy_music = user_playlist_musics.order(created_at: :asc).first
+                    user_musics = user.user_musics
+                    if user_musics.count >= 100
+                        destroy_music = user_musics.order(created_at: :asc).first
                         result[:destroyed] = destroy_music.as_music_json
                         destroy_music.destroy
                     end

@@ -1,5 +1,5 @@
 module UserService
-    class UserPlaylistMusicDestroyer < ApplicationService
+    class UserMusicsDestroyer < ApplicationService
         def initialize(args)
             @user_id = args[:user_id]
             @music_ids = args[:music_ids]
@@ -11,7 +11,7 @@ module UserService
                 result = { destroyed_music_id: music_id }
 
                 user = User.find(@user_id)
-                musics = user.user_playlist_musics.where(music_id: music_id).order(created_at: :asc).limit(1)
+                musics = user.user_musics.where(music_id: music_id).order(created_at: :asc).limit(1)
                 if musics.empty?
                     result[:message] = "Not Existing Music So Cannot Destroy"
                     result[:success] = false
@@ -28,7 +28,7 @@ module UserService
 
                 results << result
             end
-            
+
             results
         end
     end
