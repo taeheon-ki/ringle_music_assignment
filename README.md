@@ -97,4 +97,5 @@ APIs
   * private하게 만들어 놓은 api들 optional parameter 줘서 public하게?
   * renaming?
   * schema에서 default, null:false, foreign key constraint 부분 다시 고려
-  * 
+  * api 추가?
+  * 보안?
