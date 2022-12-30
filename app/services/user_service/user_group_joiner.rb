@@ -1,11 +1,12 @@
 module UserService
     class UserGroupJoiner < ApplicationService
         def initialize(args)
-            @user_id = args[:user_id]
+            @request = args[:request]
             @group_id = args[:group_id]
         end
 
         def call
+            do_authorization
             begin
                 if !Group.exists?(@group_id)
                     return {success:false, message: "Group not exists"}
@@ -15,6 +16,16 @@ module UserService
             rescue => e
                 return {success: false, message: e.message}
             end
+        end
+
+        private
+
+        
+
+        def do_authorization
+            auth_result = AuthService::Authorizer.call(request: @request)
+            return auth_result if auth_result.is_a?(Hash)
+            @user_id = auth_result
         end
     end
 end

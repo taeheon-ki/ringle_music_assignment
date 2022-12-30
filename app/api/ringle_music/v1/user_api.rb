@@ -8,63 +8,46 @@ module RingleMusic
             resource :users do
 
                 get :getinfo do
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
-                    
-                    UserService::UserGetter.call(user_id: user_id)
+
+                    UserService::UserGetter.call(request: request)
 
                 end
 
                 get :usergroups do
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
 
-                    UserService::UserGroupsGetter.call(user_id: user_id)
+                    UserService::UserGroupsGetter.call(request: request)
+
                 end
 
                 params do
                     requires :music_id
                 end
                 delete :cancellikesmusic do
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
 
-                    UserService::UserLikesMusicCanceler.call(user_id: user_id, music_id: params[:music_id])
+                    UserService::UserLikesMusicCanceler.call(request: request)
+
                 end
 
                 params do
                     requires :music_id
                 end
                 post :likesmusic do
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
 
-                    UserService::UserLikesMusicPoster.call(user_id: user_id, music_id: params[:music_id])
+                    UserService::UserLikesMusicPoster.call(request: request)
+
                 end
 
                 desc 'list of musics that user likes'
                 get :likedmusics do
 
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
-
-                    user_liked_list = UserService::UserLikesMusicsGetter.call(user_id: user_id)
+                    UserService::UserLikesMusicsGetter.call(request: request)
 
                 end
 
                 desc 'get playlist of user'
                 get :playlist do
 
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
-
-                    playlist = UserService::UserMusicsGetter.call(user_id: user_id)
+                    UserService::UserMusicsGetter.call(request: request)
 
                 end
 
@@ -73,16 +56,8 @@ module RingleMusic
                     requires :group_id
                 end
                 get :groupplaylist do
-                    
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
 
-                    unless UserGroup.exists?(user_id: user_id, group_id: params[:group_id])
-                        return {success: false, message: "user is not existing in group. Validation Falied!"}
-                    end
-
-                    playlist = UserService::UserGroupMusicsGetter.call(user_id: user_id, group_id: params[:group_id])
+                    UserService::UserGroupMusicsGetter.call(request: request, group_id: params[:group_id])
 
                 end
 
@@ -92,16 +67,8 @@ module RingleMusic
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
                 post :addmusicstogroup do
-                    
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
 
-                    unless UserGroup.exists?(user_id: user_id, group_id: params[:group_id])
-                        return {success: false, message: "user is not existing in group"}
-                    end
-
-                    UserService::UserGroupMusicsAdder.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
+                    UserService::UserGroupMusicsAdder.call(request: request, group_id: params[:group_id], music_ids: params[:music_ids])
 
                 end
 
@@ -112,16 +79,7 @@ module RingleMusic
                 end
                 delete :destroymusicofgroup do
 
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
-
-                    unless UserGroup.exists?(user_id: user_id, group_id: params[:group_id])
-                        return {success: false, message: "user is not existing in group"}
-                    end
-
-                    UserService::UserGroupMusicsDestroyer.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
-
+                    UserService::UserGroupMusicsDestroyer.call(request: request, group_id: params[:group_id], music_ids: params[:music_ids])
 
                 end
 
@@ -130,11 +88,8 @@ module RingleMusic
                     requires :group_id
                 end
                 post :joingroup do
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
 
-                    UserService::UserGroupJoiner.call(user_id: user_id, group_id: params[:group_id])
+                    UserService::UserGroupJoiner.call(request: request, group_id: params[:group_id])
 
                 end
 
@@ -143,11 +98,8 @@ module RingleMusic
                     requires :group_id
                 end
                 delete :exitgroup do
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
 
-                    UserService::UserGroupExiter.call(user_id: user_id, group_id: params[:group_id])
+                    UserService::UserGroupExiter.call(request: request, group_id: params[:group_id])
 
                 end
 
@@ -158,11 +110,7 @@ module RingleMusic
                 end
                 post :addmusic do
 
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
-
-                    UserService::UserMusicsAdder.call(user_id: user_id, music_ids: params[:music_ids])
+                    UserService::UserMusicsAdder.call(request: request, music_ids: params[:music_ids])
 
                 end
 
@@ -172,15 +120,10 @@ module RingleMusic
                 end
 
                 delete :destroymusic do
-                    auth_result = AuthService::Authorizer.call(request: request)
-                    return auth_result if auth_result.is_a?(Hash)
-                    user_id = auth_result
 
-                    UserService::UserMusicsDestroyer.call(user_id: user_id, music_ids: params[:music_ids])
+                    UserService::UserMusicsDestroyer.call(request: request, music_ids: params[:music_ids])
 
                 end
-
-                
             
                 params do 
                     requires :user_name, type: String
@@ -188,24 +131,9 @@ module RingleMusic
                     requires :password, type: String
                 end
                 post "signup" do
-                    user = User.find_by(email: params[:email])
-                    if user 
-                        return {
-                            success: false,
-                            message: "User Email Not Usable"
-                        }
-                    end
-                    
-                    user = User.create!({
-                        user_name: params[:user_name],
-                        email: params[:email],
-                        password: params[:password]	
-                    })
-                
-                    return {
-                        success: true,
-                        user: user,
-                    }
+
+                    UserService::UserSignup.call(user_name: params[:user_name], email: params[:email], password: params[:password])
+
                 end
 
                 params do
@@ -213,28 +141,8 @@ module RingleMusic
                     requires :password, type: String
                 end
                 post "signin" do
-                    user = User.find_by(email: params[:email])
-                    if user.nil?
-                        return {
-                          success: false,
-                          message: "User not found",
-                        }
-                      end
-                    is_valid = user.valid_password?(params[:password])
-                    unless is_valid
-                        return {
-                            success: false,
-                            message: "not valid",
-                        }
-                    end
 
-                    jwt_token = User.create_jwt_token(user.id)
-
-                    return {
-                        success: true,
-                        message: "valid",
-                        jwt_token: jwt_token,
-                    }
+                    UserService::UserSignin.call(email: params[:email], password: params[:password])
                     
                 end
             end

@@ -1,11 +1,12 @@
 module UserService
     class UserMusicsDestroyer < ApplicationService
         def initialize(args)
-            @user_id = args[:user_id]
+            @request = args[:request]
             @music_ids = args[:music_ids]
         end
 
         def call
+            do_authorization
             results = []
             @music_ids.each do |music_id|
                 result = { destroyed_music_id: music_id }
@@ -29,11 +30,16 @@ module UserService
                     end
                     
                 end
-
                 results << result
             end
-
             results
+        end
+
+        private
+        def do_authorization
+            auth_result = AuthService::Authorizer.call(request: @request)
+            return auth_result if auth_result.is_a?(Hash)
+            @user_id = auth_result
         end
     end
 end
