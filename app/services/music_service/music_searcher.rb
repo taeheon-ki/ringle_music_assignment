@@ -17,7 +17,8 @@ module MusicService
             end if @query.present?
             
             musics = sort(musics) if @sort.present?
-            musics
+            musics = musics.as_json(only: [:id, :title, :artist, :album, :user_likes_musics_count])
+            return musics
         end
     
         def sort(musics)
