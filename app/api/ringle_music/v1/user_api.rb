@@ -7,6 +7,15 @@ module RingleMusic
 
             resource :users do
 
+                get :getinfo do
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
+                    user_id = auth_result
+                    
+                    UserService::UserGetter.call(user_id: user_id)
+
+                end
+
                 get :usergroups do
                     auth_result = AuthService::Authorizer.call(request: request)
                     return auth_result if auth_result.is_a?(Hash)

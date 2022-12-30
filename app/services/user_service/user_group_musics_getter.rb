@@ -7,7 +7,7 @@ module UserService
 
         def call
             user_liked_list = GroupMusic.includes(:music).where(user_id: @user_id)
-            user_liked_list.map(&:as_json_of_music)
+            user_liked_list.map(&:as_json_of_group_music)
         end
     end
 end

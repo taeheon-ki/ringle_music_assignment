@@ -19251,3 +19251,237 @@ Started GET "/api/v1/groups" for ::1 at 2022-12-30 14:53:12 +0900
 Started GET "/api/v1/groups" for ::1 at 2022-12-30 14:53:14 +0900
   [1m[36mGroup Load (2.3ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
   ↳ app/api/ringle_music/v1/group_api.rb:26:in `block (2 levels) in <class:GroupApi>'
+Started GET "/api/v1/users/groupplaylist?group_id=2" for ::1 at 2022-12-30 15:04:25 +0900
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUserGroup Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 1 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/api/ringle_music/v1/user_api.rb:72:in `block (2 levels) in <class:UserApi>'
+  [1m[36mGroupMusic Load (1.0ms)[0m  [1m[34mSELECT `group_musics`.* FROM `group_musics` WHERE `group_musics`.`user_id` = 1[0m
+  ↳ app/services/user_service/user_group_musics_getter.rb:10:in `map'
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` IN (22, 21, 18)[0m
+  ↳ app/services/user_service/user_group_musics_getter.rb:10:in `map'
+Started GET "/api/v1/users/groupplaylist?group_id=2" for ::1 at 2022-12-30 15:05:01 +0900
+  [1m[36mUserGroup Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 1 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/api/ringle_music/v1/user_api.rb:72:in `block (2 levels) in <class:UserApi>'
+  [1m[36mGroupMusic Load (0.7ms)[0m  [1m[34mSELECT `group_musics`.* FROM `group_musics` WHERE `group_musics`.`user_id` = 1[0m
+  ↳ app/services/user_service/user_group_musics_getter.rb:10:in `map'
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` IN (22, 21, 18)[0m
+  ↳ app/services/user_service/user_group_musics_getter.rb:10:in `map'
+Started GET "/api/v1/users/groupplaylist?group_id=2" for ::1 at 2022-12-30 15:05:18 +0900
+  [1m[36mUserGroup Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 1 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/api/ringle_music/v1/user_api.rb:72:in `block (2 levels) in <class:UserApi>'
+  [1m[36mGroupMusic Load (0.6ms)[0m  [1m[34mSELECT `group_musics`.* FROM `group_musics` WHERE `group_musics`.`user_id` = 1[0m
+  ↳ app/services/user_service/user_group_musics_getter.rb:10:in `map'
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` IN (22, 21, 18)[0m
+  ↳ app/services/user_service/user_group_musics_getter.rb:10:in `map'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:22:04 +0900
+  
+RuntimeError (응 Authorization 안됨~):
+  
+app/services/auth_service/authorizer.rb:9:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:11:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:22:16 +0900
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/services/user_service/user_getter.rb:8:in `call'
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:22:41 +0900
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/services/user_service/user_getter.rb:8:in `call'
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:22:49 +0900
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/services/user_service/user_getter.rb:8:in `call'
