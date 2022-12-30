@@ -94,7 +94,7 @@ APIs
   * DB 성능 이슈 : index 고려, each문마다 날리게 되는 SQL query refactoring
   * Concurrency 이슈 : multi-thread가 interleaving하다가 발생할 수 있는 문제 고려, transaction, commit point 적용?
   * error-prone한 코드 찾기
-  * private하게 만들어 놓은 api들 optional parameter 줘서 public하게?
+  * authorization 거쳐야 하는 private하게 만들어 놓은 api들 optional parameter 줘서 public하게?
   * renaming?
   * schema에서 default, null:false, foreign key constraint 부분 다시 고려
   * api 추가?
