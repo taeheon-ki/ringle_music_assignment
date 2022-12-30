@@ -12,18 +12,16 @@ module RingleMusic
                     requires :group_name
                 end
                 post :create do
-                    begin
-                        Group.create!(group_name: params[:group_name])
-                        return {success: true}
-                    rescue => e
-                        return {success: false, message: e.message}
-                    end
+
+                    GroupService::GroupCreater.call(group_name: params[:group_name])
+
                 end
 
                 desc 'List group'
                 get do
-                    groups = Group.all
-                    groups = groups.as_json(only:[:id, :group_name])
+
+                    GroupService::GroupsGetter.call()
+                    
                 end
             end
         end

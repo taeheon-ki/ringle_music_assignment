@@ -19753,3 +19753,81 @@ Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022
 Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:11:20 +0900
   [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
   ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started POST "/api/v1/groups/create?group_name=popsong" for ::1 at 2022-12-30 16:53:36 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+NameError (undefined local variable or method `arts' for #<GroupService::GroupCreater:0x00007fdc13e1e208>
+Did you mean?  args):
+  
+app/services/group_service/group_creater.rb:4:in `initialize'
+app/services/application_service.rb:4:in `new'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/group_api.rb:16:in `block (2 levels) in <class:GroupApi>'
+Started POST "/api/v1/groups/create?group_name=popsong" for ::1 at 2022-12-30 16:53:43 +0900
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` IS NULL LIMIT 1[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Create (0.7ms)[0m  [1m[32mINSERT INTO `groups` (`created_at`, `updated_at`) VALUES ('2022-12-30 07:53:43.627764', '2022-12-30 07:53:43.627764')[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+Started POST "/api/v1/groups/create?group_name=popsong" for ::1 at 2022-12-30 16:53:45 +0900
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` IS NULL LIMIT 1[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+Started GET "/api/v1/groups" for ::1 at 2022-12-30 16:53:52 +0900
+  [1m[36mGroup Load (5.1ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
+  ↳ app/api/ringle_music/v1/group_api.rb:23:in `block (2 levels) in <class:GroupApi>'
+  [1m[36mGroup Destroy (1.4ms)[0m  [1m[31mDELETE FROM `groups` WHERE `groups`.`id` = 3[0m
+Started GET "/api/v1/groups" for ::1 at 2022-12-30 16:54:20 +0900
+  [1m[36mGroup Load (0.7ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
+  ↳ app/api/ringle_music/v1/group_api.rb:23:in `block (2 levels) in <class:GroupApi>'
+Started POST "/api/v1/groups/create?group_name=popsong" for ::1 at 2022-12-30 16:54:37 +0900
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` IS NULL LIMIT 1[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Create (0.8ms)[0m  [1m[32mINSERT INTO `groups` (`created_at`, `updated_at`) VALUES ('2022-12-30 07:54:37.599443', '2022-12-30 07:54:37.599443')[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Destroy (0.6ms)[0m  [1m[31mDELETE FROM `groups` WHERE `groups`.`id` = 3[0m
+  [1m[36mGroup Destroy (1.7ms)[0m  [1m[31mDELETE FROM `groups` WHERE `groups`.`id` = 4[0m
+Started POST "/api/v1/groups/create?group_name=popsong" for ::1 at 2022-12-30 16:56:01 +0900
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` = 'popsong' LIMIT 1[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+Started POST "/api/v1/groups/create?group_name=jazz" for ::1 at 2022-12-30 16:56:12 +0900
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` = 'jazz' LIMIT 1[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Create (0.9ms)[0m  [1m[32mINSERT INTO `groups` (`group_name`, `created_at`, `updated_at`) VALUES ('jazz', '2022-12-30 07:56:12.563795', '2022-12-30 07:56:12.563795')[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+Started POST "/api/v1/groups/create?group_name=jazz" for ::1 at 2022-12-30 16:56:47 +0900
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` = 'jazz' LIMIT 1[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+Started GET "/api/v1/groups" for ::1 at 2022-12-30 16:57:47 +0900
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/services/group_service/groups_getter.rb:3:in `initialize'
+app/services/application_service.rb:4:in `new'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/group_api.rb:23:in `block (2 levels) in <class:GroupApi>'
+Started GET "/api/v1/groups" for ::1 at 2022-12-30 16:58:01 +0900
+  [1m[36mGroup Load (0.6ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
+  ↳ app/services/group_service/groups_getter.rb:8:in `call'
