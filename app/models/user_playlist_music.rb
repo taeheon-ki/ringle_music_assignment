@@ -4,6 +4,15 @@ class UserPlaylistMusic < ApplicationRecord
 
   before_save :check_playlist_size
 
+  def as_music_json()
+    {
+      title: music.title,
+      artist: music.artist,
+      album: music.album,
+      likes: music.user_likes_musics_count,
+    }
+  end
+
   private
 
   def check_playlist_size

@@ -1,5 +1,3 @@
-require_relative '../services/auth_service'
-
 module RingleMusic
     module V1
         class UserApi < Grape::API
@@ -9,33 +7,63 @@ module RingleMusic
 
             resource :users do
 
+                desc 'list of musics that user likes'
+                get :likedmusics do
+
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
+                    user_id = auth_result
+
+                    user_liked_list = UserService::UserLikesMusicGetter.call(user_id: user_id)
+
+                end
+
+                desc 'get playlist of user'
+                get :playlist do
+
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
+                    user_id = auth_result
+
+                    playlist = UserService::UserPlaylistMusicGetter.call(user_id: user_id)
+
+                end
+
+                desc 'get group playlist which user joined'
+                params do
+                    requires :group_id
+                end
+                get :groupplaylist do
+                    
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
+                    user_id = auth_result
+
+                    unless GroupUser.exists?(user_id: user_id, group_id: params[:group_id])
+                        return {success: false, message: "user is not existing in group. Validation Falied!"}
+                    end
+
+                    playlist = UserService::UserGroupPlaylistGetter.call(user_id: user_id, group_id: params[:group_id])
+
+                end
+
                 desc 'add music to playlist for group'
                 params do
                     requires :group_id
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
                 post :addmusictogroup do
-                    auth_service = AuthService.new
-                    auth_result = auth_service.authenticate_user(request)
-                    if auth_result.is_a?(Hash)
-                        return authentication_result
-                    end
+                    
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
+                    user_id = auth_result
 
-                    unless GroupUser.exists?(user_id: result[:user_id], group_id: params[:group_id])
+                    unless GroupUser.exists?(user_id: user_id, group_id: params[:group_id])
                         return {success: false, message: "user is not existing in group"}
                     end
 
-                    user_id = auth_result
-                    music_ids = params[:music_ids]
+                    UserService::UserAddMusicToGroup.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
 
-                    music_ids.each do |music_id|
-                        begin
-                        GroupPlaylistMusic.create!({group_id: params[:group_id], music_id: music_id, user_id: user_id})
-                        rescue => e
-                        end
-                    end
-
-                    return {success: true}
                 end
 
                 desc 'destroy music in playlist of group'
@@ -44,38 +72,18 @@ module RingleMusic
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
                 delete :destroymusicofgroup do
-                    auth_service = AuthService.new
-                    auth_result = auth_service.authenticate_user(request)
-                    if auth_result.is_a?(Hash)
-                        return authentication_result
-                    end
 
-                    
-
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result
-                    music_ids = params[:music_ids]
-                    group_id = params[:group_id]
 
-                    unless GroupUser.exists?(user_id: user_id, group_id: group_id)
+                    unless GroupUser.exists?(user_id: user_id, group_id: params[:group_id])
                         return {success: false, message: "user is not existing in group"}
                     end
 
-                    music_ids.each do |music_id|
-                        begin
-                            group_playlist_music = GroupPlaylistMusic.where(group_id: group_id, music_id: music_id)
-                            
-                            if group_playlist_music.empty?
-                                return {
-                                    success: false, message: "not existing music.."
-                                }
-                            end
-    
-                            group_playlist_music.first.destroy
-                        rescue => e
-                        end
-                    end
+                    UserService::UserDestroyMusicofGroup.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
 
-                    return {success: true}
+
                 end
 
                 desc 'join group'
@@ -83,15 +91,12 @@ module RingleMusic
                     requires :group_id
                 end
                 post :joingroup do
-                    auth_service = AuthService.new
-                    auth_result = auth_service.authenticate_user(request)
-                    if auth_result.is_a?(Hash)
-                        return authentication_result
-                    end
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
+                    user_id = auth_result
 
-                    GroupUser.create!({user_id: user_id, group_id: params[:group_id]})
+                    UserService::UserGroupJoiner.call(user_id: user_id, group_id: params[:group_id])
 
-                    return {success: true}
                 end
 
                 desc 'exit group'
@@ -99,16 +104,12 @@ module RingleMusic
                     requires :group_id
                 end
                 delete :exitgroup do
-                    auth_service = AuthService.new
-                    auth_result = auth_service.authenticate_user(request)
-                    if auth_result.is_a?(Hash)
-                        return authentication_result
-                    end
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
+                    user_id = auth_result
 
-                    group_user = GroupUser.find_by(user_id: user_id, group_id: params[:group_id])
-                    group_user.destroy
+                    UserService::UserGroupExiter.call(user_id: user_id, group_id: params[:group_id])
 
-                    return {success: true}
                 end
 
 
@@ -117,55 +118,27 @@ module RingleMusic
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
                 post :addmusic do
-                    auth_service = AuthService.new
-                    auth_result = auth_service.authenticate_user(request)
-                    if auth_result.is_a?(Hash)
-                        return authentication_result
-                    end
 
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result
-                    music_ids = params[:music_ids]
 
-                    music_ids.each do |music_id|
-                        begin
-                        UserPlaylistMusic.create!({user_id: user_id, music_id: music_id})
-                        rescue => e
-                        end
-                    end
+                    UserService::UserPlaylistMusicAdder.call(user_id: user_id, music_ids: params[:music_ids])
 
-                    return {success: true}
                 end
 
                 desc 'delete music to playlist for user'
                 params do
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
+
                 delete :destroymusic do
-                    auth_service = AuthService.new
-                    auth_result = auth_service.authenticate_user(request)
-                    if auth_result.is_a?(Hash)
-                        return authentication_result
-                    end
-
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result
-                    music_ids = params[:music_ids]
 
-                    music_ids.each do |music_id|
-                        begin
-                        user_playlist_music = UserPlaylistMusic.where(user_id: user_id, music_id: music_id)
-                        
-                        if user_playlist_music.empty?
-                            return {
-                                success: false, message: "not existing music.."
-                            }
-                        end
+                    UserService::UserPlaylistMusicDestroyer.call(user_id: user_id, music_ids: params[:music_ids])
 
-                        user_playlist_music.first.destroy
-                        rescue => e
-                        end
-                    end
-
-                    return {success: true}
                 end
 
                 
@@ -189,8 +162,6 @@ module RingleMusic
                         email: params[:email],
                         password: params[:password]	
                     })
-                    
-                    
                 
                     return {
                         success: true,

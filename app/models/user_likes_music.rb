@@ -3,6 +3,14 @@ class UserLikesMusic < ApplicationRecord
   belongs_to :music, counter_cache: true
   validate :unique_membership
   
+  def as_json()
+    {
+      title: music.title,
+      artist: music.artist,
+      album: music.album,
+      likes: music.user_likes_musics_count,
+    }
+  end
 
 
   def unique_membership
