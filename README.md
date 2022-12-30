@@ -75,11 +75,11 @@ APIs
   * 유저가 그룹에서 음원 제거 : delete
     * route : api/v1/users/destroymusicsofgroup
     * parameter : group_id, body에 json형식의 music_ids array
-  * 유저가 속한 그룹 리스트 : get
+  * 유저가 속한 그룹 리스트 보기: get
     * route : api/v1/users/usergroups
     * parameter : x
 * Music API
-  * 음악 검색, 정렬 : get
+  * 음악 검색, 정렬한 리스트 보기: get
     * route : api/v1/musics
     * parameter : (optional)sort : (accuracy, likes, created_at 중 1), (optional)query
 * Group API
