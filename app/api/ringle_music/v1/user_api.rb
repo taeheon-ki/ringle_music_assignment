@@ -52,7 +52,7 @@ module RingleMusic
                     requires :group_id
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
-                post :addmusictogroup do
+                post :addmusicstogroup do
                     
                     auth_result = AuthService::Authorizer.call(request: request)
                     return auth_result if auth_result.is_a?(Hash)
@@ -62,7 +62,7 @@ module RingleMusic
                         return {success: false, message: "user is not existing in group"}
                     end
 
-                    UserService::UserAddMusicToGroup.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
+                    UserService::UserGroupPlaylistMusicsAdder.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
 
                 end
 
@@ -81,7 +81,7 @@ module RingleMusic
                         return {success: false, message: "user is not existing in group"}
                     end
 
-                    UserService::UserDestroyMusicofGroup.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
+                    UserService::UserGroupPlaylistMusicsDestroyer.call(user_id: user_id, group_id: params[:group_id], music_ids: params[:music_ids])
 
 
                 end

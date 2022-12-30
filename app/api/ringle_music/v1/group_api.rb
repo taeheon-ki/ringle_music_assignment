@@ -12,8 +12,12 @@ module RingleMusic
                     requires :group_name
                 end
                 post :create do
-                    Group.create!(group_name: params[:group_name])
-                    return {success: true}
+                    begin
+                        Group.create!(group_name: params[:group_name])
+                        return {success: true}
+                    rescue => e
+                        return {success: false, message: e.message}
+                    end
                 end
 
                 desc 'List group'

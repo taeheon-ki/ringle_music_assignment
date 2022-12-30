@@ -5,7 +5,7 @@ class GroupPlaylistMusic < ApplicationRecord
 
 
 
-  def as_json()
+  def as_music_json()
     {
       title: music.title,
       artist: music.artist,
