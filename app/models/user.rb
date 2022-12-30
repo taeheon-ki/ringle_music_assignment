@@ -22,7 +22,11 @@ class User < ApplicationRecord
   end
 
   def self.validate_jwt_token(jwt_token)
+    begin
     decoded = JWT.decode(jwt_token, SOME_SECRET_KEY, true, algorithm: 'HS256')
+    rescue => e
+      return {success:false, message: "JWT Verification failed!"}
+    end
 
     # Check that the signature is valid
     if JWT.decode(jwt_token, SOME_SECRET_KEY, false, algorithm: 'HS256') == decoded

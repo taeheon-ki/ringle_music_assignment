@@ -19485,3 +19485,271 @@ Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:22:41 +0900
 Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:22:49 +0900
   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
   ↳ app/services/user_service/user_getter.rb:8:in `call'
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:31:25 +0900
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/services/user_service/user_getter.rb:8:in `call'
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:31:28 +0900
+  
+JWT::VerificationError (Signature verification failed):
+  
+app/models/user.rb:25:in `validate_jwt_token'
+app/services/auth_service/authorizer.rb:14:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:11:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:32:16 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/models/user.rb:28: void value expression
+      return {success:false, message: "JW...
+      ^~~~~~
+/Users/ki99/Ringle_Music_MVC/app/models/user.rb:28: syntax error, unexpected {, expecting '.' or &. or :: or '['
+      return {success:false, message: "JWT ...
+             ^):
+  
+app/models/user.rb:28: void value expression
+app/models/user.rb:28: syntax error, unexpected {, expecting '.' or &. or :: or '['
+app/models/user.rb:28: void value expression
+app/models/user.rb:28: syntax error, unexpected {, expecting '.' or &. or :: or '['
+app/models/user.rb:28: void value expression
+app/models/user.rb:28: syntax error, unexpected {, expecting '.' or &. or :: or '['
+config/routes.rb:2:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:32:21 +0900
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:32:27 +0900
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:32:30 +0900
+Started POST "/api/v1/users/signin?email=taeheon.ki@ringleplus.com&password=[FILTERED]" for ::1 at 2022-12-30 15:32:36 +0900
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'taeheon.ki@ringleplus.com' LIMIT 1[0m
+  ↳ app/api/ringle_music/v1/user_api.rb:216:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/getinfo" for ::1 at 2022-12-30 15:32:43 +0900
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/services/user_service/user_getter.rb:8:in `call'
+Started DELETE "/api/v1/users/cancellikesmusic?music_id=18" for ::1 at 2022-12-30 15:36:12 +0900
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users/cancellikesmusic"):
+  
+Started DELETE "/api/v1/users/cancellikesmusic?music_id=18" for ::1 at 2022-12-30 15:36:30 +0900
+  [1m[36mUserLikesMusic Load (0.6ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 1 AND `user_likes_musics`.`music_id` = 18 LIMIT 1[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:10:in `call'
+Started POST "/api/v1/users/likesmusic?music_id=18" for ::1 at 2022-12-30 15:36:36 +0900
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 18 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 1 AND `user_likes_musics`.`music_id` = 18 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Create (0.9ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (1, 18, '2022-12-30 06:36:36.882956', '2022-12-30 06:36:36.882956')[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+  [1m[36mMusic Update All (0.9ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) + 1 WHERE `musics`.`id` = 18[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+Started DELETE "/api/v1/users/cancellikesmusic?music_id=18" for ::1 at 2022-12-30 15:36:39 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 1 AND `user_likes_musics`.`music_id` = 18 LIMIT 1[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:10:in `call'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:14:in `call'
+  [1m[36mUserLikesMusic Destroy (1.9ms)[0m  [1m[31mDELETE FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = 7[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:14:in `call'
+  [1m[36mMusic Update All (1.5ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) - 1 WHERE `musics`.`id` = 18[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:14:in `call'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:14:in `call'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 15:38:31 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 1[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 16 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_json_of_music'
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 29 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_json_of_music'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 15:39:18 +0900
+  [1m[36mUserLikesMusic Load (0.5ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 1[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 16 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_json_of_music'
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 29 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_json_of_music'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 15:39:59 +0900
+  [1m[36mUserLikesMusic Load (0.6ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 1[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 16 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_json_of_music'
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 29 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_json_of_music'
+Started GET "/api/v1/users/playlist" for ::1 at 2022-12-30 15:42:03 +0900
+  [1m[36mUserMusic Load (0.8ms)[0m  [1m[34mSELECT `user_musics`.* FROM `user_musics` WHERE `user_musics`.`user_id` = 1[0m
+  ↳ app/services/user_service/user_musics_getter.rb:9:in `map'
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` IN (22, 23)[0m
+  ↳ app/services/user_service/user_musics_getter.rb:9:in `map'
+Started GET "/api/v1/musics?%08q=%EC%95%A0%ED%94%8C&sort=likes" for ::1 at 2022-12-30 15:56:38 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:33:in `sort_by'
+Started GET "/api/v1/musics?%08q=%EC%95%A0%ED%94%8C&sort=likes" for ::1 at 2022-12-30 15:56:42 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:33:in `sort_by'
+Started GET "/api/v1/musics?%08q=%EC%95%A0%ED%94%8C&sort=likes" for ::1 at 2022-12-30 15:56:43 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:33:in `sort_by'
+Started GET "/api/v1/musics?%08query=%EC%95%A0%ED%94%8C&sort=likes" for ::1 at 2022-12-30 15:56:46 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:33:in `sort_by'
+Started GET "/api/v1/musics?%08query=%EC%95%A0%ED%94%8C&sort=likes" for ::1 at 2022-12-30 15:56:51 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:33:in `sort_by'
+Started GET "/api/v1/musics?%08query=apple&sort=likes" for ::1 at 2022-12-30 15:57:10 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:33:in `sort_by'
+Started GET "/api/v1/musics?%08q=apple&sort=likes" for ::1 at 2022-12-30 15:57:20 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:33:in `sort_by'
+Started GET "/api/v1/musics?%08query=apple&sort=likes" for ::1 at 2022-12-30 15:57:32 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:33:in `sort_by'
+Started GET "/api/v1/musics?%08query=%ED%94%BC%EB%82%9C&sort=likes" for ::1 at 2022-12-30 15:57:44 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:33:in `sort_by'
+Started GET "/api/v1/musics?%08query=%ED%94%BC%EB%82%9C&sort=" for ::1 at 2022-12-30 15:57:47 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team&sort=" for ::1 at 2022-12-30 15:57:58 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 15:58:15 +0900
+  [1m[36mMusic Load (1.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 15:59:00 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 15:59:03 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 15:59:28 +0900
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 15:59:41 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:00:29 +0900
+  
+NameError (undefined local variable or method `query' for #<MusicService::MusicSearcher:0x00007f7d63e00b40>
+Did you mean?  @query):
+  
+app/services/music_service/music_searcher.rb:9:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/music_api.rb:17:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:00:36 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:00:40 +0900
+  [1m[36mMusic Load (1.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:00:46 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:01:01 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:01:02 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:01:12 +0900
+  
+NameError (undefined local variable or method `query' for #<#<Class:0x00007f7d63cebb60>:0x00007f7d647c1f08>
+Did you mean?  to_query):
+  
+app/api/ringle_music/v1/music_api.rb:16:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:01:23 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:19:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:01:24 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:19:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=%22team%22" for ::1 at 2022-12-30 16:01:39 +0900
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:19:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:01:48 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:19:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:02:21 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:19:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?%08query=team" for ::1 at 2022-12-30 16:02:40 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:19:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics" for ::1 at 2022-12-30 16:02:45 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:19:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?query=team" for ::1 at 2022-12-30 16:02:55 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?query=team" for ::1 at 2022-12-30 16:03:18 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?query=team" for ::1 at 2022-12-30 16:03:44 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:10:in `call'
+Started GET "/api/v1/musics?query=teambaby" for ::1 at 2022-12-30 16:04:02 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:10:in `call'
+Started GET "/api/v1/musics?query=teambaby" for ::1 at 2022-12-30 16:04:10 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?query=" for ::1 at 2022-12-30 16:04:18 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?query=" for ::1 at 2022-12-30 16:07:44 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/api/ringle_music/v1/music_api.rb:18:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?query=team" for ::1 at 2022-12-30 16:07:48 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?query=big" for ::1 at 2022-12-30 16:07:54 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?query=love" for ::1 at 2022-12-30 16:07:58 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?query=%EC%8F%9C" for ::1 at 2022-12-30 16:08:09 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?query=%EC%9D%B4" for ::1 at 2022-12-30 16:08:18 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4" for ::1 at 2022-12-30 16:09:06 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:09:27 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:10:00 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:10:01 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:10:20 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:10:34 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C%EA%B4%80" for ::1 at 2022-12-30 16:10:41 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:10:45 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:10:59 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:11:06 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:11:12 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%9D%B4%EB%B0%9C" for ::1 at 2022-12-30 16:11:20 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'

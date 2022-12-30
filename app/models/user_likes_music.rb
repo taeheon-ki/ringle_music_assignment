@@ -5,11 +5,11 @@ class UserLikesMusic < ApplicationRecord
   
   def as_json_of_music()
     {
-      id: music.id,
+      music_id: music.id,
       title: music.title,
       artist: music.artist,
       album: music.album,
-      likes: music.user_likes_musics_count,
+      likes_count: music.user_likes_musics_count,
     }
   end
 

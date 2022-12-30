@@ -1,20 +1,21 @@
 module MusicService
     class MusicSearcher < ApplicationService
         def initialize(args)
-            @query = args[:query]
+            @query = args[:query].downcase
             @sort = args[:sort]
         end
     
         def call
+            
             musics = Music.all
             musics = musics.select do |music|
+                
                 String::Similarity.levenshtein_distance(music.title, @query) <= 2 ||
                 String::Similarity.levenshtein_distance(music.artist, @query) <= 2 ||
                 String::Similarity.levenshtein_distance(music.album, @query) <= 2 ||
-                music.title.include?(@query) || music.artist.include?(@query) || music.album.include?(@query)
+                music.title.downcase.include?(@query) || music.artist.downcase.include?(@query) || music.album.downcase.include?(@query)
             end if @query.present?
             
-    
             musics = sort(musics) if @sort.present?
             musics
         end
@@ -31,8 +32,11 @@ module MusicService
                 end
             when 'likes'
                 musics = musics.sort_by do |music|
-                    [music.user_likes_musics_count]
-                end.reverse
+                    [-music.user_likes_musics_count,
+                    -String::Similarity.cosine(music.title, @query),
+                    -String::Similarity.cosine(music.artist, @query),
+                    -String::Similarity.cosine(music.album, @query)]
+                end
             when 'created_at'
                 musics = musics.sort_by do |music|
                     [music.created_at]

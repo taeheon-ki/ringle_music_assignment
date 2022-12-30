@@ -27,7 +27,7 @@ module RingleMusic
                 params do
                     requires :music_id
                 end
-                delete :canceltolikemusic do
+                delete :cancellikesmusic do
                     auth_result = AuthService::Authorizer.call(request: request)
                     return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result

@@ -11,36 +11,46 @@ Install
 * bundle
 * rake db:create
 * rake db:migrate
-* rake db:seed(not yet)
+* rake db:seed
+  - User, Music, Group 초기화
+  - 음원 15개 추가
 
-Requirements
-* 음원
+Modeling (Attributes)
+* User (user_id, user_name, email, password)
+* Group (group_id, group_name)
+* Music (music_id, title, artist, album, user_likes_musics_count)
 
-  - [x] 음원 검색 API
-    * 정확도순, 인기순, 최신순
-    * http://localhost:3000/api/v1/musics/ : 모든 음원 목록
-    * http://localhost:3000/api/v1/musics?q=xxx&sort=accuracy : xxx를 검색하여 accuracy로 정렬. sort에는 accuracy, likes, created_at이 들어갈 수 있음.
+Relation Tables
+* UserGroup (user_id, group_id) : User와 Group의 Relation
 
+* UserMusic (user_id, music_id) : User's Playlist
+* GroupMusic (group_id, music_id, user_id) : Group's Playlist. user_id로 이 playlist에 음원 추가한 user 확인가능
 
-* 플레이리스트
+* UserLikesMusic (user_id, music_id) : User가 좋아한 Music
 
-  - [x] 플레이리스트 조회 API
-    * 특정 유저, 그룹에 속한 플레이리스트 조회
-    * 유저, 그룹 소유자만 가능
-    * 어떤 유저가 플레이리스트에 음원 추가했는지 확인 가능
-  - [x] 플레이리스트에 음원 추가, 삭제 API
-    * 최대 100개까지 음원 유지
-    * 플레이리스트 소유하는 그룹, 유저 소유자만 가능
-    * n개를 한번에 삭제 가능
-
-* 유저
-
-  - [x] 유저가 좋아요 누른 모든 음원 확인 API
-    * 유저 자신것만 확인가능
-  - [x] 로그인 회원가입 API
-  - [x] 그룹에 조인, 나가기 API
-
-* 그룹
-
-  - [x] 그룹 목록 조회 API
-  - [x] 그룹 만들기 API
+APIs
+* app/api/ringle_music/v1에 구현
+* app/services 폴더에 modularization
+* User API
+  * 회원가입
+    * route : api/v1/signup
+    * parameter : user_name, email, password
+    * return : Success여부, Error message
+  * 로그인
+    * route : api/v1/signin
+    * parameter : emali, password
+    * return : success여부, error message, jwt_token
+  * Below API들은 Authorization header에 bearer + jwt_token 필요
+  * 유저 정보 조회
+    * route : api/v1/users/getinfo
+    * return : id, username, email 정보
+  * 유저가 음악에 좋아요 누르기
+    * route : api/v1/users/likesmusic
+    * parameter : music_id
+    * return : Success여부, Error message
+  * 유저가 음악에 누른 좋아요 취소하기
+    * route : api/v1/users/cancellikesmusic
+    * paramter : music_id
+    * return : Success여부, Error message
+  * 유저가 좋아하는 음악 리스트
+    * route : api/v1/users/likesmusics
