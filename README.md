@@ -91,6 +91,7 @@ APIs
     * parameter : x
 
 * Todo
+  * Convention 적용
   * DB 성능 이슈 : index 고려, each문마다 날리게 되는 SQL query refactoring
   * Concurrency 이슈 : multi-thread가 interleaving하다가 발생할 수 있는 문제 고려, transaction, commit point 적용?
   * error-prone한 코드 찾기
