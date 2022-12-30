@@ -98,4 +98,4 @@ APIs
   * renaming?
   * schema에서 default, null:false, foreign key constraint 부분 다시 고려
   * api 추가?
-  * 보안?
+  * 
