@@ -12610,3 +12610,233 @@ Started POST "/api/v1/groups/create?group_name=popsong" for ::1 at 2022-12-30 10
   ↳ app/api/ringle_music/v1/group_api.rb:16:in `block (2 levels) in <class:GroupApi>'
 Started GET "/api/v1/groups" for ::1 at 2022-12-30 10:40:32 +0900
   [1m[36mGroup Load (6.1ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:45:30 +0900
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUserLikesMusic Load (0.9ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:50:54 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/services/user_service/user_likes_music.rb:13: void value expression
+                return {success: false, message: e....
+                ^~~~~~
+/Users/ki99/Ringle_Music_MVC/app/services/user_service/user_likes_music.rb:13: syntax error, unexpected {, expecting '.' or &. or :: or '['
+                return {success: false, message: e.me...
+                       ^):
+  
+app/services/user_service/user_likes_music.rb:13: void value expression
+app/services/user_service/user_likes_music.rb:13: syntax error, unexpected {, expecting '.' or &. or :: or '['
+app/services/user_service/user_likes_music.rb:13: void value expression
+app/services/user_service/user_likes_music.rb:13: syntax error, unexpected {, expecting '.' or &. or :: or '['
+app/services/user_service/user_likes_music.rb:13: void value expression
+app/services/user_service/user_likes_music.rb:13: syntax error, unexpected {, expecting '.' or &. or :: or '['
+app/services/user_service/user_likes_musics_getter.rb:8:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:28:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:51:31 +0900
+  
+NoMethodError (undefined method `includes' for UserService::UserLikesMusic:Class
+Did you mean?  include
+               include?):
+  
+app/services/user_service/user_likes_musics_getter.rb:8:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:28:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:52:03 +0900
+  
+TypeError (wrong argument type Symbol (expected Module)):
+  
+app/services/user_service/user_likes_musics_getter.rb:8:in `include'
+app/services/user_service/user_likes_musics_getter.rb:8:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:28:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:52:12 +0900
+  
+NoMethodError (undefined method `includes' for UserService::UserLikesMusic:Class
+Did you mean?  include
+               include?):
+  
+app/services/user_service/user_likes_musics_getter.rb:8:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:28:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:52:50 +0900
+  
+NoMethodError (undefined method `includes' for UserService::UserLikesMusic:Class
+Did you mean?  include
+               include?):
+  
+app/services/user_service/user_likes_musics_getter.rb:8:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:28:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:53:22 +0900
+  
+NoMethodError (undefined method `where' for UserService::UserLikesMusic:Class
+Did you mean?  when):
+  
+app/services/user_service/user_likes_musics_getter.rb:8:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:28:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:54:25 +0900
+  
+NoMethodError (undefined method `where' for UserService::UserLikesMusic:Class
+Did you mean?  when):
+  
+app/services/user_service/user_likes_musics_getter.rb:8:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:28:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:55:43 +0900
+  
+NoMethodError (undefined method `where' for UserService::UserLikesMusicPoster:Class
+Did you mean?  when):
+  
+app/services/user_service/user_likes_musics_getter.rb:8:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:28:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:55:45 +0900
+  
+NoMethodError (undefined method `where' for UserService::UserLikesMusicPoster:Class
+Did you mean?  when):
+  
+app/services/user_service/user_likes_musics_getter.rb:8:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_api.rb:28:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:56:10 +0900
+  [1m[36mUserLikesMusic Load (0.6ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:56:12 +0900
+  [1m[36mUserLikesMusic Load (1.3ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:56:12 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:56:14 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:56:15 +0900
+  [1m[36mUserLikesMusic Load (0.7ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:56:15 +0900
+  [1m[36mUserLikesMusic Load (0.7ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:56:16 +0900
+  [1m[36mUserLikesMusic Load (0.9ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:56:16 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:56:16 +0900
+  [1m[36mUserLikesMusic Load (1.0ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+Started POST "/api/v1/users/likesmusic?music_id=1" for ::1 at 2022-12-30 10:57:16 +0900
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12 AND `user_likes_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUserLikesMusic Create (0.8ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (12, 1, '2022-12-30 01:57:16.640368', '2022-12-30 01:57:16.640368')[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+  [1m[36mMusic Update All (0.8ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) + 1 WHERE `musics`.`id` = 1[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+Started POST "/api/v1/users/likesmusic?music_id=1" for ::1 at 2022-12-30 10:57:18 +0900
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12 AND `user_likes_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+Started POST "/api/v1/users/likesmusic?music_id=1" for ::1 at 2022-12-30 10:57:20 +0900
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mMusic Load (1.5ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12 AND `user_likes_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+Started POST "/api/v1/users/likesmusic?music_id=1" for ::1 at 2022-12-30 10:57:20 +0900
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12 AND `user_likes_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+Started POST "/api/v1/users/likesmusic?music_id=1" for ::1 at 2022-12-30 10:57:21 +0900
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mMusic Load (1.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12 AND `user_likes_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+Started POST "/api/v1/users/likesmusic?music_id=2" for ::1 at 2022-12-30 10:57:25 +0900
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 12 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mMusic Load (1.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12 AND `user_likes_musics`.`music_id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:17:in `unique_membership'
+  [1m[36mUserLikesMusic Create (0.9ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (12, 2, '2022-12-30 01:57:25.115297', '2022-12-30 01:57:25.115297')[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+  [1m[36mMusic Update All (0.9ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) + 1 WHERE `musics`.`id` = 2[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:10:in `call'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 10:57:28 +0900
+  [1m[36mUserLikesMusic Load (1.3ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+  [1m[36mMusic Load (1.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_music_json'
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_music_json'
+Started GET "/api/v1/users/canceltolikemusic?music_id=2" for ::1 at 2022-12-30 11:01:02 +0900
+Started DELETE "/api/v1/users/canceltolikemusic?music_id=2" for ::1 at 2022-12-30 11:01:12 +0900
+Started DELETE "/api/v1/users/canceltolikemusic?music_id=2" for ::1 at 2022-12-30 11:01:23 +0900
+  [1m[36mUserLikesMusic Load (0.7ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = NULL LIMIT 1[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:10:in `call'
+Started DELETE "/api/v1/users/canceltolikemusic?music_id=2" for ::1 at 2022-12-30 11:02:13 +0900
+  [1m[36mUserLikesMusic Load (0.6ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = NULL LIMIT 1[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:10:in `call'
+Started DELETE "/api/v1/users/canceltolikemusic?music_id=2" for ::1 at 2022-12-30 11:02:58 +0900
+  [1m[36mUserLikesMusic Load (0.5ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = NULL LIMIT 1[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:10:in `call'
+Started DELETE "/api/v1/users/canceltolikemusic?music_id=2" for ::1 at 2022-12-30 11:03:17 +0900
+  [1m[36mUserLikesMusic Load (0.7ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = NULL LIMIT 1[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:10:in `call'
+Started DELETE "/api/v1/users/canceltolikemusic?music_id=2" for ::1 at 2022-12-30 11:03:30 +0900
+  [1m[36mUserLikesMusic Load (1.3ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12 AND `user_likes_musics`.`music_id` = 2 LIMIT 1[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:10:in `call'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:11:in `call'
+  [1m[36mUserLikesMusic Destroy (1.0ms)[0m  [1m[31mDELETE FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = 6[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:11:in `call'
+  [1m[36mMusic Update All (0.9ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) - 1 WHERE `musics`.`id` = 2[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:11:in `call'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:11:in `call'
+Started DELETE "/api/v1/users/canceltolikemusic?music_id=2" for ::1 at 2022-12-30 11:03:31 +0900
+  [1m[36mUserLikesMusic Load (0.9ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12 AND `user_likes_musics`.`music_id` = 2 LIMIT 1[0m
+  ↳ app/services/user_service/user_likes_music_canceler.rb:10:in `call'
+Started GET "/api/v1/users/likedmusics" for ::1 at 2022-12-30 11:03:52 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 12[0m
+  ↳ app/services/user_service/user_likes_musics_getter.rb:9:in `map'
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_music_json'

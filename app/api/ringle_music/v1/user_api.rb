@@ -7,6 +7,28 @@ module RingleMusic
 
             resource :users do
 
+                params do
+                    requires :music_id
+                end
+                delete :canceltolikemusic do
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
+                    user_id = auth_result
+
+                    UserService::UserLikesMusicCanceler.call(user_id: user_id, music_id: params[:music_id])
+                end
+
+                params do
+                    requires :music_id
+                end
+                post :likesmusic do
+                    auth_result = AuthService::Authorizer.call(request: request)
+                    return auth_result if auth_result.is_a?(Hash)
+                    user_id = auth_result
+
+                    UserService::UserLikesMusicPoster.call(user_id: user_id, music_id: params[:music_id])
+                end
+
                 desc 'list of musics that user likes'
                 get :likedmusics do
 
@@ -14,7 +36,7 @@ module RingleMusic
                     return auth_result if auth_result.is_a?(Hash)
                     user_id = auth_result
 
-                    user_liked_list = UserService::UserLikesMusicGetter.call(user_id: user_id)
+                    user_liked_list = UserService::UserLikesMusicsGetter.call(user_id: user_id)
 
                 end
 
