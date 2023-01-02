@@ -28,7 +28,7 @@ module RingleMusic
                 params do
                     requires :group_id
                 end
-                delete :exitgroup do
+                delete do
 
                     UserGroupService::UserGroupExiter.call(request: request, group_id: params[:group_id])
 

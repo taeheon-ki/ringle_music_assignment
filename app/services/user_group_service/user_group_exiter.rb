@@ -13,7 +13,11 @@ module UserGroupService
             if group_user.nil?
                 return {success: false, message: "User is not a member of group"}
             else
-                group_user.destroy
+                begin
+                    group_user.destroy
+                rescue
+                    return {success: true, message: "There is no GroupUser to destroy"}
+                end
                 return {success: true}
             end
         end

@@ -19,7 +19,7 @@ module UserMusicService
                     return {success: false, message: "User Not Found"}
                 end
                 musics = user.user_musics.where(music_id: music_id).order(created_at: :asc).limit(1)
-                puts musics.empty?
+
                 if musics.empty?
                     result[:message] = "Not Existing Music So Cannot Destroy"
                     result[:success] = false
