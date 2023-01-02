@@ -11,7 +11,7 @@ module RingleMusic
                 params do
                     requires :group_name
                 end
-                post :create do
+                post do
 
                     GroupService::GroupCreater.call(group_name: params[:group_name])
 

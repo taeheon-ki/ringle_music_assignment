@@ -28,7 +28,7 @@ Relation Tables
 
 * UserLikesMusic (user_id, music_id) : User가 좋아한 Music
 
-APIs
+APIs (modified 2023/01/02)
 * app/api/ringle_music/v1에 구현
 * app/services 폴더에 modularization
 * User API
@@ -38,45 +38,48 @@ APIs
   * 로그인 : post
     * route : api/v1/signin
     * parameter : emali, password
-    * return : jwt_token. Below API들은 Authorization header에 bearer + jwt_token 필요
   * 유저 정보 조회하기 : get
-    * route : api/v1/users/getinfo
+    * route : api/v1/users/info
     * paramter : x
+* UserLikesMusic API - jwt_token 필요
   * 유저가 음악에 좋아요 누르기 : post
-    * route : api/v1/users/likesmusic
+    * route : api/v1/user_likes_musics
     * parameter : music_id
   * 유저가 음악에 누른 좋아요 취소하기 : delete
-    * route : api/v1/users/cancellikesmusic
+    * route : api/v1/user_likes_musics
     * paramter : music_id
   * 유저가 좋아하는 음악 리스트 보기: get
-    * route : api/v1/users/likedmusics
+    * route : api/v1/user_likes_musics
     * parameter : x
+* UserMusic API - jwt_token 필요
   * 유저의 플레이리스트 보기: get
-    * route : api/v1/uesrs/playlist
+    * route : api/v1/user_musics
     * parameter : x
-  * 유저가 속한 그룹의 플레이리스트 보기: get
-    * route : api/users/groupplaylist
-    * parameter : group_id
   * 유저의 플레이리스트에 음원 추가 : post
-    * route : api/v1/users/addmusic
+    * route : api/v1/user_musics
     * parameter : body에 json형식의 music_ids array
   * 유저의 플레이리스트에서 음원 제거 : delete
-    * route : api/v1/users/destroymusic
+    * route : api/v1/user_musics
     * parameter : body에 json형식의 music_ids array
-  * 유저가 그룹에 조인하기 : post
-    * route : api/v1/users/joingroup
-    * parameter : group_id
-  * 유저가 그룹에서 나가기 : delete
-    * route : api/v1/users/exitgroup
+* GroupMusic API - jwt_token 필요
+  * 유저가 속한 그룹의 플레이리스트 보기: get
+    * route : api/v1/group_musics
     * parameter : group_id
   * 유저가 그룹에 음원 추가하기 : post
-    * route : api/v1/users/addmusicstogroup
+    * route : api/v1/group_musics
     * parameter : group_id, body에 json형식의 music_ids array
   * 유저가 그룹에서 음원 제거 : delete
-    * route : api/v1/users/destroymusicsofgroup
+    * route : api/v1/group_musics
     * parameter : group_id, body에 json형식의 music_ids array
+* UserGroup API - jwt_token 필요
+  * 유저가 그룹에 조인하기 : post
+    * route : api/v1/user_groups
+    * parameter : group_id
+  * 유저가 그룹에서 나가기 : delete
+    * route : api/v1/user_groups
+    * parameter : group_id
   * 유저가 속한 그룹 리스트 보기: get
-    * route : api/v1/users/usergroups
+    * route : api/v1/user_groups
     * parameter : x
 * Music API
   * 음악 검색, 정렬한 리스트 보기: get
@@ -84,7 +87,7 @@ APIs
     * parameter : (optional)sort : (accuracy, likes, created_at 중 1), (optional)query
 * Group API
   * 그룹 추가하기 : post
-    * route : api/v1/groups/create
+    * route : api/v1/groups
     * parameter : group_name
   * 전체 그룹 리스트 보기 : get
     * route : api/v1/groups
