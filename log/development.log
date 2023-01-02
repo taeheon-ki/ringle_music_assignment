@@ -20462,3 +20462,69 @@ app/api/ringle_music/v1/user_api.rb:145:in `block (2 levels) in <class:UserApi>'
 Started POST "/api/v1/users/signin?email=taeheon.ki@ringleplus.com&password=[FILTERED]" for ::1 at 2022-12-30 18:06:13 +0900
   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'taeheon.ki@ringleplus.com' LIMIT 1[0m
   ↳ app/services/user_service/user_signin.rb:9:in `call'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started POST "/api/v1/users/signup?user_name=qldntdma87&email=xogjs19@naver.com&password=[FILTERED]" for ::1 at 2023-01-02 13:01:29 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'xogjs19@naver.com' LIMIT 1[0m
+  ↳ app/services/user_service/user_signup.rb:10:in `call'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_service/user_signup.rb:18:in `call'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'xogjs19@naver.com' LIMIT 1[0m
+  ↳ app/services/user_service/user_signup.rb:18:in `call'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `users` WHERE `users`.`user_name` = 'qldntdma87' LIMIT 1[0m
+  ↳ app/services/user_service/user_signup.rb:18:in `call'
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO `users` (`user_name`, `created_at`, `updated_at`, `email`, `encrypted_password`) VALUES ('qldntdma87', '2023-01-02 04:01:29.500968', '2023-01-02 04:01:29.500968', 'xogjs19@naver.com', '$2a$12$0rMNfoEt.0s4w3K/YnIfXeA4kuAkd/rnhzroJtj13kS3x9vhiJhyO')[0m
+  ↳ app/services/user_service/user_signup.rb:18:in `call'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_signup.rb:18:in `call'
+Started POST "/api/v1/users/signin?email=taeheon.ki@ringleplus.com&password=[FILTERED]" for ::1 at 2023-01-02 13:01:32 +0900
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'taeheon.ki@ringleplus.com' LIMIT 1[0m
+  ↳ app/services/user_service/user_signin.rb:9:in `call'
+Started POST "/api/v1/users/signin?email=xogjs19@naver.com&password=[FILTERED]" for ::1 at 2023-01-02 13:01:41 +0900
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`email` = 'xogjs19@naver.com' LIMIT 1[0m
+  ↳ app/services/user_service/user_signin.rb:9:in `call'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8" for ::1 at 2023-01-02 13:01:48 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:11:in `call'
+Started POST "/api/v1/groups/create?group_name=jazz" for ::1 at 2023-01-02 13:01:53 +0900
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` = 'jazz' LIMIT 1[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Create (1.1ms)[0m  [1m[32mINSERT INTO `groups` (`group_name`, `created_at`, `updated_at`) VALUES ('jazz', '2023-01-02 04:01:53.500355', '2023-01-02 04:01:53.500355')[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+Started POST "/api/v1/groups/create?group_name=rockband" for ::1 at 2023-01-02 13:02:03 +0900
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` = 'rockband' LIMIT 1[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Create (2.3ms)[0m  [1m[32mINSERT INTO `groups` (`group_name`, `created_at`, `updated_at`) VALUES ('rockband', '2023-01-02 04:02:03.194037', '2023-01-02 04:02:03.194037')[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+Started GET "/api/v1/groups" for ::1 at 2023-01-02 13:02:05 +0900
+  [1m[36mGroup Load (0.9ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
+  ↳ app/services/group_service/groups_getter.rb:8:in `call'
+Started POST "/api/v1/users/joingroup?group_id=1" for ::1 at 2023-01-02 13:02:24 +0900
+  [1m[36mGroup Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
+  ↳ app/services/user_service/user_group_joiner.rb:11:in `call'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mGroup Load (0.7ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUserGroup Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`group_id` = 1 AND `user_groups`.`user_id` = 1 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUserGroup Create (0.8ms)[0m  [1m[32mINSERT INTO `user_groups` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (1, 1, '2023-01-02 04:02:24.169215', '2023-01-02 04:02:24.169215')[0m
+  ↳ app/services/user_service/user_group_joiner.rb:14:in `call'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_group_joiner.rb:14:in `call'
+Started GET "/api/v1/users/usergroups" for ::1 at 2023-01-02 13:02:32 +0900
+  [1m[36mUserGroup Load (0.8ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 1[0m
+  ↳ app/services/user_service/user_groups_getter.rb:10:in `map'
+  [1m[36mGroup Load (1.2ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_group.rb:8:in `as_json_of_group'
