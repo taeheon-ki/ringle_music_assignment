@@ -6,7 +6,10 @@ module UserService
         end
 
         def call
-            do_authorization
+            auth_result = AuthService::Authorizer.call(request: @request)
+            return auth_result if auth_result.is_a?(Hash)
+            @user_id = auth_result
+            
             begin
                 if !Group.exists?(@group_id)
                     return {success:false, message: "Group not exists"}

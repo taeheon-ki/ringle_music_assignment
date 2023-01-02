@@ -6,7 +6,10 @@ module UserService
         end
 
         def call
-            do_authorization
+            auth_result = AuthService::Authorizer.call(request: @request)
+            return auth_result if auth_result.is_a?(Hash)
+            @user_id = auth_result
+            
             results = []
             @music_ids.each do |music_id|
                 result = { destroyed_music_id: music_id }
