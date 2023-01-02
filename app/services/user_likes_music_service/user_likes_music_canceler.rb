@@ -1,7 +1,8 @@
-module UserService
+module UserLikesMusicService
     class UserLikesMusicCanceler < ApplicationService
         def initialize(args)
             @request = args[:request]
+            @music_id = args[:music_id]
         end
 
         def call

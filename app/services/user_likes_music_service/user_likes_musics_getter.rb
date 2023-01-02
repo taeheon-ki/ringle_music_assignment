@@ -1,5 +1,5 @@
-module UserService
-    class UserGroupsGetter < ApplicationService
+module UserLikesMusicService
+    class UserLikesMusicsGetter < ApplicationService
         def initialize(args)
             @request = args[:request]
         end
@@ -9,8 +9,8 @@ module UserService
             return auth_result if auth_result.is_a?(Hash)
             @user_id = auth_result
             
-            user_groups = UserGroup.where(user_id: @user_id)
-            user_groups.map(&:as_json_of_group)
+            user_liked_list = UserLikesMusic.where(user_id: @user_id)
+            user_liked_list.map(&:as_json_of_music)
         end
     end
 end

@@ -1,5 +1,5 @@
-module UserService
-    class UserGroupMusicsDestroyer < ApplicationService
+module GroupMusicService
+    class GroupMusicsDestroyer < ApplicationService
         def initialize(args)
             @request = args[:request]
             @group_id = args[:group_id]

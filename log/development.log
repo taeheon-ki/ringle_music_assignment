@@ -20528,3 +20528,757 @@ Started GET "/api/v1/users/usergroups" for ::1 at 2023-01-02 13:02:32 +0900
   ↳ app/services/user_service/user_groups_getter.rb:10:in `map'
   [1m[36mGroup Load (1.2ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
   ↳ app/models/user_group.rb:8:in `as_json_of_group'
+Started GET "/api/v1/users/usergroups" for ::1 at 2023-01-02 15:33:06 +0900
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUserGroup Load (0.9ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 1[0m
+  ↳ app/services/user_service/user_groups_getter.rb:13:in `map'
+Started GET "/api/v1/users/usergroups" for ::1 at 2023-01-02 15:33:17 +0900
+  [1m[36mUserGroup Load (0.9ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 2[0m
+  ↳ app/services/user_service/user_groups_getter.rb:13:in `map'
+Started GET "/api/v1/groups" for ::1 at 2023-01-02 15:33:22 +0900
+  [1m[36mGroup Load (0.7ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
+  ↳ app/services/group_service/groups_getter.rb:8:in `call'
+Started POST "/api/v1/groups/create?group_name=rockband" for ::1 at 2023-01-02 15:33:27 +0900
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` = 'rockband' LIMIT 1[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Create (1.0ms)[0m  [1m[32mINSERT INTO `groups` (`group_name`, `created_at`, `updated_at`) VALUES ('rockband', '2023-01-02 06:33:27.126875', '2023-01-02 06:33:27.126875')[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+Started GET "/api/v1/groups" for ::1 at 2023-01-02 15:33:29 +0900
+  [1m[36mGroup Load (0.7ms)[0m  [1m[34mSELECT `groups`.* FROM `groups`[0m
+  ↳ app/services/group_service/groups_getter.rb:8:in `call'
+Started POST "/api/v1/users/joingroup?group_id=1" for ::1 at 2023-01-02 15:33:36 +0900
+  [1m[36mGroup Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
+  ↳ app/services/user_service/user_group_joiner.rb:14:in `call'
+Started POST "/api/v1/users/joingroup?group_id=2" for ::1 at 2023-01-02 15:33:39 +0900
+  [1m[36mGroup Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_service/user_group_joiner.rb:14:in `call'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mGroup Load (0.8ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUserGroup Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`group_id` = 2 AND `user_groups`.`user_id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUserGroup Create (0.6ms)[0m  [1m[32mINSERT INTO `user_groups` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (2, 2, '2023-01-02 06:33:39.339443', '2023-01-02 06:33:39.339443')[0m
+  ↳ app/services/user_service/user_group_joiner.rb:17:in `call'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_group_joiner.rb:17:in `call'
+Started GET "/api/v1/users/usergroups" for ::1 at 2023-01-02 15:33:41 +0900
+  [1m[36mUserGroup Load (0.7ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 2[0m
+  ↳ app/services/user_service/user_groups_getter.rb:13:in `map'
+  [1m[36mGroup Load (0.6ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:8:in `as_json_of_group'
+Started GET "/api/v1/users/playlist" for ::1 at 2023-01-02 15:37:41 +0900
+  [1m[36mUserMusic Load (1.2ms)[0m  [1m[34mSELECT `user_musics`.* FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_service/user_musics_getter.rb:12:in `map'
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` IN (1, 2, 3)[0m
+  ↳ app/services/user_service/user_musics_getter.rb:12:in `map'
+Started POST "/api/v1/user_musics" for ::1 at 2023-01-02 15:37:59 +0900
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/user_musics"):
+  
+Started POST "/api/v1/user_musics" for ::1 at 2023-01-02 15:38:19 +0900
+  
+SyntaxError (/Users/ki99/Ringle_Music_MVC/app/api/ringle_music/v1/user_music_api.rb:22: syntax error, unexpected end, expecting end-of-input):
+  
+app/api/ringle_music/v1/user_music_api.rb:22: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/v1/user_music_api.rb:22: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/v1/user_music_api.rb:22: syntax error, unexpected end, expecting end-of-input
+app/api/ringle_music/base.rb:7:in `<class:Base>'
+app/api/ringle_music/base.rb:2:in `<module:RingleMusic>'
+app/api/ringle_music/base.rb:1:in `<main>'
+config/routes.rb:3:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started POST "/api/v1/user_musics" for ::1 at 2023-01-02 15:38:27 +0900
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUserMusic Create (0.7ms)[0m  [1m[32mINSERT INTO `user_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 1, '2023-01-02 06:38:27.934686', '2023-01-02 06:38:27.934686')[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:18:in `block in call'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:20:in `block in call'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUserMusic Create (0.7ms)[0m  [1m[32mINSERT INTO `user_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 2, '2023-01-02 06:38:27.953329', '2023-01-02 06:38:27.953329')[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:18:in `block in call'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:20:in `block in call'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUserMusic Create (0.9ms)[0m  [1m[32mINSERT INTO `user_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 3, '2023-01-02 06:38:27.959901', '2023-01-02 06:38:27.959901')[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:18:in `block in call'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:20:in `block in call'
+Started POST "/api/v1/user_musics" for ::1 at 2023-01-02 15:38:30 +0900
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUserMusic Create (0.8ms)[0m  [1m[32mINSERT INTO `user_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 1, '2023-01-02 06:38:30.537641', '2023-01-02 06:38:30.537641')[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:18:in `block in call'
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:20:in `block in call'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUserMusic Create (1.1ms)[0m  [1m[32mINSERT INTO `user_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 2, '2023-01-02 06:38:30.549753', '2023-01-02 06:38:30.549753')[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:18:in `block in call'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:20:in `block in call'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUserMusic Create (1.4ms)[0m  [1m[32mINSERT INTO `user_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 3, '2023-01-02 06:38:30.557921', '2023-01-02 06:38:30.557921')[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:18:in `block in call'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:20:in `block in call'
+Started POST "/api/v1/user_musics" for ::1 at 2023-01-02 15:38:35 +0900
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUserMusic Create (0.7ms)[0m  [1m[32mINSERT INTO `user_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 1, '2023-01-02 06:38:35.270669', '2023-01-02 06:38:35.270669')[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:18:in `block in call'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:20:in `block in call'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUserMusic Create (0.8ms)[0m  [1m[32mINSERT INTO `user_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 2, '2023-01-02 06:38:35.279145', '2023-01-02 06:38:35.279145')[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:18:in `block in call'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:20:in `block in call'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUserMusic Create (0.7ms)[0m  [1m[32mINSERT INTO `user_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 3, '2023-01-02 06:38:35.286791', '2023-01-02 06:38:35.286791')[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:18:in `block in call'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:20:in `block in call'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mUserMusic Create (1.1ms)[0m  [1m[32mINSERT INTO `user_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 111, '2023-01-02 06:38:35.293124', '2023-01-02 06:38:35.293124')[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/user_music_service/user_musics_adder.rb:17:in `block in call'
+Started DELETE "/api/v1/users/destroymusic" for ::1 at 2023-01-02 15:40:55 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/users/destroymusic"):
+  
+Started DELETE "/api/v1/user_musics" for ::1 at 2023-01-02 15:41:17 +0900
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:17:in `block in call'
+Started DELETE "/api/v1/user_musics" for ::1 at 2023-01-02 15:41:29 +0900
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:17:in `block in call'
+  [1m[36mUserMusic Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 21 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:22:in `block in call'
+  [1m[36mCACHE UserMusic Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 21 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:23:in `block in call'
+Started DELETE "/api/v1/user_musics" for ::1 at 2023-01-02 15:41:36 +0900
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:17:in `block in call'
+  [1m[36mUserMusic Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:22:in `block in call'
+  [1m[36mCACHE UserMusic Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:23:in `block in call'
+  [1m[36mUserMusic Load (1.8ms)[0m  [1m[34mSELECT `user_musics`.* FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 1 ORDER BY `user_musics`.`created_at` ASC LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mUserMusic Destroy (1.1ms)[0m  [1m[31mDELETE FROM `user_musics` WHERE `user_musics`.`id` = 10[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:17:in `block in call'
+  [1m[36mUserMusic Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:22:in `block in call'
+  [1m[36mCACHE UserMusic Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:23:in `block in call'
+  [1m[36mUserMusic Load (2.2ms)[0m  [1m[34mSELECT `user_musics`.* FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 2 ORDER BY `user_musics`.`created_at` ASC LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mUserMusic Destroy (1.6ms)[0m  [1m[31mDELETE FROM `user_musics` WHERE `user_musics`.`id` = 11[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+Started DELETE "/api/v1/user_musics" for ::1 at 2023-01-02 15:42:13 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started DELETE "/api/v1/user_musics" for ::1 at 2023-01-02 15:42:15 +0900
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:17:in `block in call'
+  [1m[36mUserMusic Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:22:in `block in call'
+  [1m[36mCACHE UserMusic Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:23:in `block in call'
+  [1m[36mUserMusic Load (1.3ms)[0m  [1m[34mSELECT `user_musics`.* FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 1 ORDER BY `user_musics`.`created_at` ASC LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mUserMusic Destroy (0.8ms)[0m  [1m[31mDELETE FROM `user_musics` WHERE `user_musics`.`id` = 13[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:17:in `block in call'
+  [1m[36mUserMusic Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:22:in `block in call'
+  [1m[36mCACHE UserMusic Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 2 LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:23:in `block in call'
+  [1m[36mUserMusic Load (2.1ms)[0m  [1m[34mSELECT `user_musics`.* FROM `user_musics` WHERE `user_musics`.`user_id` = 2 AND `user_musics`.`music_id` = 2 ORDER BY `user_musics`.`created_at` ASC LIMIT 1[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mUserMusic Destroy (0.9ms)[0m  [1m[31mDELETE FROM `user_musics` WHERE `user_musics`.`id` = 14[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_music_service/user_musics_destroyer.rb:28:in `block in call'
+Started GET "/api/v1/users/playlist" for ::1 at 2023-01-02 15:43:26 +0900
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+NameError (uninitialized constant UserService::UserMusicsGetter):
+  
+app/api/ringle_music/v1/user_api.rb:50:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/user_musics" for ::1 at 2023-01-02 15:44:03 +0900
+  [1m[36mUserMusic Load (0.6ms)[0m  [1m[34mSELECT `user_musics`.* FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_getter.rb:13:in `map'
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` IN (3, 1, 2)[0m
+  ↳ app/services/user_music_service/user_musics_getter.rb:13:in `map'
+Started GET "/api/v1/user_musics" for ::1 at 2023-01-02 15:46:20 +0900
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mUserMusic Load (0.7ms)[0m  [1m[34mSELECT `user_musics`.* FROM `user_musics` WHERE `user_musics`.`user_id` = 2[0m
+  ↳ app/services/user_music_service/user_musics_getter.rb:13:in `map'
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` IN (3, 1, 2)[0m
+  ↳ app/services/user_music_service/user_musics_getter.rb:13:in `map'
+Started POST "/api/v1/users/likesmusic?music_id=18" for ::1 at 2023-01-02 15:51:41 +0900
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` IS NULL AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Create (0.8ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `created_at`, `updated_at`) VALUES (1, '2023-01-02 06:51:41.271762', '2023-01-02 06:51:41.271762')[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:13:in `call'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:13:in `call'
+Started POST "/api/v1/users/likesmusic?music_id=1" for ::1 at 2023-01-02 15:52:06 +0900
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Create (1.1ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `created_at`, `updated_at`) VALUES (2, '2023-01-02 06:52:06.084056', '2023-01-02 06:52:06.084056')[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:13:in `call'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:13:in `call'
+Started DELETE "/api/v1/users/cancellikesmusic?music_id=1" for ::1 at 2023-01-02 15:52:12 +0900
+  [1m[36mUserLikesMusic Load (1.2ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:13:in `call'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+  [1m[36mUserLikesMusic Destroy (1.7ms)[0m  [1m[31mDELETE FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+Started DELETE "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 15:53:44 +0900
+  
+ActionController::RoutingError (No route matches [DELETE] "/api/v1/user_likes_musics"):
+  
+Started DELETE "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 15:54:04 +0900
+  [1m[36mUserLikesMusic Load (0.6ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:13:in `call'
+Started POST "/api/v1/users/likesmusic?music_id=1" for ::1 at 2023-01-02 15:54:08 +0900
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Create (1.0ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `created_at`, `updated_at`) VALUES (2, '2023-01-02 06:54:08.766124', '2023-01-02 06:54:08.766124')[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:13:in `call'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_likes_music_poster.rb:13:in `call'
+Started DELETE "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 15:54:10 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:13:in `call'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+  [1m[36mUserLikesMusic Destroy (1.5ms)[0m  [1m[31mDELETE FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = 3[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+Started POST "/api/v1/users/likesmusic?music_id=1" for ::1 at 2023-01-02 15:55:04 +0900
+  
+NameError (uninitialized constant UserService::UserLikesMusicPoster):
+  
+app/api/ringle_music/v1/user_api.rb:36:in `block (2 levels) in <class:UserApi>'
+Started POST "/api/v1/userlikesmusics?music_id=1" for ::1 at 2023-01-02 15:55:31 +0900
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/userlikesmusics"):
+  
+Started POST "/api/v1/userlikesmusic?music_id=1" for ::1 at 2023-01-02 15:55:47 +0900
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/userlikesmusic"):
+  
+Started POST "/api/v1/userlikesmusics?music_id=1" for ::1 at 2023-01-02 15:56:04 +0900
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/userlikesmusics"):
+  
+Started POST "/api/v1/userlikesmusics?music_id=1" for ::1 at 2023-01-02 15:56:20 +0900
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/userlikesmusics"):
+  
+Started POST "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 15:56:24 +0900
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Create (0.7ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `created_at`, `updated_at`) VALUES (2, '2023-01-02 06:56:24.842260', '2023-01-02 06:56:24.842260')[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:13:in `call'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:13:in `call'
+Started POST "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 15:56:26 +0900
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:13:in `call'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 15:57:35 +0900
+  [1m[36mUserLikesMusic Load (0.5ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 1[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+Started POST "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 15:57:38 +0900
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:13:in `call'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 15:57:50 +0900
+  [1m[36mUserLikesMusic Load (0.7ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/models/user_likes_music.rb:8:in `as_json_of_music'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_likes_music_api.rb:31:in `block (2 levels) in <class:UserLikesMusicApi>'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 15:58:31 +0900
+  [1m[36mUserLikesMusic Load (0.5ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/models/user_likes_music.rb:8:in `as_json_of_music'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_likes_music_api.rb:31:in `block (2 levels) in <class:UserLikesMusicApi>'
+Started DELETE "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 15:59:04 +0900
+  [1m[36mUserLikesMusic Load (0.6ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:13:in `call'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+  [1m[36mUserLikesMusic Destroy (0.7ms)[0m  [1m[31mDELETE FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = 4[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+Started POST "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 15:59:06 +0900
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Create (1.0ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `created_at`, `updated_at`) VALUES (2, '2023-01-02 06:59:06.680750', '2023-01-02 06:59:06.680750')[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:13:in `call'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:13:in `call'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 15:59:11 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/models/user_likes_music.rb:8:in `as_json_of_music'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_likes_music_api.rb:31:in `block (2 levels) in <class:UserLikesMusicApi>'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 15:59:59 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/models/user_likes_music.rb:8:in `as_json_of_music'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_likes_music_api.rb:31:in `block (2 levels) in <class:UserLikesMusicApi>'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 16:00:09 +0900
+  [1m[36mUserLikesMusic Load (0.5ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:14:in `map'
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/models/user_likes_music.rb:8:in `as_json_of_music'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:14:in `map'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:14:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_likes_music_api.rb:31:in `block (2 levels) in <class:UserLikesMusicApi>'
+Started DELETE "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 16:00:25 +0900
+  [1m[36mUserLikesMusic Load (0.7ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:13:in `call'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+  [1m[36mUserLikesMusic Destroy (0.8ms)[0m  [1m[31mDELETE FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = 5[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:17:in `call'
+Started POST "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 16:00:31 +0900
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Create (1.0ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `created_at`, `updated_at`) VALUES (2, '2023-01-02 07:00:31.666244', '2023-01-02 07:00:31.666244')[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:13:in `call'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:13:in `call'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 16:01:09 +0900
+  [1m[36mUserLikesMusic Load (0.7ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/models/user_likes_music.rb:8:in `as_json_of_music'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_likes_music_api.rb:31:in `block (2 levels) in <class:UserLikesMusicApi>'
+Started POST "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 16:02:50 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` IS NULL LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Create (0.8ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `created_at`, `updated_at`) VALUES (2, '2023-01-02 07:02:51.104244', '2023-01-02 07:02:51.104244')[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:13:in `call'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:13:in `call'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 16:02:54 +0900
+  [1m[36mUserLikesMusic Load (5.1ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/models/user_likes_music.rb:8:in `as_json_of_music'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/user_likes_music_api.rb:31:in `block (2 levels) in <class:UserLikesMusicApi>'
+Started POST "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 16:04:27 +0900
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Create (0.7ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 1, '2023-01-02 07:04:28.042304', '2023-01-02 07:04:28.042304')[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:14:in `call'
+  [1m[36mMusic Update All (0.9ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) + 1 WHERE `musics`.`id` = 1[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:14:in `call'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:14:in `call'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 16:04:33 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_json_of_music'
+Started DELETE "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 16:04:43 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:14:in `call'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:18:in `call'
+  [1m[36mUserLikesMusic Destroy (1.7ms)[0m  [1m[31mDELETE FROM `user_likes_musics` WHERE `user_likes_musics`.`id` = 8[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:18:in `call'
+  [1m[36mMusic Update All (1.7ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) - 1 WHERE `musics`.`id` = 1[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:18:in `call'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_canceler.rb:18:in `call'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 16:04:45 +0900
+  [1m[36mUserLikesMusic Load (0.8ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 16:06:16 +0900
+  [1m[36mUserLikesMusic Load (0.7ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+Started POST "/api/v1/user_likes_musics?music_id=1" for ::1 at 2023-01-02 16:06:20 +0900
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2 AND `user_likes_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:18:in `unique_membership'
+  [1m[36mUserLikesMusic Create (0.7ms)[0m  [1m[32mINSERT INTO `user_likes_musics` (`user_id`, `music_id`, `created_at`, `updated_at`) VALUES (2, 1, '2023-01-02 07:06:20.394344', '2023-01-02 07:06:20.394344')[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:14:in `call'
+  [1m[36mMusic Update All (0.8ms)[0m  [1m[33mUPDATE `musics` SET `musics`.`user_likes_musics_count` = COALESCE(`musics`.`user_likes_musics_count`, 0) + 1 WHERE `musics`.`id` = 1[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:14:in `call'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_likes_music_service/user_likes_music_poster.rb:14:in `call'
+Started GET "/api/v1/user_likes_musics" for ::1 at 2023-01-02 16:06:22 +0900
+  [1m[36mUserLikesMusic Load (0.7ms)[0m  [1m[34mSELECT `user_likes_musics`.* FROM `user_likes_musics` WHERE `user_likes_musics`.`user_id` = 2[0m
+  ↳ app/services/user_likes_music_service/user_likes_musics_getter.rb:13:in `map'
+  [1m[36mMusic Load (0.6ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1 LIMIT 1[0m
+  ↳ app/models/user_likes_music.rb:8:in `as_json_of_music'
+Started GET "/api/v1/user_groups" for ::1 at 2023-01-02 16:09:44 +0900
+  [1m[36mUserGroup Load (0.5ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 2[0m
+  ↳ app/services/user_group_service/user_groups_getter.rb:13:in `map'
+  [1m[36mGroup Load (0.7ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:8:in `as_json_of_group'
+Started GET "/api/v1/user_groups" for ::1 at 2023-01-02 16:09:45 +0900
+  [1m[36mUserGroup Load (0.8ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 2[0m
+  ↳ app/services/user_group_service/user_groups_getter.rb:13:in `map'
+  [1m[36mGroup Load (0.6ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:8:in `as_json_of_group'
+Started DELETE "/api/v1/users/exitgroup?group_id=1" for ::1 at 2023-01-02 16:09:50 +0900
+  [1m[36mUserGroup Load (0.7ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 1 AND `user_groups`.`group_id` = 1 LIMIT 1[0m
+  ↳ app/services/user_service/user_group_exiter.rb:12:in `call'
+Started DELETE "/api/v1/users/exitgroup?group_id=2" for ::1 at 2023-01-02 16:09:53 +0900
+  [1m[36mUserGroup Load (0.7ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 1 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/services/user_service/user_group_exiter.rb:12:in `call'
+Started DELETE "/api/v1/users/exitgroup?group_id=2" for ::1 at 2023-01-02 16:10:06 +0900
+  [1m[36mUserGroup Load (1.4ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 2 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/services/user_service/user_group_exiter.rb:12:in `call'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_service/user_group_exiter.rb:16:in `call'
+  [1m[36mUserGroup Destroy (1.6ms)[0m  [1m[31mDELETE FROM `user_groups` WHERE `user_groups`.`id` = 2[0m
+  ↳ app/services/user_service/user_group_exiter.rb:16:in `call'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_group_exiter.rb:16:in `call'
+Started POST "/api/v1/users/joingroup?group_id=2" for ::1 at 2023-01-02 16:10:12 +0900
+  [1m[36mGroup Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_service/user_group_joiner.rb:14:in `call'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mGroup Load (0.9ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUserGroup Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`group_id` = 2 AND `user_groups`.`user_id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUserGroup Create (1.0ms)[0m  [1m[32mINSERT INTO `user_groups` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (2, 2, '2023-01-02 07:10:12.478359', '2023-01-02 07:10:12.478359')[0m
+  ↳ app/services/user_service/user_group_joiner.rb:17:in `call'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_group_joiner.rb:17:in `call'
+Started GET "/api/v1/user_groups" for ::1 at 2023-01-02 16:10:14 +0900
+  [1m[36mUserGroup Load (0.8ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 2[0m
+  ↳ app/services/user_group_service/user_groups_getter.rb:13:in `map'
+  [1m[36mGroup Load (1.0ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:8:in `as_json_of_group'
+Started POST "/api/v1/users/addmusicstogroup?group_id=2" for ::1 at 2023-01-02 16:13:39 +0900
+  [1m[36mUserGroup Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 2 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/services/user_service/user_group_musics_adder.rb:14:in `call'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_service/user_group_musics_adder.rb:21:in `block in call'
+  [1m[36mGroupMusic Create (0.7ms)[0m  [1m[32mINSERT INTO `group_musics` (`group_id`, `music_id`, `created_at`, `updated_at`, `user_id`) VALUES (2, 18, '2023-01-02 07:13:39.876840', '2023-01-02 07:13:39.876840', 2)[0m
+  ↳ app/services/user_service/user_group_musics_adder.rb:21:in `block in call'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/user_service/user_group_musics_adder.rb:21:in `block in call'
+Started POST "/api/v1/users/addmusicstogroup?group_id=2" for ::1 at 2023-01-02 16:13:44 +0900
+  [1m[36mUserGroup Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 2 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/services/user_service/user_group_musics_adder.rb:14:in `call'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/user_service/user_group_musics_adder.rb:21:in `block in call'
+  [1m[36mGroupMusic Create (1.7ms)[0m  [1m[32mINSERT INTO `group_musics` (`group_id`, `music_id`, `created_at`, `updated_at`, `user_id`) VALUES (2, 1, '2023-01-02 07:13:44.522464', '2023-01-02 07:13:44.522464', 2)[0m
+  ↳ app/services/user_service/user_group_musics_adder.rb:21:in `block in call'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_service/user_group_musics_adder.rb:21:in `block in call'
+  [1m[36mGroup Load (0.9ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_service/user_group_musics_adder.rb:23:in `block in call'
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM `group_musics` WHERE `group_musics`.`group_id` = 2[0m
+  ↳ app/services/user_service/user_group_musics_adder.rb:25:in `block in call'
+Started GET "/api/v1/users/groupplaylist?group_id=2" for ::1 at 2023-01-02 16:13:58 +0900
+  
+NameError (uninitialized constant UserService::UserGroupMusicsGetter
+Did you mean?  UserService::UserGroupMusicsAdder):
+  
+app/api/ringle_music/v1/user_api.rb:29:in `block (2 levels) in <class:UserApi>'
+Started GET "/api/v1/group_musics?group_id=2" for ::1 at 2023-01-02 16:14:18 +0900
+  [1m[36mUserGroup Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 2 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_getter.rb:13:in `call'
+  [1m[36mCACHE UserGroup Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 2 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_getter.rb:17:in `call'
+  [1m[36mGroupMusic Load (0.7ms)[0m  [1m[34mSELECT `group_musics`.* FROM `group_musics` WHERE `group_musics`.`user_id` = 2[0m
+  ↳ app/services/group_music_service/group_musics_getter.rb:21:in `map'
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE `musics`.`id` = 1[0m
+  ↳ app/services/group_music_service/group_musics_getter.rb:21:in `map'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/group_music.rb:13:in `as_json_of_group_music'
+Started POST "/api/v1/group_musics?group_id=2" for ::1 at 2023-01-02 16:15:36 +0900
+Started POST "/api/v1/group_musics?group_id=2" for ::1 at 2023-01-02 16:15:57 +0900
+  [1m[36mUserGroup Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 2 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:14:in `call'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:21:in `block in call'
+  [1m[36mGroupMusic Create (0.9ms)[0m  [1m[32mINSERT INTO `group_musics` (`group_id`, `music_id`, `created_at`, `updated_at`, `user_id`) VALUES (2, 1, '2023-01-02 07:15:57.925577', '2023-01-02 07:15:57.925577', 2)[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:21:in `block in call'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:21:in `block in call'
+  [1m[36mGroup Load (0.6ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:23:in `block in call'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `group_musics` WHERE `group_musics`.`group_id` = 2[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:25:in `block in call'
+Started POST "/api/v1/group_musics?group_id=2" for ::1 at 2023-01-02 16:16:02 +0900
+  [1m[36mUserGroup Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 2 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:14:in `call'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:21:in `block in call'
+  [1m[36mGroupMusic Create (2.8ms)[0m  [1m[32mINSERT INTO `group_musics` (`group_id`, `music_id`, `created_at`, `updated_at`, `user_id`) VALUES (2, 1, '2023-01-02 07:16:02.917673', '2023-01-02 07:16:02.917673', 2)[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:21:in `block in call'
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:21:in `block in call'
+  [1m[36mGroup Load (1.4ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:23:in `block in call'
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `group_musics` WHERE `group_musics`.`group_id` = 2[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:25:in `block in call'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:21:in `block in call'
+  [1m[36mGroupMusic Create (1.2ms)[0m  [1m[32mINSERT INTO `group_musics` (`group_id`, `music_id`, `created_at`, `updated_at`, `user_id`) VALUES (2, 18, '2023-01-02 07:16:02.931594', '2023-01-02 07:16:02.931594', 2)[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:21:in `block in call'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/group_music_service/group_musics_adder.rb:21:in `block in call'
+Started DELETE "/api/v1/users/destroymusicofgroup?group_id=2" for ::1 at 2023-01-02 16:17:41 +0900
+  
+NameError (uninitialized constant UserService::UserGroupMusicsDestroyer):
+  
+app/api/ringle_music/v1/user_api.rb:51:in `block (2 levels) in <class:UserApi>'
+Started DELETE "/api/v1/group_musics?group_id=2" for ::1 at 2023-01-02 16:17:57 +0900
+  [1m[36mUserGroup Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 2 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:14:in `call'
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:21:in `block in call'
+  [1m[36mGroupMusic Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM `group_musics` WHERE `group_musics`.`group_id` = 2 AND `group_musics`.`music_id` = 21 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:23:in `block in call'
+Started DELETE "/api/v1/group_musics?group_id=2" for ::1 at 2023-01-02 16:18:02 +0900
+  [1m[36mUserGroup Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`user_id` = 2 AND `user_groups`.`group_id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:14:in `call'
+  [1m[36mGroup Load (0.8ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:21:in `block in call'
+  [1m[36mGroupMusic Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `group_musics` WHERE `group_musics`.`group_id` = 2 AND `group_musics`.`music_id` = 1 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:23:in `block in call'
+  [1m[36mGroupMusic Load (1.1ms)[0m  [1m[34mSELECT `group_musics`.* FROM `group_musics` WHERE `group_musics`.`group_id` = 2 AND `group_musics`.`music_id` = 1 ORDER BY `group_musics`.`created_at` ASC LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:28:in `block in call'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:28:in `block in call'
+  [1m[36mGroupMusic Destroy (0.9ms)[0m  [1m[31mDELETE FROM `group_musics` WHERE `group_musics`.`id` = 2[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:28:in `block in call'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:28:in `block in call'
+  [1m[36mGroup Load (0.8ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:21:in `block in call'
+  [1m[36mGroupMusic Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM `group_musics` WHERE `group_musics`.`group_id` = 2 AND `group_musics`.`music_id` = 2 LIMIT 1[0m
+  ↳ app/services/group_music_service/group_musics_destroyer.rb:23:in `block in call'
+Started POST "/api/v1/users/joingroup?group_id=2" for ::1 at 2023-01-02 16:21:14 +0900
+  
+NameError (uninitialized constant UserService::UserGroupJoiner):
+  
+app/api/ringle_music/v1/user_api.rb:23:in `block (2 levels) in <class:UserApi>'
+Started POST "/api/v1/user_groups?group_id=2" for ::1 at 2023-01-02 16:21:28 +0900
+  [1m[36mGroup Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/services/user_group_service/user_group_joiner.rb:14:in `call'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mGroup Load (0.7ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUserGroup Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`group_id` = 2 AND `user_groups`.`user_id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/services/user_group_service/user_group_joiner.rb:17:in `call'
+Started POST "/api/v1/user_groups?group_id=1" for ::1 at 2023-01-02 16:21:32 +0900
+  [1m[36mGroup Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`id` = 1 LIMIT 1[0m
+  ↳ app/services/user_group_service/user_group_joiner.rb:14:in `call'
+Started POST "/api/v1/groups/create?group_name=hiphop" for ::1 at 2023-01-02 16:21:46 +0900
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`group_name` = 'hiphop' LIMIT 1[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mGroup Create (0.9ms)[0m  [1m[32mINSERT INTO `groups` (`group_name`, `created_at`, `updated_at`) VALUES ('hiphop', '2023-01-02 07:21:46.954406', '2023-01-02 07:21:46.954406')[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/group_service/group_creater.rb:9:in `call'
+Started POST "/api/v1/user_groups?group_id=3" for ::1 at 2023-01-02 16:21:50 +0900
+  [1m[36mGroup Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM `groups` WHERE `groups`.`id` = 3 LIMIT 1[0m
+  ↳ app/services/user_group_service/user_group_joiner.rb:14:in `call'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mGroup Load (1.3ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 3 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUserGroup Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM `user_groups` WHERE `user_groups`.`group_id` = 3 AND `user_groups`.`user_id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:14:in `unique_membership'
+  [1m[36mUserGroup Create (1.9ms)[0m  [1m[32mINSERT INTO `user_groups` (`group_id`, `user_id`, `created_at`, `updated_at`) VALUES (3, 2, '2023-01-02 07:21:50.301420', '2023-01-02 07:21:50.301420')[0m
+  ↳ app/services/user_group_service/user_group_joiner.rb:17:in `call'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/services/user_group_service/user_group_joiner.rb:17:in `call'
+Started GET "/api/v1/user_groups" for ::1 at 2023-01-02 16:22:45 +0900
+  [1m[36mUserGroup Load (0.6ms)[0m  [1m[34mSELECT `user_groups`.* FROM `user_groups` WHERE `user_groups`.`user_id` = 2[0m
+  ↳ app/services/user_group_service/user_groups_getter.rb:13:in `map'
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 2 LIMIT 1[0m
+  ↳ app/models/user_group.rb:8:in `as_json_of_group'
+  [1m[36mGroup Load (0.8ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 3 LIMIT 1[0m
+  ↳ app/models/user_group.rb:8:in `as_json_of_group'

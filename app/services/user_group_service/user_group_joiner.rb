@@ -1,4 +1,4 @@
-module UserService
+module UserGroupService
     class UserGroupJoiner < ApplicationService
         def initialize(args)
             @request = args[:request]
