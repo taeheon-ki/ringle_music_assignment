@@ -22,8 +22,8 @@ module GroupMusicService
                 rescue
                     return {success:false, message: "Group is not exist!"}
                 end
-                musics = group.group_musics.where(music_id: music_id).order(created_at: :asc).first
-                if musics.nil?
+                musics = group.group_musics.where(music_id: music_id).order(created_at: :asc).limit(1)
+                if musics.empty?
                     result[:message] = "Not Existing Music So Cannot Destroy"
                     result[:success] = false
                 else

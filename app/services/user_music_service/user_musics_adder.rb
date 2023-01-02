@@ -9,28 +9,30 @@ module UserMusicService
             auth_result = AuthService::Authorizer.call(request: @request)
             return auth_result if auth_result.is_a?(Hash)
             @user_id = auth_result
-            
-            results = []
-            @music_ids.each do |music_id|
-                result = { music_id_added: music_id}
-                begin
-                    UserMusic.create!({user_id: @user_id, music_id: music_id})
-                    user = User.find(@user_id)
-                    user_musics = user.user_musics
-                    if user_musics.count >= 100
-                        destroy_music = user_musics.order(created_at: :asc).first
-                        result[:destroyed] = destroy_music.as_json_of_music
-                        destroy_music.destroy
-                    end
-                    result[:success] = true
-                rescue => e
-                    result[:success] = false
-                    result[:message] = e.message
-                end
-                results << result
+            begin
+                UserMusic.insert_all(@music_ids.map {|music_id| {
+                    user_id: @user_id, music_id: music_id,
+                    created_at: Time.current, updated_at: Time.current}})
+            rescue => e
+                return {success: false, e_message: e.message ,message: "Insertion Failed! All Insertion Rollbacked"}
             end
+            result = {}
+            user = User.find(@user_id)
+            user_musics_count = user.user_musics.count
 
-            return results
+            num_musics_to_delete = user_musics_count = user_musics_count - 100
+            result[:success] = true
+            if num_musics_to_delete > 0
+                oldest_musics = UserMusic.includes(:music).order(created_at: :asc).limit(num_musics_to_delete)
+                result[:destroyed] = oldest_musics.map { |um| um.music.as_json(only: [:title, :artist, :album, :user_likes_musics_count])}
+                begin
+                    oldest_musics.destroy_all
+                rescue
+                    return {success: false, message: "Destroy_all Failed!"}
+                end
+            end
+            
+            result
         end
     end
 end

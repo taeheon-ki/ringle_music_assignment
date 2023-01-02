@@ -7,7 +7,7 @@ module RingleMusic
 
             resource :users do
 
-                get :getinfo do
+                get :info do
 
                     UserService::UserGetter.call(request: request)
 
