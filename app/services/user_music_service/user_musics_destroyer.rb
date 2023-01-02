@@ -1,4 +1,4 @@
-module UserService
+module UserMusicService
     class UserMusicsDestroyer < ApplicationService
         def initialize(args)
             @request = args[:request]

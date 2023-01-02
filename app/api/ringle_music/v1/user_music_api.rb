@@ -14,7 +14,20 @@ module RingleMusic
 
                     UserMusicService::UserMusicsAdder.call(request: request, music_ids: params[:music_ids])
                 end
+
+                desc 'delete music to playlist for user'
+                params do
+                    requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
+                end
+
+                delete do
+
+                    UserMusicService::UserMusicsDestroyer.call(request: request, music_ids: params[:music_ids])
+
+                end
             end
+
+            
         end
     end
 end
