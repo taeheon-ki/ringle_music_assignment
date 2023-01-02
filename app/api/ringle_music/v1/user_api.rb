@@ -119,7 +119,7 @@ module RingleMusic
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
 
-                delete :destroymusic do
+                delete :user_music do
 
                     UserService::UserMusicsDestroyer.call(request: request, music_ids: params[:music_ids])
 
