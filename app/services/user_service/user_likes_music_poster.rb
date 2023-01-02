@@ -13,12 +13,5 @@ module UserService
                 return {success: false, message: e.message}
             end
         end
-
-        private
-        def do_authorization
-            auth_result = AuthService::Authorizer.call(request: @request)
-            return auth_result if auth_result.is_a?(Hash)
-            @user_id = auth_result
-        end
     end
 end
