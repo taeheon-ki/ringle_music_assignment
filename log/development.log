@@ -21282,3 +21282,131 @@ Started GET "/api/v1/user_groups" for ::1 at 2023-01-02 16:22:45 +0900
   ↳ app/models/user_group.rb:8:in `as_json_of_group'
   [1m[36mGroup Load (0.8ms)[0m  [1m[34mSELECT `groups`.* FROM `groups` WHERE `groups`.`id` = 3 LIMIT 1[0m
   ↳ app/models/user_group.rb:8:in `as_json_of_group'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8" for ::1 at 2023-01-02 16:41:36 +0900
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mMusic Load (1.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언') OR title LIKE '%언%')[0m
+  ↳ app/services/music_service/music_searcher.rb:32:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8" for ::1 at 2023-01-02 16:41:51 +0900
+  [1m[36mMusic Load (1.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언') OR title LIKE '%언%')[0m
+  ↳ app/services/music_service/music_searcher.rb:32:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8" for ::1 at 2023-01-02 16:42:19 +0900
+  [1m[36mMusic Load (1.2ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언') OR title LIKE '%언%')[0m
+  ↳ app/services/music_service/music_searcher.rb:33:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8" for ::1 at 2023-01-02 16:44:22 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언') OR title LIKE '%언%' OR
+                    SOUNDEX(artist) = SOUNDEX('언') OR artist LIKE '%언%' OR
+                    SOUNDEX(album) = SOUNDEX('언') OR album LIKE '%언%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B4%EB%8B%88%EB%84%A4%EC%9D%B4%EB%B0%9C" for ::1 at 2023-01-02 16:44:34 +0900
+  [1m[36mMusic Load (1.1ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('어니네이발') OR title LIKE '%어니네이발%' OR
+                    SOUNDEX(artist) = SOUNDEX('어니네이발') OR artist LIKE '%어니네이발%' OR
+                    SOUNDEX(album) = SOUNDEX('어니네이발') OR album LIKE '%어니네이발%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B4%EB%8B%88%EB%84%A4" for ::1 at 2023-01-02 16:44:37 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('어니네') OR title LIKE '%어니네%' OR
+                    SOUNDEX(artist) = SOUNDEX('어니네') OR artist LIKE '%어니네%' OR
+                    SOUNDEX(album) = SOUNDEX('어니네') OR album LIKE '%어니네%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B4%EB%8B%88%EB%84%A4" for ::1 at 2023-01-02 16:44:41 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('어니네') OR title LIKE '%어니네%' OR
+                    SOUNDEX(artist) = SOUNDEX('어니네') OR artist LIKE '%어니네%' OR
+                    SOUNDEX(album) = SOUNDEX('어니네') OR album LIKE '%어니네%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B4%EB%8B%88%EB%84%A4%EC%9D%B4%EB%B0%9C" for ::1 at 2023-01-02 16:44:46 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('어니네이발') OR title LIKE '%어니네이발%' OR
+                    SOUNDEX(artist) = SOUNDEX('어니네이발') OR artist LIKE '%어니네이발%' OR
+                    SOUNDEX(album) = SOUNDEX('어니네이발') OR album LIKE '%어니네이발%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8%EB%8B%88%EB%84%A4%EC%9D%B4%EB%B0%9C" for ::1 at 2023-01-02 16:44:49 +0900
+  [1m[36mMusic Load (1.0ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언니네이발') OR title LIKE '%언니네이발%' OR
+                    SOUNDEX(artist) = SOUNDEX('언니네이발') OR artist LIKE '%언니네이발%' OR
+                    SOUNDEX(album) = SOUNDEX('언니네이발') OR album LIKE '%언니네이발%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8%EB%8B%88%EB%84%A4%EC%9D%B4%EB%B0%9C" for ::1 at 2023-01-02 16:44:50 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언니네이발') OR title LIKE '%언니네이발%' OR
+                    SOUNDEX(artist) = SOUNDEX('언니네이발') OR artist LIKE '%언니네이발%' OR
+                    SOUNDEX(album) = SOUNDEX('언니네이발') OR album LIKE '%언니네이발%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8%EB%8B%88%EB%84%A4%EC%9D%B4%EB%B0%9C%EA%B4%80" for ::1 at 2023-01-02 16:44:54 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언니네이발관') OR title LIKE '%언니네이발관%' OR
+                    SOUNDEX(artist) = SOUNDEX('언니네이발관') OR artist LIKE '%언니네이발관%' OR
+                    SOUNDEX(album) = SOUNDEX('언니네이발관') OR album LIKE '%언니네이발관%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8%EB%8B%88%EB%84%A4%EC%9D%B4%EB%B0%A9" for ::1 at 2023-01-02 16:44:58 +0900
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언니네이방') OR title LIKE '%언니네이방%' OR
+                    SOUNDEX(artist) = SOUNDEX('언니네이방') OR artist LIKE '%언니네이방%' OR
+                    SOUNDEX(album) = SOUNDEX('언니네이방') OR album LIKE '%언니네이방%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8%EB%8B%88%EB%84%A4%EC%9D%B4" for ::1 at 2023-01-02 16:45:00 +0900
+  [1m[36mMusic Load (1.5ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언니네이') OR title LIKE '%언니네이%' OR
+                    SOUNDEX(artist) = SOUNDEX('언니네이') OR artist LIKE '%언니네이%' OR
+                    SOUNDEX(album) = SOUNDEX('언니네이') OR album LIKE '%언니네이%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8%EB%8B%88" for ::1 at 2023-01-02 16:45:03 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언니') OR title LIKE '%언니%' OR
+                    SOUNDEX(artist) = SOUNDEX('언니') OR artist LIKE '%언니%' OR
+                    SOUNDEX(album) = SOUNDEX('언니') OR album LIKE '%언니%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8%EB%8B%88%EB%82%B4" for ::1 at 2023-01-02 16:45:07 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언니내') OR title LIKE '%언니내%' OR
+                    SOUNDEX(artist) = SOUNDEX('언니내') OR artist LIKE '%언니내%' OR
+                    SOUNDEX(album) = SOUNDEX('언니내') OR album LIKE '%언니내%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%96%B8%EB%82%B4" for ::1 at 2023-01-02 16:45:12 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('언내') OR title LIKE '%언내%' OR
+                    SOUNDEX(artist) = SOUNDEX('언내') OR artist LIKE '%언내%' OR
+                    SOUNDEX(album) = SOUNDEX('언내') OR album LIKE '%언내%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes&query=%EC%97%89%EB%8B%88%EB%84%A4" for ::1 at 2023-01-02 16:45:19 +0900
+  [1m[36mMusic Load (0.8ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('엉니네') OR title LIKE '%엉니네%' OR
+                    SOUNDEX(artist) = SOUNDEX('엉니네') OR artist LIKE '%엉니네%' OR
+                    SOUNDEX(album) = SOUNDEX('엉니네') OR album LIKE '%엉니네%')[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=likes" for ::1 at 2023-01-02 16:45:30 +0900
+  
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  
+app/services/music_service/music_searcher.rb:4:in `initialize'
+app/services/application_service.rb:4:in `new'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/music_api.rb:17:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?sort=likes" for ::1 at 2023-01-02 16:45:37 +0900
+  
+NoMethodError (undefined method `downcase' for nil:NilClass):
+  
+app/services/music_service/music_searcher.rb:4:in `initialize'
+app/services/application_service.rb:4:in `new'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/music_api.rb:17:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?sort=likes" for ::1 at 2023-01-02 16:46:05 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+  
+NoMethodError (undefined method `empty?' for nil:NilClass):
+  
+app/services/music_service/music_searcher.rb:38:in `block in sort'
+app/services/music_service/music_searcher.rb:36:in `sort_by'
+app/services/music_service/music_searcher.rb:36:in `sort'
+app/services/music_service/music_searcher.rb:20:in `call'
+app/services/application_service.rb:4:in `call'
+app/api/ringle_music/v1/music_api.rb:17:in `block (2 levels) in <class:MusicApi>'
+Started GET "/api/v1/musics?sort=likes" for ::1 at 2023-01-02 16:47:22 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:36:in `sort_by'
+Started GET "/api/v1/musics?sort=like" for ::1 at 2023-01-02 16:47:28 +0900
+  [1m[36mMusic Load (1.4ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:21:in `call'
+Started GET "/api/v1/musics?sort=like" for ::1 at 2023-01-02 16:47:31 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:21:in `call'
+Started GET "/api/v1/musics?sort=accuracy" for ::1 at 2023-01-02 16:47:36 +0900
+  [1m[36mMusic Load (0.7ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:21:in `call'
+Started GET "/api/v1/musics?sort=created_at" for ::1 at 2023-01-02 16:47:42 +0900
+  [1m[36mMusic Load (1.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics`[0m
+  ↳ app/services/music_service/music_searcher.rb:40:in `sort_by'
+Started GET "/api/v1/musics?sort=created_at&query=a" for ::1 at 2023-01-02 16:47:46 +0900
+  [1m[36mMusic Load (1.3ms)[0m  [1m[34mSELECT `musics`.* FROM `musics` WHERE (SOUNDEX(title) = SOUNDEX('a') OR title LIKE '%a%' OR
+                    SOUNDEX(artist) = SOUNDEX('a') OR artist LIKE '%a%' OR
+                    SOUNDEX(album) = SOUNDEX('a') OR album LIKE '%a%')[0m
+  ↳ app/services/music_service/music_searcher.rb:40:in `sort_by'

@@ -1,20 +1,21 @@
 module MusicService
     class MusicSearcher < ApplicationService
         def initialize(args)
-            @query = args[:query].downcase
+            @query = args[:query]
             @sort = args[:sort]
         end
     
         def call
             
-            musics = Music.all
-            musics = musics.select do |music|
-                
-                String::Similarity.levenshtein_distance(music.title, @query) <= 2 ||
-                String::Similarity.levenshtein_distance(music.artist, @query) <= 2 ||
-                String::Similarity.levenshtein_distance(music.album, @query) <= 2 ||
-                music.title.downcase.include?(@query) || music.artist.downcase.include?(@query) || music.album.downcase.include?(@query)
-            end if @query.present?
+            if @query.present?
+                musics = Music.where(
+                    "SOUNDEX(title) = SOUNDEX(:query) OR title LIKE :like_query OR
+                    SOUNDEX(artist) = SOUNDEX(:query) OR artist LIKE :like_query OR
+                    SOUNDEX(album) = SOUNDEX(:query) OR album LIKE :like_query",
+                    query: @query, like_query: "%#{@query}%")
+            else
+                musics = Music.all
+            end
             
             musics = sort(musics) if @sort.present?
             musics = musics.as_json(only: [:id, :title, :artist, :album, :user_likes_musics_count])
@@ -33,10 +34,7 @@ module MusicService
                 end
             when 'likes'
                 musics = musics.sort_by do |music|
-                    [-music.user_likes_musics_count,
-                    -String::Similarity.cosine(music.title, @query),
-                    -String::Similarity.cosine(music.artist, @query),
-                    -String::Similarity.cosine(music.album, @query)]
+                    [-music.user_likes_musics_count]
                 end
             when 'created_at'
                 musics = musics.sort_by do |music|
