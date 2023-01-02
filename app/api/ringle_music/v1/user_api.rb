@@ -44,12 +44,6 @@ module RingleMusic
 
                 end
 
-                desc 'get playlist of user'
-                get :playlist do
-
-                    UserService::UserMusicsGetter.call(request: request)
-
-                end
 
                 desc 'get group playlist which user joined'
                 params do
@@ -101,29 +95,7 @@ module RingleMusic
 
                     UserService::UserGroupExiter.call(request: request, group_id: params[:group_id])
 
-                end
-
-
-                desc 'add music to playlist for user'
-                params do
-                    requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
-                end
-                post :addmusic do
-
-                    UserService::UserMusicsAdder.call(request: request, music_ids: params[:music_ids])
-
-                end
-
-                desc 'delete music to playlist for user'
-                params do
-                    requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
-                end
-
-                delete :user_music do
-
-                    UserService::UserMusicsDestroyer.call(request: request, music_ids: params[:music_ids])
-
-                end
+                end          
             
                 params do 
                     requires :user_name, type: String

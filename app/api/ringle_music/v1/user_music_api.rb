@@ -25,6 +25,13 @@ module RingleMusic
                     UserMusicService::UserMusicsDestroyer.call(request: request, music_ids: params[:music_ids])
 
                 end
+
+                desc 'get playlist of user'
+                get do
+
+                    UserMusicService::UserMusicsGetter.call(request: request)
+
+                end
             end
 
             
