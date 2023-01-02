@@ -11,13 +11,14 @@ module UserMusicService
             @user_id = auth_result
             
             results = []
+            begin
+                user = User.find(@user_id)
+            rescue
+                return {success: false, message: "User Not Found"}
+            end
             @music_ids.each do |music_id|
                 result = { destroyed_music_id: music_id }
-                begin
-                    user = User.find(@user_id)
-                rescue
-                    return {success: false, message: "User Not Found"}
-                end
+                
                 musics = user.user_musics.where(music_id: music_id).order(created_at: :asc).limit(1)
 
                 if musics.empty?
