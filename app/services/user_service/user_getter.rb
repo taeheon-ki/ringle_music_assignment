@@ -6,7 +6,11 @@ module UserService
 
         def call
             do_authorization
-            user = User.find(@user_id).as_json(only: [:id, :user_name, :email])
+            begin
+                user = User.find(@user_id).as_json(only: [:id, :user_name, :email])
+            rescue => e
+                return {success: false, message: "User Not Found"}
+            end
         end
 
         private
