@@ -80,6 +80,7 @@ GEM
     childprocess (4.1.0)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    csv (3.0.9)
     date (3.3.3)
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -296,6 +297,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  csv
   devise
   grape
   grape-api-generator

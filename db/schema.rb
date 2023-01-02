@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_02_084047) do
+ActiveRecord::Schema.define(version: 2023_01_02_092124) do
 
   create_table "group_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "group_id", null: false
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 2023_01_02_084047) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_likes_musics_count", default: 0
+    t.index ["album"], name: "index_musics_on_album"
+    t.index ["artist"], name: "index_musics_on_artist"
+    t.index ["title"], name: "index_musics_on_title"
   end
 
   create_table "user_groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

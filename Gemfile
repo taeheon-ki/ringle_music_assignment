@@ -11,6 +11,7 @@ gem 'grape-entity'
 gem 'string-similarity'
 gem 'devise'
 gem 'jwt'
+gem 'csv'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
