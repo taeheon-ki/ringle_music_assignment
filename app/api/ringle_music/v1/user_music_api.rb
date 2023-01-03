@@ -22,7 +22,13 @@ module RingleMusic
 
                 delete do
 
-                    UserMusicService::UserMusicsDestroyer.call(request: request, music_ids: params[:music_ids])
+                    begin
+                        UserMusicService::UserMusicsDestroyer.call(request: request, music_ids: params[:music_ids])
+                    rescue ActiveRecord::RecordNotFound => e
+                        error!({ message: e.message })
+                    rescue => e
+                        error!({ message: e.message })
+                    end
 
                 end
 

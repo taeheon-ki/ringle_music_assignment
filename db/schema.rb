@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_02_092124) do
+ActiveRecord::Schema.define(version: 2023_01_03_035547) do
 
   create_table "group_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "group_id", null: false
@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 2023_01_02_092124) do
   create_table "user_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "music_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: "2023-01-03 03:58:58", null: false
+    t.datetime "updated_at", precision: 6, default: "2023-01-03 03:58:58", null: false
     t.index ["music_id"], name: "index_user_musics_on_music_id"
     t.index ["user_id"], name: "index_user_musics_on_user_id"
   end

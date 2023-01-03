@@ -11,11 +11,8 @@ module UserMusicService
             @user_id = auth_result
             
             results = []
-            begin
-                user = User.find(@user_id)
-            rescue
-                return {success: false, message: "User Not Found"}
-            end
+            user = User.find(@user_id)
+            raise ActiveRecord::RecordNotFound unless user
             @music_ids.each do |music_id|
                 result = { destroyed_music_id: music_id }
                 
@@ -26,7 +23,7 @@ module UserMusicService
                     result[:success] = false
                 else
                     begin
-                        musics.first.destroy
+                        musics.first.destroy!
                         result[:success] = true
                     rescue => e
                         result[:success] = false

@@ -11,8 +11,7 @@ module UserMusicService
             @user_id = auth_result
             begin
                 UserMusic.insert_all(@music_ids.map {|music_id| {
-                    user_id: @user_id, music_id: music_id,
-                    created_at: Time.current, updated_at: Time.current}})
+                    user_id: @user_id, music_id: music_id}})
             rescue => e
                 return {success: false, e_message: e.message ,message: "Insertion Failed! All Insertion Rollbacked"}
             end
