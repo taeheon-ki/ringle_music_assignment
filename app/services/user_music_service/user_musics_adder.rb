@@ -16,6 +16,7 @@ module UserMusicService
 
             result = {}
             user = User.find(@user_id)
+            
             user_musics_count = user.user_musics.count
 
             num_musics_to_delete = user_musics_count - 100

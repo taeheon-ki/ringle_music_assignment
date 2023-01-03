@@ -19,7 +19,7 @@ module GroupMusicService
                 @music_ids.map {|music_id| {
                 user_id: @user_id, music_id: music_id, group_id: @group_id}})
 
-
+            result = {}
             group = Group.find(@group_id)
 
             group_musics_count = group.group_musics.count
@@ -30,7 +30,7 @@ module GroupMusicService
                 oldest_musics = GroupMusic.includes(:music).order(created_at: :asc).limit(num_musics_to_delete)
                 result[:destroyed] = oldest_musics.map { |um| um.music.as_json(only: [:title, :artist, :album, :user_likes_musics_count])}
 
-                oldest_musics.destroy_all!
+                oldest_musics.destroy_all
 
             end
             
