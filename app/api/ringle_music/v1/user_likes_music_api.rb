@@ -12,7 +12,15 @@ module RingleMusic
                 end
                 delete do
 
-                    UserLikesMusicService::UserLikesMusicCanceler.call(request: request, music_id: params[:music_id])
+                    begin
+                        UserLikesMusicService::UserLikesMusicCanceler.call(request: request, music_id: params[:music_id])
+
+                    rescue ActiveRecord::RecordNotFound => e
+                        return {success: false, message: "User doesn't like Found"}
+                    rescue => e
+                        return {success: false, message: e.message}
+                    end
+                    
 
                 end
 
@@ -20,8 +28,13 @@ module RingleMusic
                     requires :music_id
                 end
                 post do
+                    begin
+                        UserLikesMusicService::UserLikesMusicPoster.call(request: request, music_id: params[:music_id])
 
-                    UserLikesMusicService::UserLikesMusicPoster.call(request: request, music_id: params[:music_id])
+                    rescue => e
+                        return {success: false, message: e.message}
+                    end
+                    
 
                 end
 
