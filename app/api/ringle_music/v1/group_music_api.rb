@@ -22,8 +22,13 @@ module RingleMusic
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
                 post do
-
-                    GroupMusicService::GroupMusicsAdder.call(request: request, group_id: params[:group_id], music_ids: params[:music_ids])
+                    begin
+                        GroupMusicService::GroupMusicsAdder.call(request: request, group_id: params[:group_id], music_ids: params[:music_ids])
+                    rescue ActiveRecord::RecordNotFound => e
+                        error!({ message: "Group Not Found" })
+                    rescue => e
+                        error!({ message: e.message })
+                    end
 
                 end
 
@@ -33,8 +38,13 @@ module RingleMusic
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
                 delete do
-
-                    GroupMusicService::GroupMusicsDestroyer.call(request: request, group_id: params[:group_id], music_ids: params[:music_ids])
+                    begin
+                        GroupMusicService::GroupMusicsDestroyer.call(request: request, group_id: params[:group_id], music_ids: params[:music_ids])
+                    rescue ActiveRecord::RecordNotFound => e
+                        error!({ message: "Group Not Found" })
+                    rescue => e
+                        error!({ message: e.message })
+                    end
 
                 end
             end

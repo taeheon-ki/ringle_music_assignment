@@ -11,8 +11,13 @@ module RingleMusic
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
                 post do
-
-                    UserMusicService::UserMusicsAdder.call(request: request, music_ids: params[:music_ids])
+                    begin
+                        UserMusicService::UserMusicsAdder.call(request: request, music_ids: params[:music_ids])
+                    rescue ActiveRecord::RecordNotFound => e
+                        error!({ message: "User Not Found" })
+                    rescue => e
+                        error!({ message: e.message })
+                    end
                 end
 
                 desc 'delete music to playlist for user'
@@ -25,7 +30,7 @@ module RingleMusic
                     begin
                         UserMusicService::UserMusicsDestroyer.call(request: request, music_ids: params[:music_ids])
                     rescue ActiveRecord::RecordNotFound => e
-                        error!({ message: e.message })
+                        error!({ message: "User Not Found" })
                     rescue => e
                         error!({ message: e.message })
                     end

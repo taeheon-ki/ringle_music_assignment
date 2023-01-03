@@ -15,26 +15,22 @@ module GroupMusicService
                 return {success: false, message: "user is not existing in group"}
             end
             results = []
-            begin
-                group = Group.find(@group_id)
-            rescue
-                return {success:false, message: "Group is not exist!"}
-            end
+
+            group = Group.find(@group_id)
+            raise ActiveRecord::RecordNotFound unless group
+            
             @music_ids.each do |music_id|
                 result = {destroyed_music_id: music_id}
                 
                 musics = group.group_musics.where(music_id: music_id).order(created_at: :asc).limit(1)
+                
                 if musics.empty?
                     result[:message] = "Not Existing Music So Cannot Destroy"
                     result[:success] = false
                 else
-                    begin
-                        musics.first.destroy
-                        result[:success] = true
-                    rescue => e
-                        result[:success] = false
-                        result[:message] = e.message
-                    end
+
+                    musics.first.destroy
+                    result[:success] = true
                     
                 end
                 results << result

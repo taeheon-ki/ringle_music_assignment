@@ -12,7 +12,7 @@ module UserMusicService
             
             results = []
             user = User.find(@user_id)
-            raise ActiveRecord::RecordNotFound unless user
+
             @music_ids.each do |music_id|
                 result = { destroyed_music_id: music_id }
                 
@@ -22,14 +22,10 @@ module UserMusicService
                     result[:message] = "Not Existing Music So Cannot Destroy"
                     result[:success] = false
                 else
-                    begin
-                        musics.first.destroy!
-                        result[:success] = true
-                    rescue => e
-                        result[:success] = false
-                        result[:message] = e.message
-                    end
-                    
+
+                    musics.first.destroy!
+                    result[:success] = true
+
                 end
                 results << result
             end
