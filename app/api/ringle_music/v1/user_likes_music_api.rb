@@ -41,8 +41,9 @@ module RingleMusic
                 desc 'list of musics that user likes'
                 get do
 
-                    UserLikesMusicService::UserLikesMusicsGetter.call(request: request)
-
+                    musics = UserLikesMusicService::UserLikesMusicsGetter.call(request: request)
+                    present musics, with: Entities::MusicEntity
+                    
                 end
             end
         end

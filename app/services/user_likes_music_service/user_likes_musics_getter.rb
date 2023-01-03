@@ -9,8 +9,7 @@ module UserLikesMusicService
             return auth_result if auth_result.is_a?(Hash)
             @user_id = auth_result
             
-            user_liked_list = UserLikesMusic.where(user_id: @user_id)
-            user_liked_list.map(&:as_json_of_music)
+            music_list = Music.joins(:user_likes_musics).where('user_likes_musics.user_id = ?', @user_id)
         end
     end
 end
