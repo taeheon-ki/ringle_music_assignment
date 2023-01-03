@@ -8,8 +8,13 @@ module RingleMusic
             resource :users do
 
                 get :info do
-
-                    UserService::UserGetter.call(request: request)
+                    begin
+                        UserService::UserGetter.call(request: request)
+                    rescue ActiveRecord::RecordNotFound => e
+                        return {success: false, message: "User Not Found"}
+                    rescue => e
+                        return {success: false, message: e.message}
+                    end
 
                 end
                  
