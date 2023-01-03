@@ -10,7 +10,7 @@ module UserGroupService
             @user_id = auth_result
             
             user_groups = UserGroup.where(user_id: @user_id)
-            user_groups.map(&:as_json_of_group)
+
         end
     end
 end

@@ -11,8 +11,15 @@ module RingleMusic
                     requires :group_id
                 end
                 get do
+                    begin
+                        group_musics = GroupMusicService::GroupMusicsGetter.call(request: request, group_id: params[:group_id])
+                    rescue ActiveRecord::RecordNotFound  => e
+                        error!({ message: e.message})
+                    rescue => e
+                        error!({ message: e.message})
+                    end
 
-                    GroupMusicService::GroupMusicsGetter.call(request: request, group_id: params[:group_id])
+                    present group_musics
 
                 end
 

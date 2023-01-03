@@ -9,7 +9,8 @@ module RingleMusic
 
                 get do
 
-                    UserGroupService::UserGroupsGetter.call(request: request)
+                    user_groups = UserGroupService::UserGroupsGetter.call(request: request)
+                    present user_groups, with: Entities::UserGroupEntity
 
                 end
 
