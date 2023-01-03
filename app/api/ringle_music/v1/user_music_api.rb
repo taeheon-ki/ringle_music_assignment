@@ -40,7 +40,8 @@ module RingleMusic
                 desc 'get playlist of user'
                 get do
 
-                    UserMusicService::UserMusicsGetter.call(request: request)
+                    musics = UserMusicService::UserMusicsGetter.call(request: request)
+                    present musics, with: Entities::MusicEntity
 
                 end
             end
