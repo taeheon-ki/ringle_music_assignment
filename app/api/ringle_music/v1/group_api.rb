@@ -12,9 +12,11 @@ module RingleMusic
                     requires :group_name
                 end
                 post do
-
-                    GroupService::GroupCreater.call(group_name: params[:group_name])
-
+                    begin
+                        GroupService::GroupCreater.call(group_name: params[:group_name])
+                    rescue => e
+                        return {success: false, message: e.message}
+                    end
                 end
 
                 desc 'List group'

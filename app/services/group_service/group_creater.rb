@@ -5,12 +5,10 @@ module GroupService
         end
 
         def call
-            begin
-                Group.create!(group_name: @group_name)
-                return {success: true}
-            rescue => e
-                return {success: false, message: e.message}
-            end
+
+            Group.create!(group_name: @group_name)
+            return {success: true, created_group: @group_name}
+
         end
     end
 end
