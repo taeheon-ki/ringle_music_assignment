@@ -25,8 +25,11 @@ module RingleMusic
                     requires :password, type: String
                 end
                 post "signup" do
-
-                    UserService::UserSignup.call(user_name: params[:user_name], email: params[:email], password: params[:password])
+                    begin
+                        UserService::UserSignup.call(user_name: params[:user_name], email: params[:email], password: params[:password])
+                    rescue => e
+                        return {success: false, message: e.message}
+                    end
 
                 end
 
@@ -35,8 +38,11 @@ module RingleMusic
                     requires :password, type: String
                 end
                 post "signin" do
-
-                    UserService::UserSignin.call(email: params[:email], password: params[:password])
+                    begin
+                        UserService::UserSignin.call(email: params[:email], password: params[:password])
+                    rescue => e
+                        return {success: false, message: e.message}
+                    end
                     
                 end
             end
