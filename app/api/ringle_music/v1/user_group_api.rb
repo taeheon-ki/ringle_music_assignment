@@ -18,8 +18,13 @@ module RingleMusic
                     requires :group_id
                 end
                 post do
+                    begin
+                        UserGroupService::UserGroupJoiner.call(request: request, group_id: params[:group_id])
+                    rescue => e
+                        return {success: false, message: e.message}
+                    end
 
-                    UserGroupService::UserGroupJoiner.call(request: request, group_id: params[:group_id])
+                    return {success: true}
 
                 end
 
@@ -30,7 +35,15 @@ module RingleMusic
                 end
                 delete do
 
-                    UserGroupService::UserGroupExiter.call(request: request, group_id: params[:group_id])
+                    begin
+                        UserGroupService::UserGroupExiter.call(request: request, group_id: params[:group_id])
+                    rescue ActiveRecord::RecordNotFound => e
+                        return {success: false, message: "UserGroup Not Found"}
+                    rescue => e
+                        return {success: false, message: e.message}
+                    end
+                    
+                    return {success: true}
 
                 end     
             end

@@ -10,16 +10,10 @@ module UserGroupService
             @user_id = auth_result
 
             group_user = UserGroup.find_by(user_id: @user_id, group_id: @group_id)
-            if group_user.nil?
-                return {success: false, message: "User is not a member of group"}
-            else
-                begin
-                    group_user.destroy
-                rescue
-                    return {success: true, message: "There is no GroupUser to destroy"}
-                end
-                return {success: true}
-            end
+            raise ActiveRecord::RecordNotFound if group_user.nil?
+
+            group_user.destroy!
+            
         end
     end
 end
