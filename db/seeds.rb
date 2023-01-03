@@ -5,10 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+## Make Musics
+require 'csv'
 
 User.all.map {|user| user.destroy}
 Group.all.map {|group| group.destroy}
 Music.all.map {|music| music.destroy}
+
+
+music_count = 1500
+sample_music_file =  Rails.root.join("config", "musics", "music.csv")
+music_csvs = CSV.parse(File.read(sample_music_file), :headers=>true)
+music_csv_sampled = music_csvs[0..(music_count-1)]
+music_csv_sampled.map { |music_csv|
+    music_csv = music_csv.to_hash
+    Music.create(title: music_csv["title"], artist: music_csv["artist_name"], album: music_csv["album_name"])
+}
+
 
 Music.create({title: "가장 보통의 존재", artist: "언니네이발관", album: "가장 보통의 존재"})
 Music.create({title: "아름다운 것", artist: "언니네이발관", album: "가장 보통의 존재"})

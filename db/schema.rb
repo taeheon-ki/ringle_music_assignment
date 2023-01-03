@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_02_084047) do
+ActiveRecord::Schema.define(version: 2023_01_03_043029) do
 
   create_table "group_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "group_id", null: false
     t.bigint "music_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: "2023-01-03 04:30:46", null: false
+    t.datetime "updated_at", precision: 6, default: "2023-01-03 04:30:46", null: false
     t.bigint "user_id", null: false
     t.index ["group_id"], name: "index_group_musics_on_group_id"
     t.index ["music_id"], name: "index_group_musics_on_music_id"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(version: 2023_01_02_084047) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_likes_musics_count", default: 0
+    t.index ["album"], name: "index_musics_on_album"
+    t.index ["artist"], name: "index_musics_on_artist"
+    t.index ["title"], name: "index_musics_on_title"
   end
 
   create_table "user_groups", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -58,8 +61,8 @@ ActiveRecord::Schema.define(version: 2023_01_02_084047) do
   create_table "user_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "music_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", precision: 6, default: "2023-01-03 03:58:58", null: false
+    t.datetime "updated_at", precision: 6, default: "2023-01-03 03:58:58", null: false
     t.index ["music_id"], name: "index_user_musics_on_music_id"
     t.index ["user_id"], name: "index_user_musics_on_user_id"
   end
