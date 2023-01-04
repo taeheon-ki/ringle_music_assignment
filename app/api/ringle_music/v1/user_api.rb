@@ -40,6 +40,8 @@ module RingleMusic
                 post "signin" do
                     begin
                         UserService::UserSignin.call(email: params[:email], password: params[:password])
+                    rescue UserService::UserSignin::ValidationError => e
+                        return {success: false, ErrorType: "ValidationError", message: e.message}
                     rescue => e
                         return {success: false, message: e.message}
                     end
