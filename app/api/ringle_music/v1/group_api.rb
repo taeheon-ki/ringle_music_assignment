@@ -22,8 +22,8 @@ module RingleMusic
                 desc 'List group'
                 get do
 
-                    GroupService::GroupsGetter.call()
-                    
+                    groups = GroupService::GroupsGetter.call()
+                    present groups, with: Entities::GroupEntity
                 end
             end
         end
