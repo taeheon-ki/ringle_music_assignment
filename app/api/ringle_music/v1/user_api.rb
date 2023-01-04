@@ -4,12 +4,14 @@ module RingleMusic
             version 'v1', using: :path
             format :json
             prefix :api
+            helpers AuthHelper
 
             resource :users do
 
                 get :info do
+                    authenticate!
                     begin
-                        UserService::UserGetter.call(request: request)
+                        UserService::UserGetter.call(current_user)
                     rescue ActiveRecord::RecordNotFound => e
                         return {success: false, message: "User Not Found"}
                     rescue => e

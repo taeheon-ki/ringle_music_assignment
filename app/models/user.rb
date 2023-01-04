@@ -15,7 +15,7 @@ class User < ApplicationRecord
   def self.create_jwt_token(user_id)
     payload = {
       user_id: user_id,
-      exp_date: Time.new.to_i + 10.hours
+      exp_date: Time.new.to_i + 5.hours
     }
     token = JWT.encode(payload, SOME_SECRET_KEY, 'HS256')
     return token
@@ -25,16 +25,19 @@ class User < ApplicationRecord
     begin
     decoded = JWT.decode(jwt_token, SOME_SECRET_KEY, true, algorithm: 'HS256')
     rescue => e
-      return {success:false, message: "JWT Verification failed!"}
+      return nil
     end
 
     # Check that the signature is valid
     if JWT.decode(jwt_token, SOME_SECRET_KEY, false, algorithm: 'HS256') == decoded
+      user_id = decoded[0]["user_id"]
+      return nil if decoded[0]["exp_date"].to_i < Time.now.to_i
+
       # If the signature is valid, return the payload as a hash
-      return decoded[0].with_indifferent_access
+      return User.find_by(id: user_id)
     else
       # If the signature is not valid, return an empty hash
-      return {}
+      return nil
     end
   end
 
