@@ -7,7 +7,7 @@ module UserLikesMusicService
         def call
             
 
-            music_list = Music.joins(:user_likes_musics).where('user_likes_musics.user_id = ?', @user_id)
+            music_list = Music.joins(:user_likes_musics).where('user_likes_musics.user_id = ?', @current_user.id)
 
         end
     end

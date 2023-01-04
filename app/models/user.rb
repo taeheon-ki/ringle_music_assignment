@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
-  validates :user_name, uniqueness: { message: "Groupname must be unique"}
+  validates :user_name, uniqueness: { message: "user_name must be unique"}
 
   has_many :user_musics
   has_many :user_likes_musics

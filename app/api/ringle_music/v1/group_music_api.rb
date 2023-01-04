@@ -49,7 +49,6 @@ module RingleMusic
                         rescue => e
                             error!({ message: e.message })
                         end
-
                     end
                 end
             end
