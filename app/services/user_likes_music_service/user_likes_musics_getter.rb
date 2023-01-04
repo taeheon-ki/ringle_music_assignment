@@ -6,8 +6,9 @@ module UserLikesMusicService
 
         def call
             
-            user_liked_list = UserLikesMusic.where(user_id: @current_user.id)
-            user_liked_list.map(&:as_json_of_music)
+
+            music_list = Music.joins(:user_likes_musics).where('user_likes_musics.user_id = ?', @user_id)
+
         end
     end
 end

@@ -7,12 +7,15 @@ module GroupMusicService
 
         def call
 
-            unless UserGroup.exists?(user_id: @current_user.id, group_id: @group_id)
-                return {success: false, message: "user is not existing in group"}
-            end
+
             
-            user_liked_list = GroupMusic.includes(:music).where(user_id: @current_user.id)
-            user_liked_list.map(&:as_json_of_group_music)
+            raise ActiveRecord::RecordNotFound , "UserGroup Not Exists" unless UserGroup.exists?(user_id: @user_id, group_id: @group_id)
+
+
+            puts @group_id
+            
+            group_musics = Music.joins(:group_musics).select('musics.id, musics.title, musics.artist, musics.album, group_musics.user_id').where('group_musics.group_id = ?', @group_id)
+
         end
     end
 end

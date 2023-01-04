@@ -1,5 +1,6 @@
 module UserService
     class UserSignin < ApplicationService
+        class ValidationError < StandardError; end
         def initialize(args)
             @email = args[:email]
             @password = args[:password]
@@ -7,19 +8,10 @@ module UserService
 
         def call
             user = User.find_by(email: @email)
-            if user.nil?
-                return {
-                success: false,
-                message: "User not found",
-                }
-            end
+            raise ValidationError, "User Not Exists" if user.nil?
+
             is_valid = user.valid_password?(@password)
-            unless is_valid
-                return {
-                    success: false,
-                    message: "not valid",
-                }
-            end
+            raise ValidationError, "User is not Valid" unless is_valid
 
             jwt_token = User.create_jwt_token(user.id)
 

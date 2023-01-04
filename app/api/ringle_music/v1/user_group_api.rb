@@ -11,7 +11,8 @@ module RingleMusic
                 get do
                     authenticate!
 
-                    UserGroupService::UserGroupsGetter.call(current_user)
+                    user_groups = UserGroupService::UserGroupsGetter.call(request: request)
+                    present user_groups, with: Entities::UserGroupEntity
 
                 end
 

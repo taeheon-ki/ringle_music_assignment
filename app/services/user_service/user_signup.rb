@@ -8,12 +8,7 @@ module UserService
 
         def call
             user = User.find_by(email: @email)
-            if user 
-                return {
-                    success: false,
-                    message: "User Email Not Usable"
-                }
-            end
+            raise StandardError, "User Email Not Usable" if user
             
             user = User.create!({
                 user_name: @user_name,

@@ -14,12 +14,17 @@ module RingleMusic
                 get do
                     authenticate!
                     begin
-                        GroupMusicService::GroupMusicsGetter.call(current_user, params[:group_id])
+                        group_musics = GroupMusicService::GroupMusicsGetter.call(request: request, group_id: params[:group_id])
+                    rescue ActiveRecord::RecordNotFound  => e
+                        error!({ message: e.message})
                     rescue => e
-                        error!({ message: e.message })
+                        error!({ message: e.message})
                     end
 
+                    present group_musics
+
                 end
+
 
                 route_param :group_id, type: Integer do
                     desc 'add music to playlist for group'
