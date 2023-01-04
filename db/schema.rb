@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_03_043029) do
+ActiveRecord::Schema.define(version: 2023_01_04_085249) do
 
   create_table "group_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "group_id", null: false
     t.bigint "music_id", null: false
-    t.datetime "created_at", precision: 6, default: "2023-01-03 04:30:46", null: false
-    t.datetime "updated_at", precision: 6, default: "2023-01-03 04:30:46", null: false
+    t.datetime "created_at", precision: 6, default: "2023-01-04 08:53:46", null: false
+    t.datetime "updated_at", precision: 6, default: "2023-01-04 08:53:46", null: false
     t.bigint "user_id", null: false
     t.index ["group_id"], name: "index_group_musics_on_group_id"
     t.index ["music_id"], name: "index_group_musics_on_music_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2023_01_03_043029) do
     t.string "group_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
   end
 
   create_table "musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -61,8 +62,8 @@ ActiveRecord::Schema.define(version: 2023_01_03_043029) do
   create_table "user_musics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "music_id", null: false
-    t.datetime "created_at", precision: 6, default: "2023-01-03 03:58:58", null: false
-    t.datetime "updated_at", precision: 6, default: "2023-01-03 03:58:58", null: false
+    t.datetime "created_at", precision: 6, default: "2023-01-04 08:53:46", null: false
+    t.datetime "updated_at", precision: 6, default: "2023-01-04 08:53:46", null: false
     t.index ["music_id"], name: "index_user_musics_on_music_id"
     t.index ["user_id"], name: "index_user_musics_on_user_id"
   end
