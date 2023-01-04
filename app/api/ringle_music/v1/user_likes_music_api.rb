@@ -4,6 +4,7 @@ module RingleMusic
             version 'v1', using: :path
             format :json
             prefix :api
+            helpers AuthHelper
 
             resource :user_likes_musics do
 
@@ -11,9 +12,10 @@ module RingleMusic
                     requires :music_id
                 end
                 delete do
+                    authenticate!
 
                     begin
-                        UserLikesMusicService::UserLikesMusicCanceler.call(request: request, music_id: params[:music_id])
+                        UserLikesMusicService::UserLikesMusicCanceler.call(current_user, params[:music_id])
 
                     rescue ActiveRecord::RecordNotFound => e
                         return {success: false, message: "User doesn't like Found"}
@@ -28,8 +30,9 @@ module RingleMusic
                     requires :music_id
                 end
                 post do
+                    authenticate!
                     begin
-                        UserLikesMusicService::UserLikesMusicPoster.call(request: request, music_id: params[:music_id])
+                        UserLikesMusicService::UserLikesMusicPoster.call(current_user, params[:music_id])
 
                     rescue => e
                         return {success: false, message: e.message}
@@ -40,8 +43,9 @@ module RingleMusic
 
                 desc 'list of musics that user likes'
                 get do
+                    authenticate!
 
-                    UserLikesMusicService::UserLikesMusicsGetter.call(request: request)
+                    UserLikesMusicService::UserLikesMusicsGetter.call(current_user)
 
                 end
             end
