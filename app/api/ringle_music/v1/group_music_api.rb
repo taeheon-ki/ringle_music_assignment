@@ -4,6 +4,7 @@ module RingleMusic
             version 'v1', using: :path
             format :json
             prefix :api
+            helpers AuthHelper
 
             resource :group_musics do
 
@@ -11,8 +12,12 @@ module RingleMusic
                     requires :group_id
                 end
                 get do
-
-                    GroupMusicService::GroupMusicsGetter.call(request: request, group_id: params[:group_id])
+                    authenticate!
+                    begin
+                        GroupMusicService::GroupMusicsGetter.call(current_user, params[:group_id])
+                    rescue => e
+                        error!({ message: e.message })
+                    end
 
                 end
 
@@ -22,8 +27,9 @@ module RingleMusic
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
                 post do
+                    authenticate!
                     begin
-                        GroupMusicService::GroupMusicsAdder.call(request: request, group_id: params[:group_id], music_ids: params[:music_ids])
+                        GroupMusicService::GroupMusicsAdder.call(current_user, params[:group_id], params[:music_ids])
                     rescue ActiveRecord::RecordNotFound => e
                         error!({ message: "Group Not Found" })
                     rescue => e
@@ -38,8 +44,9 @@ module RingleMusic
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
                 delete do
+                    authenticate!
                     begin
-                        GroupMusicService::GroupMusicsDestroyer.call(request: request, group_id: params[:group_id], music_ids: params[:music_ids])
+                        GroupMusicService::GroupMusicsDestroyer.call(current_user, params[:group_id], params[:music_ids])
                     rescue ActiveRecord::RecordNotFound => e
                         error!({ message: "Group Not Found" })
                     rescue => e

@@ -4,12 +4,14 @@ module RingleMusic
             version 'v1', using: :path
             format :json
             prefix :api
+            helpers AuthHelper
 
             resource :user_groups do
 
                 get do
+                    authenticate!
 
-                    UserGroupService::UserGroupsGetter.call(request: request)
+                    UserGroupService::UserGroupsGetter.call(current_user)
 
                 end
 
@@ -18,8 +20,9 @@ module RingleMusic
                     requires :group_id
                 end
                 post do
+                    authenticate!
                     begin
-                        UserGroupService::UserGroupJoiner.call(request: request, group_id: params[:group_id])
+                        UserGroupService::UserGroupJoiner.call(current_user, params[:group_id])
                     rescue => e
                         return {success: false, message: e.message}
                     end
