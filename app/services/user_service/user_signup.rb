@@ -1,5 +1,6 @@
 module UserService
     class UserSignup < ApplicationService
+        class ValidationError < StandardError; end
         def initialize(args)
             @user_name = args[:user_name]
             @email = args[:email]
@@ -8,7 +9,7 @@ module UserService
 
         def call
             user = User.find_by(email: @email)
-            raise StandardError, "User Email Not Usable" if user
+            raise ValidationError, "User Email Not Usable" if user
             
             user = User.create!({
                 user_name: @user_name,
