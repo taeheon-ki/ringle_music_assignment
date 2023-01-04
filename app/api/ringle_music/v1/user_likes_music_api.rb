@@ -8,38 +8,37 @@ module RingleMusic
 
             resource :user_likes_musics do
 
-                params do
-                    requires :music_id
-                end
-                delete do
-                    authenticate!
+                route_param :music_id, type: Integer do
 
-                    begin
-                        UserLikesMusicService::UserLikesMusicCanceler.call(current_user, params[:music_id])
-
-                    rescue ActiveRecord::RecordNotFound => e
-                        return {success: false, message: "User doesn't like Found"}
-                    rescue => e
-                        return {success: false, message: e.message}
+                    delete do
+                        authenticate!
+    
+                        begin
+                            UserLikesMusicService::UserLikesMusicCanceler.call(current_user, params[:music_id])
+    
+                        rescue ActiveRecord::RecordNotFound => e
+                            return {success: false, message: "User doesn't like Found"}
+                        rescue => e
+                            return {success: false, message: e.message}
+                        end
+                        
+    
                     end
-                    
 
-                end
-
-                params do
-                    requires :music_id
-                end
-                post do
-                    authenticate!
-                    begin
-                        UserLikesMusicService::UserLikesMusicPoster.call(current_user, params[:music_id])
-
-                    rescue => e
-                        return {success: false, message: e.message}
+                    post do
+                        authenticate!
+                        begin
+                            UserLikesMusicService::UserLikesMusicPoster.call(current_user, params[:music_id])
+    
+                        rescue => e
+                            return {success: false, message: e.message}
+                        end
+                        
+    
                     end
-                    
-
                 end
+
+                
 
                 desc 'list of musics that user likes'
                 get do

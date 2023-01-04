@@ -22,9 +22,9 @@ module RingleMusic
                  
             
                 params do 
-                    requires :user_name, type: String
-                    requires :email, type: String 
-                    requires :password, type: String
+                    requires :user_name, type: String, values: {proc: ->(user_name) {user_name!=""}}
+                    requires :email, type: String, values: {proc: ->(email) {email!=""}}
+                    requires :password, type: String, values: {proc: ->(password) {password!=""}}
                 end
                 post "signup" do
 
@@ -33,8 +33,8 @@ module RingleMusic
                 end
 
                 params do
-                    requires :email, type: String
-                    requires :password, type: String
+                    requires :email, type: String, values: {proc: ->(email) {email!=""}}
+                    requires :password, type: String, values: {proc: ->(password) {password!=""}}
                 end
                 post "signin" do
 

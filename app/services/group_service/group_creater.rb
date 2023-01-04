@@ -1,7 +1,7 @@
 module GroupService
     class GroupCreater < ApplicationService
-        def initialize(args)
-            @group_name = args[:group_name]
+        def initialize(group_name)
+            @group_name = group_name
         end
 
         def call

@@ -15,40 +15,38 @@ module RingleMusic
 
                 end
 
-                desc 'join group'
-                params do
-                    requires :group_id
-                end
-                post do
-                    authenticate!
-                    begin
-                        UserGroupService::UserGroupJoiner.call(current_user, params[:group_id])
-                    rescue => e
-                        return {success: false, message: e.message}
+                route_param :group_id, type: Integer do
+                    desc 'join group'
+                    post do
+                        authenticate!
+                        begin
+                            UserGroupService::UserGroupJoiner.call(current_user, params[:group_id])
+                        rescue => e
+                            return {success: false, message: e.message}
+                        end
+
+                        return {success: true}
+
                     end
 
-                    return {success: true}
 
+                    desc 'exit group'
+                    delete do
+                        authenticate!
+                        begin
+                            UserGroupService::UserGroupExiter.call(current_user, params[:group_id])
+                        rescue ActiveRecord::RecordNotFound => e
+                            return {success: false, message: "UserGroup Not Found"}
+                        rescue => e
+                            return {success: false, message: e.message}
+                        end
+                        
+                        return {success: true}
+
+                    end     
                 end
 
 
-                desc 'exit group'
-                params do
-                    requires :group_id
-                end
-                delete do
-                    authenticate!
-                    begin
-                        UserGroupService::UserGroupExiter.call(current_user, params[:group_id])
-                    rescue ActiveRecord::RecordNotFound => e
-                        return {success: false, message: "UserGroup Not Found"}
-                    rescue => e
-                        return {success: false, message: e.message}
-                    end
-                    
-                    return {success: true}
-
-                end     
             end
         end
     end
