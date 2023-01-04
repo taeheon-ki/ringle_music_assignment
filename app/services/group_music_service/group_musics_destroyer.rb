@@ -14,7 +14,7 @@ module GroupMusicService
             results = []
 
             group = Group.includes(:group_musics).find(@group_id)
-            raise ActiveRecord::RecordNotFound unless group
+
             
             @music_ids.each do |music_id|
                 result = {destroyed_music_id: music_id}
