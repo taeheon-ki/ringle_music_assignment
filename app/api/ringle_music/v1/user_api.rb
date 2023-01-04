@@ -7,6 +7,13 @@ module RingleMusic
             helpers AuthHelper
 
             resource :users do
+                get do
+                    authenticate!
+
+                    users = UserService::UsersGetter.call()
+                    present users, with: Entities::UserEntity
+
+                end
 
                 get :info do
                     authenticate!
