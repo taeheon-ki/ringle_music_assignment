@@ -8,9 +8,7 @@ module GroupMusicService
 
         def call
 
-            unless UserGroup.exists?(user_id: @current_user.id, group_id: @group_id)
-                return {success: false, message: "user is not existing in group"}
-            end
+            raise ActiveRecord::RecordNotFound , "UserGroup Not Exists" unless UserGroup.exists?(user_id: @current_user.id, group_id: @group_id)
             results = []
 
             group = Group.find(@group_id)

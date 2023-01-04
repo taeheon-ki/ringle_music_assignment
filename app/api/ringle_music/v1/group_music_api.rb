@@ -16,6 +16,8 @@ module RingleMusic
                         authenticate!
                         begin
                             GroupMusicService::GroupMusicsGetter.call(current_user, params[:group_id])
+                        rescue ActiveRecord::RecordNotFound => e
+                            error!({ message: "Group Not Found" })
                         rescue => e
                             error!({ message: e.message })
                         end
