@@ -37,9 +37,9 @@ module RingleMusic
                     requires :group_id
                 end
                 delete do
-
+                    authenticate!
                     begin
-                        UserGroupService::UserGroupExiter.call(request: request, group_id: params[:group_id])
+                        UserGroupService::UserGroupExiter.call(current_user, params[:group_id])
                     rescue ActiveRecord::RecordNotFound => e
                         return {success: false, message: "UserGroup Not Found"}
                     rescue => e
