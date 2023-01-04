@@ -13,7 +13,7 @@ module GroupMusicService
             end
             results = []
 
-            group = Group.find(@group_id)
+            group = Group.includes(:group_musics).find(@group_id)
             raise ActiveRecord::RecordNotFound unless group
             
             @music_ids.each do |music_id|
