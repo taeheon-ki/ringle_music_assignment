@@ -1,21 +1,19 @@
 module UserMusicService
     class UserMusicsAdder < ApplicationService
-        def initialize(args)
-            @request = args[:request]
-            @music_ids = args[:music_ids]
+        def initialize(current_user, music_ids)
+            @current_user = current_user
+            @music_ids = music_ids
         end
 
         def call
-            auth_result = AuthService::Authorizer.call(request: @request)
-            return auth_result if auth_result.is_a?(Hash)
-            @user_id = auth_result
+
 
             UserMusic.insert_all(
                 @music_ids.map {|music_id| {
-                user_id: @user_id, music_id: music_id}})
+                user_id: @current_user.id, music_id: music_id}})
 
             result = {}
-            user = User.find(@user_id)
+            user = @current_user
             
             user_musics_count = user.user_musics.count
 

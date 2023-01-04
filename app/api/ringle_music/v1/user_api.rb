@@ -4,12 +4,14 @@ module RingleMusic
             version 'v1', using: :path
             format :json
             prefix :api
+            helpers AuthHelper
 
             resource :users do
 
                 get :info do
+                    authenticate!
                     begin
-                        UserService::UserGetter.call(request: request)
+                        UserService::UserGetter.call(current_user)
                     rescue ActiveRecord::RecordNotFound => e
                         return {success: false, message: "User Not Found"}
                     rescue => e
@@ -20,9 +22,9 @@ module RingleMusic
                  
             
                 params do 
-                    requires :user_name, type: String
-                    requires :email, type: String 
-                    requires :password, type: String
+                    requires :user_name, type: String, values: {proc: ->(user_name) {user_name!=""}}
+                    requires :email, type: String, values: {proc: ->(email) {email!=""}}
+                    requires :password, type: String, values: {proc: ->(password) {password!=""}}
                 end
                 post "signup" do
                     begin
@@ -34,8 +36,8 @@ module RingleMusic
                 end
 
                 params do
-                    requires :email, type: String
-                    requires :password, type: String
+                    requires :email, type: String, values: {proc: ->(email) {email!=""}}
+                    requires :password, type: String, values: {proc: ->(password) {password!=""}}
                 end
                 post "signin" do
                     begin

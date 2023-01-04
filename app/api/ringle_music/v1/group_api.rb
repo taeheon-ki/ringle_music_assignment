@@ -9,11 +9,11 @@ module RingleMusic
 
                 desc 'Create group'
                 params do
-                    requires :group_name
+                    requires :group_name, values: {proc: ->(group_name) {group_name!=""}}
                 end
                 post do
                     begin
-                        GroupService::GroupCreater.call(group_name: params[:group_name])
+                        GroupService::GroupCreater.call(params[:group_name])
                     rescue => e
                         return {success: false, message: e.message}
                     end

@@ -4,6 +4,7 @@ module RingleMusic
             version 'v1', using: :path
             format :json
             prefix :api
+            helpers AuthHelper
 
             resource :group_musics do
 
@@ -11,6 +12,7 @@ module RingleMusic
                     requires :group_id
                 end
                 get do
+                    authenticate!
                     begin
                         group_musics = GroupMusicService::GroupMusicsGetter.call(request: request, group_id: params[:group_id])
                     rescue ActiveRecord::RecordNotFound  => e
@@ -23,37 +25,43 @@ module RingleMusic
 
                 end
 
-                desc 'add music to playlist for group'
-                params do
-                    requires :group_id
-                    requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
-                end
-                post do
-                    begin
-                        GroupMusicService::GroupMusicsAdder.call(request: request, group_id: params[:group_id], music_ids: params[:music_ids])
-                    rescue ActiveRecord::RecordNotFound => e
-                        error!({ message: "Group Not Found" })
-                    rescue => e
-                        error!({ message: e.message })
+
+                route_param :group_id, type: Integer do
+                    desc 'add music to playlist for group'
+                    params do
+                        requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                     end
+                    post do
+                        authenticate!
+                        begin
+                            GroupMusicService::GroupMusicsAdder.call(current_user, params[:group_id], params[:music_ids])
+                        rescue ActiveRecord::RecordNotFound => e
+                            error!({ message: "Group Not Found" })
+                        rescue => e
+                            error!({ message: e.message })
+                        end
 
-                end
-
-                desc 'destroy music in playlist of group'
-                params do
-                    requires :group_id
-                    requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
-                end
-                delete do
-                    begin
-                        GroupMusicService::GroupMusicsDestroyer.call(request: request, group_id: params[:group_id], music_ids: params[:music_ids])
-                    rescue ActiveRecord::RecordNotFound => e
-                        error!({ message: "Group Not Found" })
-                    rescue => e
-                        error!({ message: e.message })
                     end
+                    desc 'destroy music in playlist of group'
+                    params do
+                        requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
+                    end
+                    delete do
+                        authenticate!
+                        begin
+                            GroupMusicService::GroupMusicsDestroyer.call(current_user, params[:group_id], params[:music_ids])
+                        rescue ActiveRecord::RecordNotFound => e
+                            error!({ message: "Group Not Found" })
+                        rescue => e
+                            error!({ message: e.message })
+                        end
 
+                    end
                 end
+
+                
+
+                
             end
         end
     end

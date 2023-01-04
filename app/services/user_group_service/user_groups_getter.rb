@@ -1,15 +1,14 @@
 module UserGroupService
     class UserGroupsGetter < ApplicationService
-        def initialize(args)
-            @request = args[:request]
+        def initialize(current_user)
+            @current_user = current_user
         end
 
         def call
-            auth_result = AuthService::Authorizer.call(request: @request)
-            return auth_result if auth_result.is_a?(Hash)
-            @user_id = auth_result
             
+
             user_groups = UserGroup.where(user_id: @user_id)
+
 
         end
     end
