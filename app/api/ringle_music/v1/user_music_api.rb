@@ -4,6 +4,7 @@ module RingleMusic
             version 'v1', using: :path
             format :json
             prefix :api
+            helpers AuthHelper
 
             resource :user_musics do
                 desc 'add music to playlist for user'
@@ -11,8 +12,9 @@ module RingleMusic
                     requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
                 end
                 post do
+                    authenticate!
                     begin
-                        UserMusicService::UserMusicsAdder.call(request: request, music_ids: params[:music_ids])
+                        UserMusicService::UserMusicsAdder.call(current_user, params[:music_ids])
                     rescue ActiveRecord::RecordNotFound => e
                         error!({ message: "User Not Found" })
                     rescue => e
@@ -26,9 +28,9 @@ module RingleMusic
                 end
 
                 delete do
-
+                    authenticate!
                     begin
-                        UserMusicService::UserMusicsDestroyer.call(request: request, music_ids: params[:music_ids])
+                        UserMusicService::UserMusicsDestroyer.call(current_user, params[:music_ids])
                     rescue ActiveRecord::RecordNotFound => e
                         error!({ message: "User Not Found" })
                     rescue => e
@@ -39,8 +41,9 @@ module RingleMusic
 
                 desc 'get playlist of user'
                 get do
+                    authenticate!
 
-                    UserMusicService::UserMusicsGetter.call(request: request)
+                    UserMusicService::UserMusicsGetter.call(current_user)
 
                 end
             end
