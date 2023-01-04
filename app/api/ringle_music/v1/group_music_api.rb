@@ -8,25 +8,19 @@ module RingleMusic
 
             resource :group_musics do
 
-                params do
-                    requires :group_id
-                end
-                get do
-                    authenticate!
-                    begin
-                        group_musics = GroupMusicService::GroupMusicsGetter.call(request: request, group_id: params[:group_id])
-                    rescue ActiveRecord::RecordNotFound  => e
-                        error!({ message: e.message})
-                    rescue => e
-                        error!({ message: e.message})
-                    end
-
-                    present group_musics
-
-                end
-
+                
 
                 route_param :group_id, type: Integer do
+
+                    get do
+                        authenticate!
+                        begin
+                            GroupMusicService::GroupMusicsGetter.call(current_user, params[:group_id])
+                        rescue => e
+                            error!({ message: e.message })
+                        end
+    
+                    end
                     desc 'add music to playlist for group'
                     params do
                         requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
@@ -58,10 +52,6 @@ module RingleMusic
 
                     end
                 end
-
-                
-
-                
             end
         end
     end

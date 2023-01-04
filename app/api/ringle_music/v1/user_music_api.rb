@@ -44,7 +44,7 @@ module RingleMusic
                     authenticate!
 
 
-                    musics = UserMusicService::UserMusicsGetter.call(request: request)
+                    musics = UserMusicService::UserMusicsGetter.call(current_user)
                     present musics, with: Entities::MusicEntity
 
 

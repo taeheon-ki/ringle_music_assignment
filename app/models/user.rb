@@ -31,8 +31,7 @@ class User < ApplicationRecord
     # Check that the signature is valid
     if JWT.decode(jwt_token, SOME_SECRET_KEY, false, algorithm: 'HS256') == decoded
       user_id = decoded[0]["user_id"]
-      puts user_id
-      puts decoded[0]["exp_date"] < Time.new.to_i
+
       return nil if decoded[0]["exp_date"] < Time.now.to_i
 
       # If the signature is valid, return the payload as a hash

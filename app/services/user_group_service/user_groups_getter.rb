@@ -7,7 +7,7 @@ module UserGroupService
         def call
             
 
-            user_groups = UserGroup.where(user_id: @user_id)
+            user_groups = UserGroup.where(user_id: @current_user.id)
 
 
         end
