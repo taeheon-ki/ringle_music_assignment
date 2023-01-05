@@ -187,10 +187,13 @@ module RingleMusic
 
                 resource :likes do
                     resource :musics do
+                        params do
+                            optional :query, type: String
+                        end
                         get do
                             authenticate!
 
-                            musics = UserLikesMusics::GetUserLikesMusicsService.call(current_user)
+                            musics = UserLikesMusics::GetUserLikesMusicsService.call(current_user, params.symbolize_keys)
                             present musics, with: Entities::MusicEntity
                         end
 
