@@ -13,7 +13,7 @@ module RingleMusic
                 end
                 post do
                     begin
-                        GroupService::GroupCreater.call(params[:group_name])
+                        GroupService::GroupCreater.call(params.symbolize_keys)
                     rescue => e
                         return {success: false, message: e.message}
                     end
