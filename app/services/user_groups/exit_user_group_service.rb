@@ -1,8 +1,8 @@
 module UserGroups
     class ExitUserGroupService < ApplicationService
-        def initialize(current_user, group_id)
+        def initialize(current_user, **args)
             @current_user = current_user
-            @group_id = group_id
+            @group_id = args[:group_id]
         end
         def call
 

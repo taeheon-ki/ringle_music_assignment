@@ -1,8 +1,8 @@
 module UserLikesMusics
     class CancelUserLikesMusicService < ApplicationService
-        def initialize(current_user, music_id)
+        def initialize(current_user, **args)
             @current_user = current_user
-            @music_id = music_id
+            @music_id = args[:music_id]
         end
 
         def call

@@ -35,7 +35,7 @@ module RingleMusic
                     patch :user_name do
                         authenticate_with_password!(params[:password])
                         begin
-                            Users::ChangeUsernameService.call(current_user, params[:user_name])
+                            Users::ChangeUsernameService.call(current_user, params.symbolize_keys)
                             return {success: true}
                         rescue => e
                             return {success: false, message: e.message}
@@ -49,7 +49,7 @@ module RingleMusic
                     patch :password do
                         authenticate_with_password!(params[:old_password])
                         begin
-                            Users::ChangePasswordService.call(current_user, params[:new_password])
+                            Users::ChangePasswordService.call(current_user, params.symbolize_keys)
                             return {success: true}
                         rescue => e
                             return {success: false, message: e.message}
@@ -105,7 +105,7 @@ module RingleMusic
                         post do
                             authenticate!
                             begin
-                                UserGroups::JoinUserGroupService.call(current_user, params[:group_id])
+                                UserGroups::JoinUserGroupService.call(current_user, params.symbolize_keys)
                             rescue ActiveRecord::RecordNotFound => e
                                 return {success: false, message: "UserGroup Not Found"}
                             rescue => e
@@ -121,7 +121,7 @@ module RingleMusic
                         delete do
                             authenticate!
                             begin
-                                UserGroups::ExitUserGroupService.call(current_user, params[:group_id])
+                                UserGroups::ExitUserGroupService.call(current_user, params.symbolize_keys)
                             rescue ActiveRecord::RecordNotFound => e
                                 return {success: false, message: "UserGroup Not Found"}
                             rescue => e
@@ -142,7 +142,7 @@ module RingleMusic
                     post do
                         authenticate!
                         begin
-                            UserMusics::AddUserMusicsService.call(current_user, params[:music_ids])
+                            UserMusics::AddUserMusicsService.call(current_user, params.symbolize_keys)
                         rescue ActiveRecord::RecordNotFound => e
                             return {success: false, message: "User Not Found" }
                         rescue => e
@@ -158,7 +158,7 @@ module RingleMusic
                     delete do
                         authenticate!
                         begin
-                            UserMusics::DestroyUserMusicsService.call(current_user, params[:music_ids])
+                            UserMusics::DestroyUserMusicsService.call(current_user, params.symbolize_keys)
                         rescue ActiveRecord::RecordNotFound => e
                             { success: false, message: "User Not Found" }
                         rescue => e
@@ -194,7 +194,7 @@ module RingleMusic
                                 authenticate!
             
                                 begin
-                                    UserLikesMusics::CancelUserLikesMusicService.call(current_user, params[:music_id])
+                                    UserLikesMusics::CancelUserLikesMusicService.call(current_user, params.symbolize_keys)
             
                                 rescue ActiveRecord::RecordNotFound => e
                                     return {success: false, message: "User doesn't like Found"}
@@ -208,7 +208,7 @@ module RingleMusic
                             post do
                                 authenticate!
                                 begin
-                                    UserLikesMusics::PostUserLikesMusicService.call(current_user, params[:music_id])
+                                    UserLikesMusics::PostUserLikesMusicService.call(current_user, params.symbolize_keys)
             
                                 rescue => e
                                     return {success: false, message: e.message}

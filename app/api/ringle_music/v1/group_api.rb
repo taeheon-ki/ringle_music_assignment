@@ -16,7 +16,7 @@ module RingleMusic
                     authenticate!
                     begin
 
-                        Groups::CreateGroupService.call(current_user, params[:group_name])
+                        Groups::CreateGroupService.call(current_user, params.symbolize_keys)
                         return {success: true, created_group: params[:group_name], made_user: Entities::UserEntity.represent(current_user)}
 
                     rescue => e
@@ -40,7 +40,7 @@ module RingleMusic
                     patch :group_name do
                         authenticate_with_password!(params[:password])
                         begin
-                            Groups::ChangeGroupnameService.call(current_user, params[:group_name], params[:group_id])
+                            Groups::ChangeGroupnameService.call(current_user, params.symbolize_keys)
                             return {success: true}
                         rescue ActiveRecord::RecordNotFound => e
                             return {success: false, message: "Cannot Modify Group Name"}
@@ -52,7 +52,7 @@ module RingleMusic
                     delete do
                         authenticate!
                         begin
-                            Groups::DestroyGroupService.call(current_user, params[:group_id])
+                            Groups::DestroyGroupService.call(current_user, params.symbolize_keys)
                         rescue ActiveRecord::RecordNotFound => e
                             { success: false, message: "User Not Added This Group!" }
                         rescue => e
@@ -64,7 +64,7 @@ module RingleMusic
                         get do
                             authenticate!
                             begin
-                                GroupMusics::GetGroupMusicsService.call(current_user, params[:group_id])
+                                GroupMusics::GetGroupMusicsService.call(current_user, params.symbolize_keys)
                             rescue ActiveRecord::RecordNotFound => e
                                 { success: false, message: "Group Not Found" }
                             rescue => e
@@ -78,7 +78,7 @@ module RingleMusic
                         post do
                             authenticate!
                             begin
-                                GroupMusics::AddGroupMusicsService.call(current_user, params[:group_id], params[:music_ids])
+                                GroupMusics::AddGroupMusicsService.call(current_user, params.symbolize_keys)
                             rescue ActiveRecord::RecordNotFound => e
                                 { success: false, message: "Group Not Found" }
                             rescue => e
@@ -93,7 +93,7 @@ module RingleMusic
                         delete do
                             authenticate!
                             begin
-                                GroupMusics::DestroyGroupMusicsService.call(current_user, params[:group_id], params[:music_ids])
+                                GroupMusics::DestroyGroupMusicsService.call(current_user, params.symbolize_keys)
                             rescue ActiveRecord::RecordNotFound => e
                                 { success: false, message: "Group Not Found" }
                             rescue => e

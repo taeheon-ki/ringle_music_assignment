@@ -1,9 +1,9 @@
 module Groups
     class ChangeGroupnameService < ApplicationService
-        def initialize(current_user, group_name, group_id)
+        def initialize(current_user, **args)
             @current_user = current_user
-            @group_name = group_name
-            @group_id = group_id
+            @group_name = args[:group_name]
+            @group_id = args[:group_id]
         end
 
         def call
