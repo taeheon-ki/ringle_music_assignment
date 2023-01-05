@@ -14,8 +14,7 @@ class User < ApplicationRecord
 
   def change_name!(user_name:)
     begin
-      self.user_name = user_name
-      self.save!
+      self.update!(user_name: user_name)
       true
     rescue => e
       false
@@ -25,8 +24,7 @@ class User < ApplicationRecord
   def change_password!(password:)
     return false if password == "" || self.valid_password?(password)
     begin
-      self.password = password
-      self.save!
+      self.update(password: password)
       true
     rescue
       false

@@ -5,8 +5,7 @@ class Group < ApplicationRecord
 
     def change_name!(group_name:)
         begin
-            self.group_name = group_name
-            self.save!
+            self.update!(group_name: group_name)
             true
         rescue => e
             false
