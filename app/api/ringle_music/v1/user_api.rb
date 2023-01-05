@@ -34,7 +34,7 @@ module RingleMusic
                     requires :email, type: String, values: {proc: ->(email) {email!=""}}
                     requires :password, type: String, values: {proc: ->(password) {password!=""}}
                 end
-                post "signup" do
+                post :signup do
                     begin
 
                         UserService::UserSignup.call(params.symbolize_keys)
@@ -51,7 +51,7 @@ module RingleMusic
                     requires :email, type: String, values: {proc: ->(email) {email!=""}}
                     requires :password, type: String, values: {proc: ->(password) {password!=""}}
                 end
-                post "signin" do
+                post :signin do
                     begin
                         UserService::UserSignin.call(params.symbolize_keys)
                     rescue UserService::UserSignin::ValidationError => e
