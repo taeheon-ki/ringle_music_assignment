@@ -1,5 +1,5 @@
-module UserMusicService
-    class UserMusicsDestroyer < ApplicationService
+module UserMusics
+    class DestroyUserMusicsService < ApplicationService
         def initialize(current_user, music_ids)
             @current_user = current_user
             @music_ids = music_ids

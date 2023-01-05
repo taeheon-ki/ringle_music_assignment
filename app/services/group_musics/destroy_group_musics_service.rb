@@ -1,5 +1,5 @@
-module GroupMusicService
-    class GroupMusicsDestroyer < ApplicationService
+module GroupMusics
+    class DestroyGroupMusicsService < ApplicationService
         def initialize(current_user, group_id, musics_id)
             @current_user = current_user
             @group_id = group_id

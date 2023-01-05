@@ -1,5 +1,5 @@
-module UserService
-    class UserSignin < ApplicationService
+module Users
+    class SigninUserService < ApplicationService
         class ValidationError < StandardError; end
         def initialize(args)
             @email = args[:email]

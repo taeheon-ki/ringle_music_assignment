@@ -10,7 +10,7 @@ module RingleMusic
                 get do
                     authenticate!
 
-                    users = UserService::UsersGetter.call()
+                    users = Users::GetUsersService.call()
                     present users, with: Entities::UserEntity
 
                 end
@@ -19,7 +19,7 @@ module RingleMusic
                     get do
                         authenticate!
                         begin
-                            user_info = UserService::UserGetter.call(current_user)
+                            user_info = Users::GetUserService.call(current_user)
                             present user_info, with: Entities::UserEntity
                         rescue ActiveRecord::RecordNotFound => e
                             return {success: false, message: "User Not Found"}
@@ -35,7 +35,7 @@ module RingleMusic
                     patch :user_name do
                         authenticate_with_password!(params[:password])
                         begin
-                            UserService::ChangeUsername.call(current_user, params[:user_name])
+                            Users::ChangeUsernameService.call(current_user, params[:user_name])
                             return {success: true}
                         rescue => e
                             return {success: false, message: e.message}
@@ -49,7 +49,7 @@ module RingleMusic
                     patch :password do
                         authenticate_with_password!(params[:old_password])
                         begin
-                            UserService::ChangePassword.call(current_user, params[:new_password])
+                            Users::ChangePasswordService.call(current_user, params[:new_password])
                             return {success: true}
                         rescue => e
                             return {success: false, message: e.message}
@@ -66,8 +66,8 @@ module RingleMusic
                 post :signup do
                     begin
 
-                        UserService::UserSignup.call(params.symbolize_keys)
-                    rescue UserService::UserSignin::ValidationError => e
+                        Users::SignupUserService.call(params.symbolize_keys)
+                    rescue Users::SigninUserService::ValidationError => e
                         return {success: false, ErrorType: "ValidationError", message: e.message}
 
                     rescue => e
@@ -82,8 +82,8 @@ module RingleMusic
                 end
                 post :signin do
                     begin
-                        UserService::UserSignin.call(params.symbolize_keys)
-                    rescue UserService::UserSignin::ValidationError => e
+                        Users::SigninUserService.call(params.symbolize_keys)
+                    rescue Users::SigninUserService::ValidationError => e
                         return {success: false, ErrorType: "ValidationError", message: e.message}
                     rescue => e
                         return {success: false, message: e.message}
@@ -95,7 +95,7 @@ module RingleMusic
                     get do
                         authenticate!
     
-                        user_groups = UserGroupService::UserGroupsGetter.call(current_user)
+                        user_groups = UserGroups::GetUserGroupService.call(current_user)
                         present user_groups, with: Entities::UserGroupEntity
     
                     end
@@ -105,7 +105,7 @@ module RingleMusic
                         post do
                             authenticate!
                             begin
-                                UserGroupService::UserGroupJoiner.call(current_user, params[:group_id])
+                                UserGroups::JoinUserGroupService.call(current_user, params[:group_id])
                             rescue ActiveRecord::RecordNotFound => e
                                 return {success: false, message: "UserGroup Not Found"}
                             rescue => e
@@ -121,7 +121,7 @@ module RingleMusic
                         delete do
                             authenticate!
                             begin
-                                UserGroupService::UserGroupExiter.call(current_user, params[:group_id])
+                                UserGroups::ExitUserGroupService.call(current_user, params[:group_id])
                             rescue ActiveRecord::RecordNotFound => e
                                 return {success: false, message: "UserGroup Not Found"}
                             rescue => e
@@ -142,7 +142,7 @@ module RingleMusic
                     post do
                         authenticate!
                         begin
-                            UserMusicService::UserMusicsAdder.call(current_user, params[:music_ids])
+                            UserMusics::AddUserMusicsService.call(current_user, params[:music_ids])
                         rescue ActiveRecord::RecordNotFound => e
                             return {success: false, message: "User Not Found" }
                         rescue => e
@@ -158,7 +158,7 @@ module RingleMusic
                     delete do
                         authenticate!
                         begin
-                            UserMusicService::UserMusicsDestroyer.call(current_user, params[:music_ids])
+                            UserMusics::DestroyUserMusicsService.call(current_user, params[:music_ids])
                         rescue ActiveRecord::RecordNotFound => e
                             { success: false, message: "User Not Found" }
                         rescue => e
@@ -172,7 +172,7 @@ module RingleMusic
                         authenticate!
 
 
-                        musics = UserMusicService::UserMusicsGetter.call(current_user)
+                        musics = UserMusics::GetUserMusicsService.call(current_user)
                         present musics, with: Entities::MusicEntity
 
 
@@ -184,7 +184,7 @@ module RingleMusic
                         get do
                             authenticate!
 
-                            musics = UserLikesMusicService::UserLikesMusicsGetter.call(current_user)
+                            musics = UserLikesMusics::GetUserLikesMusicsService.call(current_user)
                             present musics, with: Entities::MusicEntity
                         end
 
@@ -194,7 +194,7 @@ module RingleMusic
                                 authenticate!
             
                                 begin
-                                    UserLikesMusicService::UserLikesMusicCanceler.call(current_user, params[:music_id])
+                                    UserLikesMusics::CancelUserLikesMusicService.call(current_user, params[:music_id])
             
                                 rescue ActiveRecord::RecordNotFound => e
                                     return {success: false, message: "User doesn't like Found"}
@@ -208,7 +208,7 @@ module RingleMusic
                             post do
                                 authenticate!
                                 begin
-                                    UserLikesMusicService::UserLikesMusicPoster.call(current_user, params[:music_id])
+                                    UserLikesMusics::PostUserLikesMusicService.call(current_user, params[:music_id])
             
                                 rescue => e
                                     return {success: false, message: e.message}

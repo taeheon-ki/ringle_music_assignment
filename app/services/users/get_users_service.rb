@@ -1,5 +1,5 @@
-module UserService
-    class UsersGetter < ApplicationService
+module Users
+    class GetUsersService < ApplicationService
 
 
         def call

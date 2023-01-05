@@ -1,5 +1,5 @@
-module GroupService
-    class ChangeGroupname < ApplicationService
+module Groups
+    class ChangeGroupnameService < ApplicationService
         def initialize(current_user, group_name, group_id)
             @current_user = current_user
             @group_name = group_name

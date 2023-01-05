@@ -1,5 +1,5 @@
-module UserService
-    class ChangeUsername < ApplicationService
+module Users
+    class ChangeUsernameService < ApplicationService
         def initialize(current_user, user_name)
             @current_user = current_user
             @user_name = user_name

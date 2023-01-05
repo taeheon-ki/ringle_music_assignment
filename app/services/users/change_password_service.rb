@@ -1,5 +1,5 @@
-module UserService
-    class ChangePassword < ApplicationService
+module Users
+    class ChangePasswordService < ApplicationService
         def initialize(current_user, new_password)
             @current_user = current_user
             @new_password = new_password
