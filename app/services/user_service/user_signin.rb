@@ -11,7 +11,7 @@ module UserService
             raise ValidationError, "User Not Exists" if user.nil?
 
             is_valid = user.valid_password?(@password)
-            raise ValidationError, "User is not Valid" unless is_valid
+            raise ValidationError, "Password is not Valid" unless is_valid
 
             jwt_token = User.create_jwt_token(user.id)
 
