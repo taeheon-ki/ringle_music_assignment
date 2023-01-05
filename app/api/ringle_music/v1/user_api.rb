@@ -15,17 +15,32 @@ module RingleMusic
 
                 end
 
-                get :info do
-                    authenticate!
-                    begin
-                        user_info = UserService::UserGetter.call(current_user)
-                        present user_info, with: Entities::UserEntity
-                    rescue ActiveRecord::RecordNotFound => e
-                        return {success: false, message: "User Not Found"}
-                    rescue => e
-                        return {success: false, message: e.message}
+                resources :info do
+                    get do
+                        authenticate!
+                        begin
+                            user_info = UserService::UserGetter.call(current_user)
+                            present user_info, with: Entities::UserEntity
+                        rescue ActiveRecord::RecordNotFound => e
+                            return {success: false, message: "User Not Found"}
+                        rescue => e
+                            return {success: false, message: e.message}
+                        end
                     end
 
+                    params do
+                        requires :user_name, type: String
+                        requires :password, type: String
+                    end
+                    patch :user_name do
+                        authenticate_with_password!(params[:password])
+                        begin
+                            UserService::ChangeUsername.call(current_user, params[:user_name])
+                            return {success: true}
+                        rescue => e
+                            return {success: false, message: e.message}
+                        end
+                    end
                 end
                  
             

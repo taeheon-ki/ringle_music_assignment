@@ -12,6 +12,16 @@ class User < ApplicationRecord
 
   has_many :groups, through: :group_users
 
+  def change_name!(user_name:)
+    begin
+      self.user_name = user_name
+      self.save!
+      true
+    rescue => e
+      false
+    end
+  end
+
   def self.create_jwt_token(user_id)
     payload = {
       user_id: user_id,
