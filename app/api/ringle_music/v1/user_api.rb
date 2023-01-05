@@ -7,10 +7,13 @@ module RingleMusic
             helpers AuthHelper
 
             resource :users do
+                params do
+                    optional :query, type: String
+                end
                 get do
                     authenticate!
 
-                    users = Users::GetUsersService.call()
+                    users = Users::GetUsersService.call(params.symbolize_keys)
                     present users, with: Entities::UserEntity
 
                 end
