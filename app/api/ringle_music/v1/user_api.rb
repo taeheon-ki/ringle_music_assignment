@@ -61,6 +61,137 @@ module RingleMusic
                     end
                     
                 end
+
+                resource :groups do
+                    get do
+                        authenticate!
+    
+                        user_groups = UserGroupService::UserGroupsGetter.call(current_user)
+                        present user_groups, with: Entities::UserGroupEntity
+    
+                    end
+    
+                    route_param :group_id, type: Integer do
+                        desc 'join group'
+                        post do
+                            authenticate!
+                            begin
+                                UserGroupService::UserGroupJoiner.call(current_user, params[:group_id])
+                            rescue ActiveRecord::RecordNotFound => e
+                                return {success: false, message: "UserGroup Not Found"}
+                            rescue => e
+                                return {success: false, message: e.message}
+                            end
+    
+                            return {success: true}
+    
+                        end
+    
+    
+                        desc 'exit group'
+                        delete do
+                            authenticate!
+                            begin
+                                UserGroupService::UserGroupExiter.call(current_user, params[:group_id])
+                            rescue ActiveRecord::RecordNotFound => e
+                                return {success: false, message: "UserGroup Not Found"}
+                            rescue => e
+                                return {success: false, message: e.message}
+                            end
+                            
+                            return {success: true}
+    
+                        end     
+                    end
+                end
+
+                resource :musics do
+                    desc 'add music to playlist for user'
+                    params do
+                        requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
+                    end
+                    post do
+                        authenticate!
+                        begin
+                            UserMusicService::UserMusicsAdder.call(current_user, params[:music_ids])
+                        rescue ActiveRecord::RecordNotFound => e
+                            error!({ message: "User Not Found" })
+                        rescue => e
+                            error!({ message: e.message })
+                        end
+                    end
+
+                    desc 'delete music to playlist for user'
+                    params do
+                        requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
+                    end
+
+                    delete do
+                        authenticate!
+                        begin
+                            UserMusicService::UserMusicsDestroyer.call(current_user, params[:music_ids])
+                        rescue ActiveRecord::RecordNotFound => e
+                            error!({ message: "User Not Found" })
+                        rescue => e
+                            error!({ message: e.message })
+                        end
+
+                    end
+
+                    desc 'get playlist of user'
+                    get do
+                        authenticate!
+
+
+                        musics = UserMusicService::UserMusicsGetter.call(current_user)
+                        present musics, with: Entities::MusicEntity
+
+
+                    end
+                end
+
+                resource :likes do
+                    resource :musics do
+                        get do
+                            authenticate!
+
+                            musics = UserLikesMusicService::UserLikesMusicsGetter.call(current_user)
+                            present musics, with: Entities::MusicEntity
+                        end
+
+
+                        route_param :music_id, type: Integer do
+                            delete do
+                                authenticate!
+            
+                                begin
+                                    UserLikesMusicService::UserLikesMusicCanceler.call(current_user, params[:music_id])
+            
+                                rescue ActiveRecord::RecordNotFound => e
+                                    return {success: false, message: "User doesn't like Found"}
+                                rescue => e
+                                    return {success: false, message: e.message}
+                                end
+                                
+            
+                            end
+        
+                            post do
+                                authenticate!
+                                begin
+                                    UserLikesMusicService::UserLikesMusicPoster.call(current_user, params[:music_id])
+            
+                                rescue => e
+                                    return {success: false, message: e.message}
+                                end
+                                
+            
+                            end
+                        end
+                    end
+
+                    
+                end
             end
         end
     end
