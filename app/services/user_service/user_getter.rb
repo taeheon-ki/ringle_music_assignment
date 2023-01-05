@@ -6,13 +6,7 @@ module UserService
 
         def call
 
-            @current_user.as_json({
-                only: [
-                    :id,
-                    :user_name,
-                    :email
-                ]
-            })
+            @current_user
 
         end
     end

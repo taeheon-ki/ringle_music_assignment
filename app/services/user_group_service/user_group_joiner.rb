@@ -6,10 +6,8 @@ module UserGroupService
         end
 
         def call
-
-            if !Group.exists?(@group_id)
-                return {success:false, message: "Group not exists"}
-            end
+            
+            raise ActiveRecord::RecordNotFound , "UserGroup Not Exists" unless Group.exists?(@group_id)
             
             UserGroup.create!({user_id: @current_user.id, group_id: @group_id})
 

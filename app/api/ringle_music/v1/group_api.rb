@@ -15,8 +15,10 @@ module RingleMusic
                 post do
                     authenticate!
                     begin
+
                         GroupService::GroupCreater.call(current_user, params[:group_name])
                         return {success: true, created_group: params[:group_name], made_user: Entities::UserEntity.represent(current_user)}
+
                     rescue => e
                         return {success: false, message: e.message}
                     end
@@ -25,8 +27,8 @@ module RingleMusic
                 desc 'List group'
                 get do
 
-                    GroupService::GroupsGetter.call()
-                    
+                    groups = GroupService::GroupsGetter.call()
+                    present groups, with: Entities::GroupEntity
                 end
 
                 route_param :group_id do

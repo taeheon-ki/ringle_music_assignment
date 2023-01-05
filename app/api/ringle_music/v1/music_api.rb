@@ -14,7 +14,7 @@ module RingleMusic
                 end
                 get do
 
-                    MusicService::MusicSearcher.call(query: params[:query], sort: params[:sort])
+                    MusicService::MusicSearcher.call(params.symbolize_keys)
 
                 end
             end

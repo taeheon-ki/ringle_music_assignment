@@ -18,7 +18,8 @@ module RingleMusic
                 get :info do
                     authenticate!
                     begin
-                        UserService::UserGetter.call(current_user)
+                        user_info = UserService::UserGetter.call(current_user)
+                        present user_info, with: Entities::UserEntity
                     rescue ActiveRecord::RecordNotFound => e
                         return {success: false, message: "User Not Found"}
                     rescue => e
@@ -35,7 +36,11 @@ module RingleMusic
                 end
                 post "signup" do
                     begin
+
                         UserService::UserSignup.call(user_name: params[:user_name], email: params[:email], password: params[:password])
+                    rescue UserService::UserSignin::ValidationError => e
+                        return {success: false, ErrorType: "ValidationError", message: e.message}
+
                     rescue => e
                         return {success: false, message: e.message}
                     end
@@ -48,7 +53,7 @@ module RingleMusic
                 end
                 post "signin" do
                     begin
-                        UserService::UserSignin.call(email: params[:email], password: params[:password])
+                        UserService::UserSignin.call(params.symbolize_keys)
                     rescue UserService::UserSignin::ValidationError => e
                         return {success: false, ErrorType: "ValidationError", message: e.message}
                     rescue => e
