@@ -1,8 +1,8 @@
 module Users
     class ChangePasswordService < ApplicationService
-        def initialize(current_user, new_password)
+        def initialize(current_user, **args)
             @current_user = current_user
-            @new_password = new_password
+            @new_password = args[:new_password]
         end
 
         def call

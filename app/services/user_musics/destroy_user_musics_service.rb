@@ -1,8 +1,8 @@
 module UserMusics
     class DestroyUserMusicsService < ApplicationService
-        def initialize(current_user, music_ids)
+        def initialize(current_user, **args)
             @current_user = current_user
-            @music_ids = music_ids
+            @music_ids = args[:music_ids]
         end
 
         def call

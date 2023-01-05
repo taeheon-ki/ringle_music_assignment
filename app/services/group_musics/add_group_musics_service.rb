@@ -1,9 +1,9 @@
 module GroupMusics
     class AddGroupMusicsService < ApplicationService
-        def initialize(current_user, group_id, music_ids)
+        def initialize(current_user, **args)
             @current_user = current_user
-            @group_id = group_id
-            @music_ids = music_ids
+            @group_id = args[:group_id]
+            @music_ids = args[:music_ids]
         end
 
         def call
