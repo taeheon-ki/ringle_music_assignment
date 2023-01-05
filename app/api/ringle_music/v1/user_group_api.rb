@@ -22,6 +22,8 @@ module RingleMusic
                         authenticate!
                         begin
                             UserGroupService::UserGroupJoiner.call(current_user, params[:group_id])
+                        rescue ActiveRecord::RecordNotFound => e
+                            return {success: false, message: "UserGroup Not Found"}
                         rescue => e
                             return {success: false, message: e.message}
                         end
