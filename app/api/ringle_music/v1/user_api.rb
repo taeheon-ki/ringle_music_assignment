@@ -11,7 +11,8 @@ module RingleMusic
                 get :info do
                     authenticate!
                     begin
-                        UserService::UserGetter.call(current_user)
+                        user_info = UserService::UserGetter.call(current_user)
+                        present user_info, with: Entities::UserEntity
                     rescue ActiveRecord::RecordNotFound => e
                         return {success: false, message: "User Not Found"}
                     rescue => e
