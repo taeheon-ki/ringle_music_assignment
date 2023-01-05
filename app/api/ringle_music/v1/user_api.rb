@@ -41,6 +41,20 @@ module RingleMusic
                             return {success: false, message: e.message}
                         end
                     end
+
+                    params do
+                        requires :new_password, type: String
+                        requires :old_password, type: String
+                    end
+                    patch :password do
+                        authenticate_with_password!(params[:old_password])
+                        begin
+                            UserService::ChangePassword.call(current_user, params[:new_password])
+                            return {success: true}
+                        rescue => e
+                            return {success: false, message: e.message}
+                        end
+                    end
                 end
                  
             

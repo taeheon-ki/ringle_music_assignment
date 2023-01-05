@@ -11,6 +11,5 @@ class Group < ApplicationRecord
         rescue => e
             false
         end
-            
     end
 end

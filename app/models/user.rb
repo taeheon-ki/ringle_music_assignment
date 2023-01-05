@@ -22,6 +22,17 @@ class User < ApplicationRecord
     end
   end
 
+  def change_password!(password:)
+    return false if password == "" || self.valid_password?(password)
+    begin
+      self.password = password
+      self.save!
+      true
+    rescue
+      false
+    end
+  end
+
   def self.create_jwt_token(user_id)
     payload = {
       user_id: user_id,
