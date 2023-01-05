@@ -37,7 +37,7 @@ module RingleMusic
                 post "signup" do
                     begin
 
-                        UserService::UserSignup.call(user_name: params.symbolize_keys)
+                        UserService::UserSignup.call(params.symbolize_keys)
                     rescue UserService::UserSignin::ValidationError => e
                         return {success: false, ErrorType: "ValidationError", message: e.message}
 
