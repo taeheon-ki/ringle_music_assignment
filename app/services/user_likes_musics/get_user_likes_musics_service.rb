@@ -1,5 +1,5 @@
-module UserLikesMusicService
-    class UserLikesMusicsGetter < ApplicationService
+module UserLikesMusics
+    class GetUserLikesMusicsService < ApplicationService
         def initialize(current_user)
             @current_user = current_user
         end

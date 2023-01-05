@@ -1,5 +1,5 @@
-module UserGroupService
-    class UserGroupsGetter < ApplicationService
+module UserGroups
+    class GetUserGroupService < ApplicationService
         def initialize(current_user)
             @current_user = current_user
         end

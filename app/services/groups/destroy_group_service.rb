@@ -1,5 +1,5 @@
-module GroupService
-    class GroupDestroyer < ApplicationService
+module Groups
+    class DestroyGroupService < ApplicationService
         def initialize(current_user, group_id)
             @current_user = current_user
             @group_id = group_id

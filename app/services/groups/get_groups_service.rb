@@ -1,5 +1,5 @@
-module GroupService
-    class GroupsGetter < ApplicationService
+module Groups
+    class GetGroupsService < ApplicationService
         def initialize()
         end
 

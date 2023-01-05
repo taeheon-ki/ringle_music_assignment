@@ -16,7 +16,7 @@ module RingleMusic
                     authenticate!
                     begin
 
-                        GroupService::GroupCreater.call(current_user, params[:group_name])
+                        Groups::CreateGroupService.call(current_user, params[:group_name])
                         return {success: true, created_group: params[:group_name], made_user: Entities::UserEntity.represent(current_user)}
 
                     rescue => e
@@ -27,25 +27,80 @@ module RingleMusic
                 desc 'List group'
                 get do
 
-                    groups = GroupService::GroupsGetter.call()
+                    groups = Groups::GetGroupsService.call()
                     present groups, with: Entities::GroupEntity
                 end
 
                 route_param :group_id do
+
+                    params do
+                        requires :group_name, type: String
+                        requires :password, type: String
+                    end
+                    patch :group_name do
+                        authenticate_with_password!(params[:password])
+                        begin
+                            Groups::ChangeGroupnameService.call(current_user, params[:group_name], params[:group_id])
+                            return {success: true}
+                        rescue ActiveRecord::RecordNotFound => e
+                            return {success: false, message: "Cannot Modify Group Name"}
+                        rescue => e
+                            return {success: false, message: e.message}
+                        end
+                    end
+
                     delete do
                         authenticate!
                         begin
-                            GroupService::GroupDestroyer.call(current_user, params[:group_id])
+                            Groups::DestroyGroupService.call(current_user, params[:group_id])
                         rescue ActiveRecord::RecordNotFound => e
-                            error!({ message: "User Not Added This Group!" })
+                            { success: false, message: "User Not Added This Group!" }
                         rescue => e
-                            error!({ message: e.message })
+                            { success: false, message: e.message }
+                        end
                     end
-                end
 
-
-
-
+                    resource :musics do
+                        get do
+                            authenticate!
+                            begin
+                                GroupMusics::GetGroupMusicsService.call(current_user, params[:group_id])
+                            rescue ActiveRecord::RecordNotFound => e
+                                { success: false, message: "Group Not Found" }
+                            rescue => e
+                                { success: false, message: e.message }
+                            end
+                        end
+                        desc 'add music to playlist for group'
+                        params do
+                            requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
+                        end
+                        post do
+                            authenticate!
+                            begin
+                                GroupMusics::AddGroupMusicsService.call(current_user, params[:group_id], params[:music_ids])
+                            rescue ActiveRecord::RecordNotFound => e
+                                { success: false, message: "Group Not Found" }
+                            rescue => e
+                                { success: false, message: e.message }
+                            end
+    
+                        end
+                        desc 'destroy music in playlist of group'
+                        params do
+                            requires :music_ids, type: Array[Integer], desc: "Array of music ids to add to the playlist"
+                        end
+                        delete do
+                            authenticate!
+                            begin
+                                GroupMusics::DestroyGroupMusicsService.call(current_user, params[:group_id], params[:music_ids])
+                            rescue ActiveRecord::RecordNotFound => e
+                                { success: false, message: "Group Not Found" }
+                            rescue => e
+                                { success: false, message: e.message }
+                            end
+                        end
+                    end
                 end
             end
         end

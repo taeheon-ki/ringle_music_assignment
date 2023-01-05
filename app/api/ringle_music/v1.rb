@@ -14,6 +14,14 @@ module RingleMusic
             def authenticate!
                 error!('Unauthorized') unless current_user
             end
+
+            def authenticate_with_password!(password)
+                error!('Unauthorized') unless current_user
+
+                is_valid = current_user.valid_password?(password)
+
+                error!('Password not valid') unless is_valid
+            end
         end
     end
 end

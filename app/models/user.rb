@@ -12,6 +12,25 @@ class User < ApplicationRecord
 
   has_many :groups, through: :group_users
 
+  def change_name!(user_name:)
+    begin
+      self.update!(user_name: user_name)
+      true
+    rescue => e
+      false
+    end
+  end
+
+  def change_password!(password:)
+    return false if password == "" || self.valid_password?(password)
+    begin
+      self.update(password: password)
+      true
+    rescue
+      false
+    end
+  end
+
   def self.create_jwt_token(user_id)
     payload = {
       user_id: user_id,

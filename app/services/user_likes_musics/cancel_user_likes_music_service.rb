@@ -1,5 +1,5 @@
-module UserLikesMusicService
-    class UserLikesMusicCanceler < ApplicationService
+module UserLikesMusics
+    class CancelUserLikesMusicService < ApplicationService
         def initialize(current_user, music_id)
             @current_user = current_user
             @music_id = music_id

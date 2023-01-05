@@ -1,5 +1,5 @@
-module UserMusicService
-    class UserMusicsAdder < ApplicationService
+module UserMusics
+    class AddUserMusicsService < ApplicationService
         def initialize(current_user, music_ids)
             @current_user = current_user
             @music_ids = music_ids

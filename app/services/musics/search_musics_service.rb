@@ -1,5 +1,5 @@
-module MusicService
-    class MusicSearcher < ApplicationService
+module Musics
+    class SearchMusicsService < ApplicationService
         def initialize(args)
             @query = args[:query]
             @sort = args[:sort]
