@@ -168,11 +168,14 @@ module RingleMusic
                     end
 
                     desc 'get playlist of user'
+                    params do
+                        optional :query, type: String
+                    end
                     get do
                         authenticate!
 
 
-                        musics = UserMusics::GetUserMusicsService.call(current_user)
+                        musics = UserMusics::GetUserMusicsService.call(current_user, params.symbolize_keys)
                         present musics, with: Entities::MusicEntity
 
 
