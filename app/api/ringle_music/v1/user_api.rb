@@ -130,9 +130,9 @@ module RingleMusic
                         begin
                             UserMusicService::UserMusicsAdder.call(current_user, params[:music_ids])
                         rescue ActiveRecord::RecordNotFound => e
-                            error!({ message: "User Not Found" })
+                            return {success: false, message: "User Not Found" }
                         rescue => e
-                            error!({ message: e.message })
+                            return { success: fakse, message: e.message }
                         end
                     end
 
@@ -146,9 +146,9 @@ module RingleMusic
                         begin
                             UserMusicService::UserMusicsDestroyer.call(current_user, params[:music_ids])
                         rescue ActiveRecord::RecordNotFound => e
-                            error!({ message: "User Not Found" })
+                            { success: false, message: "User Not Found" }
                         rescue => e
-                            error!({ message: e.message })
+                            { success: false, message: e.message }
                         end
 
                     end

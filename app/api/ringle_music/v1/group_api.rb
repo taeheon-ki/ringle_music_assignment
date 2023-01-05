@@ -32,14 +32,31 @@ module RingleMusic
                 end
 
                 route_param :group_id do
+
+                    params do
+                        requires :group_name, type: String
+                        requires :password, type: String
+                    end
+                    patch :group_name do
+                        authenticate_with_password!(params[:password])
+                        begin
+                            GroupService::ChangeGroupname.call(current_user, params[:group_name], params[:group_id])
+                            return {success: true}
+                        rescue ActiveRecord::RecordNotFound => e
+                            return {success: false, message: "Cannot Modify Group Name"}
+                        rescue => e
+                            return {success: false, message: e.message}
+                        end
+                    end
+
                     delete do
                         authenticate!
                         begin
                             GroupService::GroupDestroyer.call(current_user, params[:group_id])
                         rescue ActiveRecord::RecordNotFound => e
-                            error!({ message: "User Not Added This Group!" })
+                            { success: false, message: "User Not Added This Group!" }
                         rescue => e
-                            error!({ message: e.message })
+                            { success: false, message: e.message }
                         end
                     end
 
@@ -49,9 +66,9 @@ module RingleMusic
                             begin
                                 GroupMusicService::GroupMusicsGetter.call(current_user, params[:group_id])
                             rescue ActiveRecord::RecordNotFound => e
-                                error!({ message: "Group Not Found" })
+                                { success: false, message: "Group Not Found" }
                             rescue => e
-                                error!({ message: e.message })
+                                { success: false, message: e.message }
                             end
                         end
                         desc 'add music to playlist for group'
@@ -63,9 +80,9 @@ module RingleMusic
                             begin
                                 GroupMusicService::GroupMusicsAdder.call(current_user, params[:group_id], params[:music_ids])
                             rescue ActiveRecord::RecordNotFound => e
-                                error!({ message: "Group Not Found" })
+                                { success: false, message: "Group Not Found" }
                             rescue => e
-                                error!({ message: e.message })
+                                { success: false, message: e.message }
                             end
     
                         end
@@ -78,9 +95,9 @@ module RingleMusic
                             begin
                                 GroupMusicService::GroupMusicsDestroyer.call(current_user, params[:group_id], params[:music_ids])
                             rescue ActiveRecord::RecordNotFound => e
-                                error!({ message: "Group Not Found" })
+                                { success: false, message: "Group Not Found" }
                             rescue => e
-                                error!({ message: e.message })
+                                { success: false, message: e.message }
                             end
                         end
                     end
