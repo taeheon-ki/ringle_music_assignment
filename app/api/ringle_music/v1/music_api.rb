@@ -11,11 +11,12 @@ module RingleMusic
                 params do
                     optional :query, type: String, desc: 'Search term'
                     optional :sort, type: String, desc: 'Sort criteria (accuracy, likes, created_date)', default: "accuracy"
+                    optional :limit, type: Integer, default: 100
                 end
                 get do
 
-                    Musics::SearchMusicsService.call(params.symbolize_keys)
-
+                    musics = Musics::SearchMusicsService.call(params.symbolize_keys)
+                    present musics, with: Entities::MusicEntity
                 end
             end
         end

@@ -7,34 +7,92 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 ## Make Musics
 require 'csv'
-
-User.all.map {|user| user.destroy}
-Group.all.map {|group| group.destroy}
-Music.all.map {|music| music.destroy}
+require 'faker'
 
 
-music_count = 1500
-sample_music_file =  Rails.root.join("config", "musics", "music.csv")
-music_csvs = CSV.parse(File.read(sample_music_file), :headers=>true)
-music_csv_sampled = music_csvs[0..(music_count-1)]
-music_csv_sampled.map { |music_csv|
-    music_csv = music_csv.to_hash
-    Music.create(title: music_csv["title"], artist: music_csv["artist_name"], album: music_csv["album_name"])
-}
+# User.all.map {|user| user.destroy}
+# Group.all.map {|group| group.destroy}
+# Music.all.map {|music| music.destroy}
 
 
-Music.create({title: "가장 보통의 존재", artist: "언니네이발관", album: "가장 보통의 존재"})
-Music.create({title: "아름다운 것", artist: "언니네이발관", album: "가장 보통의 존재"})
-Music.create({title: "산들산들", artist: "언니네이발관", album: "가장 보통의 존재"})
-Music.create({title: "인생은 금물", artist: "언니네이발관", album: "가장 보통의 존재"})
-Music.create({title: "애도", artist: "언니네이발관", album: "홀로 있는 사람들"})
-Music.create({title: "누구나 아는 비밀", artist: "언니네이발관", album: "홀로 있는 사람들"})
-Music.create({title: "Missing you", artist: "Gdragon", album: "ONE OF A KIND"})
-Music.create({title: "그XX", artist: "Gdragon", album: "ONE OF A KIND"})
-Music.create({title: "Electra", artist: "검정치마", album: "Teen Troubles"})
-Music.create({title: "매미들", artist: "검정치마", album: "Teen Troubles"})
-Music.create({title: "따라갈래", artist: "검정치마", album: "Teen Troubles"})
-Music.create({title: "plain jane", artist: "검정치마", album: "Girl Scout!"})
-Music.create({title: "Big Love", artist: "검정치마", album: "Team Baby"})
-Music.create({title: "피난", artist: "쏜애플", album: "이상기후"})
-Music.create({title: "낯선 열대", artist: "쏜애플", album: "이상기후"})
+
+# music_count = 15
+# sample_music_file =  Rails.root.join("config", "musics", "music.csv")
+# music_csvs = CSV.parse(File.read(sample_music_file), :headers=>true)
+# music_csv_sampled = music_csvs[0..(music_count-1)]
+# music_csv_sampled.map { |music_csv|
+#     music_csv = music_csv.to_hash
+#     Music.create(title: music_csv["title"], artist: music_csv["artist_name"], album: music_csv["album_name"])
+# }
+
+user_count = 0
+group_count = 0
+
+user_likes_musics_count = 1_000
+
+
+user_count.times do
+  # generate a fake user
+  username = Faker::Internet.user_name
+  email = Faker::Internet.email
+  password = SecureRandom.hex(10)
+
+  # check if the user already exists in the array
+  while User.exists?(user_name: username)
+    # if it does, generate a new user_name
+    username = Faker::Internet.user_name
+  end
+  email = Faker::Internet.email
+  while User.exists?(email: email)
+      # if it does, generate a new user_name
+      email = Faker::Internet.email
+  end
+
+  # add the user record to the array
+  User.create(user_name: username, email: email, password: password)
+end
+
+# insert the array of user records into the database
+musics = []
+music_batch_size = 0
+num_batches = 0
+1.upto(num_batches) do |batch|
+  1.upto(music_batch_size) do |i|
+  # generate a fake music record
+    title = "Music #{i}"
+    artist = Faker::Artist.name
+    album = Faker::Music.album
+
+    # add the music record to the array
+    musics << {title: title, artist: artist, album: album}
+  end
+  Music.insert_all(musics)
+  musics.clear
+end
+# insert the array of music records into the database
+
+groups = []
+1.upto(group_count) do |i|
+  # generate a fake music record
+  group_name = "Group #{i}"
+  user_id = User.all.sample.id
+
+  # add the music record to the array
+  groups << {group_name: group_name, user_id: user_id}
+end
+Group.insert_all(groups) if groups.count > 0
+
+user_likes_musics_count = 1000
+
+user_likes_musics_count.times do
+  # generate a fake user
+  user_id = User.all.sample.id
+  music_id = 501023
+  while UserLikesMusic.where(user_id: user_id, music_id: music_id).exists?
+    # if it does, generate a new user_name
+    user_id = User.all.sample.id
+  end
+  
+  # add the user record to the array
+  UserLikesMusic.create(user_id: user_id, music_id: music_id)
+end

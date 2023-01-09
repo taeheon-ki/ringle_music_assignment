@@ -12,6 +12,7 @@ gem 'string-similarity'
 gem 'devise'
 gem 'jwt'
 gem 'csv'
+gem 'faker'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
