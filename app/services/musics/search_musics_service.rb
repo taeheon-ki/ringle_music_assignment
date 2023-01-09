@@ -13,7 +13,7 @@ module Musics
                     "title LIKE :like_query OR
                     artist LIKE :like_query OR
                     album LIKE :like_query",
-                    query: @query, like_query: "%#{@query}%")
+                    like_query: "%#{@query}%")
             else
                 musics = Music.all
             end

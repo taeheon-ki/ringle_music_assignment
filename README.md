@@ -16,6 +16,7 @@ Install
   - 그룹 100개
   - 음원 1500개 + fake 음원 100만개
   - 유저의 좋아요 10,000개
+  - 소요시간 1시간 3분
 
 Modeling (Attributes)
 
@@ -26,9 +27,9 @@ Modeling (Attributes)
     * 음원 검색의 속도를 위해 Music 모델의 title, artist, album attributes에 index 설정을 해줌.
     * signup, signin을 할 때 User.findby email을 수행하기 때문에 여기에도 index 설정을 해줌.
   * 서비스화
-    * 가독성 좋은 API를 위한 Modularization을 위해 서비스화
+    * 가독성 좋은 API를 위한 Modularization
     * 현 개발팀이 사용하는 Convention 적용
-    * 서비스화를 통해 API단에서 Authentication -> Services -> return(with exception handling)의 세 단계를 거치는 것으로 메커니즘 통일
+    * 서비스화를 통해 API단에서 Authentication -> Services(processing) -> return(with exception handling)의 세 단계를 거치는 것으로 메커니즘 통일
   * Authentication
     * user가 login할 때 jwt_token 발급해서 전달해줌. 플레이리스트 추가, 좋아요 누르기 요청이 들어오면 jwt_token을 decode하여 user_id를 얻어 작업을 수행함. but bad guy가 똑같은 request를 보내면 어떻게 validation하지? => using nouns! 근데 지금 구현한 jwt_token validation에서 이걸 해주나?
     * jwt_token의 Validation (코드로 Go)
@@ -51,9 +52,8 @@ Modeling (Attributes)
 
 * Todo
   - 서비스화 폴더 이름 다시 보기
-  - Authentication reasoning
   - eager loading, preloading, lazy loading reasoning
   - get_services들에서 query searching하는 부분 Full text search로 바꾸기
-  - seeds 다시 보기(user_group 등..)
+  - sort에 soundex length로 바꾸기
   - 플레이리스트에 여러 음원 insert할 때 100개 넘어가면 옛날거부터 지우는 코드에 concurrency problem reasoning
-  - using nouns! 근데 지금 구현한 jwt_token validation에서 이걸 해주나? 부분 reasoning
+  - using nonce! 근데 지금 구현한 jwt_token validation에서 이걸 해주나? 부분 reasoning
