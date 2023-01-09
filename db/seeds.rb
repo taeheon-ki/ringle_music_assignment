@@ -16,19 +16,19 @@ require 'faker'
 
 
 
-# music_count = 15
-# sample_music_file =  Rails.root.join("config", "musics", "music.csv")
-# music_csvs = CSV.parse(File.read(sample_music_file), :headers=>true)
-# music_csv_sampled = music_csvs[0..(music_count-1)]
-# music_csv_sampled.map { |music_csv|
-#     music_csv = music_csv.to_hash
-#     Music.create(title: music_csv["title"], artist: music_csv["artist_name"], album: music_csv["album_name"])
-# }
+music_count = 1500
+sample_music_file =  Rails.root.join("config", "musics", "music.csv")
+music_csvs = CSV.parse(File.read(sample_music_file), :headers=>true)
+music_csv_sampled = music_csvs[0..(music_count-1)]
+music_csv_sampled.map { |music_csv|
+    music_csv = music_csv.to_hash
+    Music.create(title: music_csv["title"], artist: music_csv["artist_name"], album: music_csv["album_name"])
+}
 
-user_count = 0
-group_count = 0
+user_count = 10_000
+group_count = 100
 
-user_likes_musics_count = 0
+user_likes_musics_count = 10_000
 
 
 user_count.times do
@@ -54,8 +54,8 @@ end
 
 # insert the array of user records into the database
 musics = []
-music_batch_size = 0
-num_batches = 0
+music_batch_size = 1_000
+num_batches = 1_000
 1.upto(num_batches) do |batch|
   1.upto(music_batch_size) do |i|
   # generate a fake music record
