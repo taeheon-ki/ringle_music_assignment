@@ -7,10 +7,13 @@ module RingleMusic
             helpers AuthHelper
 
             resource :users do
+                params do
+                    optional :query, type: String
+                end
                 get do
                     authenticate!
 
-                    users = Users::GetUsersService.call()
+                    users = Users::GetUsersService.call(params.symbolize_keys)
                     present users, with: Entities::UserEntity
 
                 end
@@ -168,11 +171,14 @@ module RingleMusic
                     end
 
                     desc 'get playlist of user'
+                    params do
+                        optional :query, type: String
+                    end
                     get do
                         authenticate!
 
 
-                        musics = UserMusics::GetUserMusicsService.call(current_user)
+                        musics = UserMusics::GetUserMusicsService.call(current_user, params.symbolize_keys)
                         present musics, with: Entities::MusicEntity
 
 
@@ -181,10 +187,13 @@ module RingleMusic
 
                 resource :likes do
                     resource :musics do
+                        params do
+                            optional :query, type: String
+                        end
                         get do
                             authenticate!
 
-                            musics = UserLikesMusics::GetUserLikesMusicsService.call(current_user)
+                            musics = UserLikesMusics::GetUserLikesMusicsService.call(current_user, params.symbolize_keys)
                             present musics, with: Entities::MusicEntity
                         end
 

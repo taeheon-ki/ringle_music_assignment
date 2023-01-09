@@ -25,9 +25,12 @@ module RingleMusic
                 end
 
                 desc 'List group'
+                params do
+                    optional :query, type: String
+                end
                 get do
 
-                    groups = Groups::GetGroupsService.call()
+                    groups = Groups::GetGroupsService.call(params.symbolize_keys)
                     present groups, with: Entities::GroupEntity
                 end
 

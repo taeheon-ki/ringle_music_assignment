@@ -1,8 +1,8 @@
 module Musics
     class SearchMusicsService < ApplicationService
         def initialize(**args)
-            @query = args[:query]
-            @sort = args[:sort]
+            @query = args[:query] if args.key?(:query)
+            @sort = args[:sort] if args.key?(:sort)
         end
     
         def call
