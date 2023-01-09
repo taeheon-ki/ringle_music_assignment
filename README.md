@@ -16,7 +16,6 @@ Install
   - 그룹 100개
   - 음원 1500개 + fake 음원 100만개
   - 유저의 좋아요 10,000개
-  - 유저의 그룹 조인 1,000개
 
 Modeling (Attributes)
 
@@ -47,7 +46,7 @@ Modeling (Attributes)
   * counter_cache 사용하여 user가 music에 좋아요를 누르거나 취소할 때마다 Music model의 해당하는 row의 attribute를 increment, decrement
 
 * 구현한 API들
-  * Postman으로 시현
+  * Postman으로 시현을 하는게 좋을까요 아니면 그냥 넘어갈까요?
 
 
 * Todo

@@ -31,6 +31,7 @@ group_count = 100
 user_likes_musics_count = 10_000
 
 
+
 user_count.times do
   # generate a fake user
   username = Faker::Internet.user_name
