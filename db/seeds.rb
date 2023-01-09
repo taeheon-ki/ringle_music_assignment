@@ -28,7 +28,7 @@ require 'faker'
 user_count = 0
 group_count = 0
 
-user_likes_musics_count = 1_000
+user_likes_musics_count = 0
 
 
 user_count.times do

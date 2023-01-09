@@ -3,22 +3,24 @@ module Musics
         def initialize(**args)
             @query = args[:query] if args.key?(:query)
             @sort = args[:sort] if args.key?(:sort)
+            @limit = args[:limit]
         end
     
         def call
             
             if @query.present?
                 musics = Music.where(
-                    "SOUNDEX(title) = SOUNDEX(:query) OR title LIKE :like_query OR
-                    SOUNDEX(artist) = SOUNDEX(:query) OR artist LIKE :like_query OR
-                    SOUNDEX(album) = SOUNDEX(:query) OR album LIKE :like_query",
+                    "title LIKE :like_query OR
+                    artist LIKE :like_query OR
+                    album LIKE :like_query",
                     query: @query, like_query: "%#{@query}%")
             else
                 musics = Music.all
             end
             
             musics = sort(musics) if @sort.present?
-            musics = musics.as_json(only: [:id, :title, :artist, :album, :user_likes_musics_count])
+            musics = musics.take(@limit)
+            musics
             return musics
         end
     
@@ -26,20 +28,14 @@ module Musics
             case @sort
             when 'accuracy'
                 if @query.present?
-                    musics = musics.sort_by do |music|
-                        [-String::Similarity.cosine(music.title, @query),
-                        -String::Similarity.cosine(music.artist, @query),
-                        -String::Similarity.cosine(music.album, @query)]
-                    end
+                    musics = musics.order(
+                      Arel.sql("SOUNDEX(title) = SOUNDEX(#{@query.inspect}) DESC, SOUNDEX(artist) = SOUNDEX(#{@query.inspect}) DESC, SOUNDEX(album) = SOUNDEX(#{@query.inspect}) DESC")
+                    )
                 end
             when 'likes'
-                musics = musics.sort_by do |music|
-                    [-music.user_likes_musics_count]
-                end
+                musics = musics.order(user_likes_musics_count: :desc)
             when 'created_at'
-                musics = musics.sort_by do |music|
-                    [music.created_at]
-                end.reverse
+                musics = musics.order(created_at: :desc)
             end
             musics
         end
