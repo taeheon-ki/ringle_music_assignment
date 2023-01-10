@@ -37,9 +37,7 @@ Modeling (Attributes)
       * 방지법 3. 비정상적으로 많아지는 request를 처리하는 시간을 exponential하게 증가시키기 : 감당할 수 있을 정도로는 참다가 선을 넘으면 넘을수록 큰 제재를 가하기
   * 검색 매커니즘
     * Soundex를 이용하여 발음이 비슷한 것들도 함께 찾아주는 기능 추가 => 100만건에 대해 ordering => 1.2초
-      * [EX] newjeens를 검색해도 newjeans를 반환
-    * Soundex를 이용하지 않은 just keyword search => 100만건에 대해 ordering => 0.8초
-      * db단에서 soundex 적용하는 것보다 메모리단에서 쿼리에 대해 오타 잡아주는 등 프로세싱해주는 함수 구현하여 사용할 수 있으면 좋을것.
+      * [EX] bandd를 검색해도 band를 반환
   * 정렬 매커니즘 with limit
     * 좋아요 순, 최신순 => 검색을 통해 musics를 찾은 후 musics.order.(attributes: :desc).limit(~)로 구현. all rows에 대해 ordering 진행 후 Limit으로 상위 몇 개만 가져올 수 있도록.
     * 정확도 순 => 검색을 통해 musics를 찾은 후 중에 길이가 가장 비슷한 순서로 상위로 오도록 정렬

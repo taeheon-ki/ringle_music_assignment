@@ -34,7 +34,6 @@ module Musics
                         -String::Similarity.cosine(music.artist, @query),
                         -String::Similarity.cosine(music.album, @query)]
                     end
-                    
                 end
                 musics = musics.take(@limit)
             when 'likes'
