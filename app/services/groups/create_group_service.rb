@@ -7,8 +7,8 @@ module Groups
 
         def call
 
-            Group.create!(user_id: @current_user.id, group_name: @group_name)
-            return {success: true, created_group: @group_name, made_user: Entities::UserEntity.represent(@current_user)}
+            group = Group.create!(user_id: @current_user.id, group_name: @group_name)
+            return {success: true, group_id: group.id, created_group: @group_name, made_user: Entities::UserEntity.represent(@current_user)}
 
         end
     end

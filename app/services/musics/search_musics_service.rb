@@ -16,9 +16,9 @@ module Musics
                     query: @query, like_query: "%#{@query}%")
                 musics = sort(musics)
             else
-                musics = Music.all.order(user_likes_musics_count: :desc).take(@limit) if @sort == 'likes'
-                musics = Music.all.order(created_at: :desc).take(@limit) if @sort == 'created_at'
-                musics = Music.all.take(@limit) if @sort != 'created_at' && @sort != 'likes'
+                musics = Music.order(user_likes_musics_count: :desc).take(@limit) if @sort == 'likes'
+                musics = Music.order(created_at: :desc).take(@limit) if @sort == 'created_at'
+                musics = Music.limit(@limit) if @sort != 'created_at' && @sort != 'likes'
             end
             
             

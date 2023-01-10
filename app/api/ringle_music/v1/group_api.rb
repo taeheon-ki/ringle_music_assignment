@@ -17,7 +17,6 @@ module RingleMusic
                     begin
 
                         Groups::CreateGroupService.call(current_user, params.symbolize_keys)
-                        return {success: true, created_group: params[:group_name], made_user: Entities::UserEntity.represent(current_user)}
 
                     rescue => e
                         return {success: false, message: e.message}
