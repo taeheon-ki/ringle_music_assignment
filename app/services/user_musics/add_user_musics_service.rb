@@ -18,7 +18,7 @@ module UserMusics
                     )
             
                     user = @current_user
-                    user_musics_count = user.user_musics.count.lock!
+                    user_musics_count = user.user_musics.count
             
                     num_musics_to_delete = user_musics_count - 100 # interleaving problem can be happened
             
@@ -26,13 +26,10 @@ module UserMusics
                         if num_musics_to_delete > @music_ids.count
                             num_musics_to_delete = @music_ids.count
                         end
-                        oldest_musics = UserMusic.includes(:music).order(created_at: :asc).limit(num_musics_to_delete).select_for_update
+                        oldest_musics = UserMusic.includes(:music).order(created_at: :asc).limit(num_musics_to_delete)
                         result[:destroyed] = oldest_musics.map { |um| um.music.as_json(only: [:title, :artist, :album, :user_likes_musics_count])}
                 
                         num_destroy = oldest_musics.destroy_all
-                        if num_destroy.count != num_musics_to_delete
-                            raise TransactionError, "Transaction Error!"
-                        end
                     end
                 end
             rescue
