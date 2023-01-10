@@ -29,12 +29,12 @@ Modeling (Attributes)
   * Authentication
     * user가 login할 때 jwt_token 발급해서 전달해줌. 플레이리스트 추가, 좋아요 누르기 요청이 들어오면 jwt_token을 decode하여 user_id를 얻어 작업을 수행함.
     * 의문점 : but bad guy가 replay attack을 걸어왔을 때 jwt_token으로 authentication하면 통과해서 malicious request가 작동할 수 있지 않을까? => 작동할 수 있다고 생각!
-    => [EX] 어떤 유저가 특정 Request 보냄 => 중간 도청자(bad guy)가 똑같은 Request를 그대로 Replay해서 서버에 보냄 => 서버는 Request를 jwt_token으로 authentication => 유저가 의도하지 않은 api 호출 가능(결제 request가 호출되면 큰 일)
-    => 해결책 : Stateful verification! nonce라는 무작위 암호 이용, timestamp 이용, 등등...
-    => 하지만 이러한 stateful verification은 Dos공격에 취약! 상대가 Valid한 request를 계속 보내면 우리는 stateful verification을 위해 resource 사용이 필요!
-    => 방지법 1. 공격을 인지하면 공격자의 ip를 차단 : 공격자가 vpn등으로 ip를 계속 변조하여 공격할 수 있음..
-    => 방지법 2. single ip source에서 오는 Request에 limit! : 정상적인 user들의 request에는 영향 끼치지 않을 정도로 가능한가?( chatgpt에서 과도한 request를 막기 위해 single ip source에서 오는 request에 limit을 건 것 같은데 사용자 입장에선 조금 불편... )
-    => 방지법 3. 비정상적으로 많아지는 request를 처리하는 시간을 exponential하게 증가시키기 : 감당할 수 있을 정도로는 참다가 선을 넘으면 넘을수록 큰 제재를 가하기
+      * [EX] 어떤 유저가 특정 Request 보냄 => 중간 도청자(bad guy)가 똑같은 Request를 그대로 Replay해서 서버에 보냄 => 서버는 Request를 jwt_token으로 authentication => 유저가 의도하지 않은 api 호출 가능(결제 request가 호출되면 큰 일)
+      * 해결책 : Stateful verification! nonce라는 무작위 암호 이용, timestamp 이용, 등등...
+      * 하지만 이러한 stateful verification은 Dos공격에 취약! 상대가 Valid한 request를 계속 보내면 우리는 stateful verification을 위해 resource 사용이 필요!
+      * 방지법 1. 공격을 인지하면 공격자의 ip를 차단 : 공격자가 vpn등으로 ip를 계속 변조하여 공격할 수 있음..
+      * 방지법 2. single ip source에서 오는 Request에 limit! : 정상적인 user들의 request에는 영향 끼치지 않을 정도로 가능한가?( chatgpt에서 과도한 request를 막기 위해 single ip source에서 오는 request에 limit을 건 것 같은데 사용자 입장에선 조금 불편... )
+      * 방지법 3. 비정상적으로 많아지는 request를 처리하는 시간을 exponential하게 증가시키기 : 감당할 수 있을 정도로는 참다가 선을 넘으면 넘을수록 큰 제재를 가하기
   * 검색 매커니즘
     * Soundex를 이용하여 발음이 비슷한 것들도 함께 찾아주는 기능 추가 => 100만건에 대해 ordering => 1.2초
       * [EX] newjeens를 검색해도 newjeans를 반환
