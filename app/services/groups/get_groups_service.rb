@@ -6,9 +6,10 @@ module Groups
 
         def call
             groups = Group.all
-            filtered_groups = groups.where(
+            groups = groups.where(
                 "group_name LIKE :like_query ",
-                like_query: "%#{@query}%")
+                like_query: "%#{@query}%") if @query
+            groups
 
         end
     end

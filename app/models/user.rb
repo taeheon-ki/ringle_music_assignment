@@ -47,8 +47,6 @@ class User < ApplicationRecord
       return nil
     end
 
-    # Check that the signature is valid
-
     user_id = decoded[0]["user_id"]
 
     return nil if decoded[0]["exp_date"] < Time.now.to_i

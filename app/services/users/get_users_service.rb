@@ -7,9 +7,10 @@ module Users
         def call
 
             users = User.all
-            filtered_users = users.where(
+            users = users.where(
                 "user_name LIKE :like_query ",
-                like_query: "%#{@query}%")
+                like_query: "%#{@query}%") if @query
+            users
 
         end
     end

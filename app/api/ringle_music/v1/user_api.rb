@@ -149,7 +149,7 @@ module RingleMusic
                         rescue ActiveRecord::RecordNotFound => e
                             return {success: false, message: "User Not Found" }
                         rescue => e
-                            return { success: fakse, message: e.message }
+                            return { success: false, message: e.message }
                         end
                     end
 

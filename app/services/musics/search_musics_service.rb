@@ -10,17 +10,18 @@ module Musics
             
             if @query.present?
                 musics = Music.where(
-                    "title LIKE :like_query OR
-                    artist LIKE :like_query OR
-                    album LIKE :like_query",
-                    like_query: "%#{@query}%")
+                    "SOUNDEX(title) = SOUNDEX(:query) OR title LIKE :like_query OR
+                    SOUNDEX(artist) = SOUNDEX(:query) OR artist LIKE :like_query OR
+                    SOUNDEX(album) = SOUNDEX(:query) OR album LIKE :like_query",
+                    query: @query, like_query: "%#{@query}%")
+                musics = sort(musics)
             else
-                musics = Music.all
+                musics = Music.all.order(user_likes_musics_count: :desc).take(@limit) if @sort == 'likes'
+                musics = Music.all.order(created_at: :desc).take(@limit) if @sort == 'created_at'
+                musics = Music.all.take(@limit) if @sort != 'created_at' && @sort != 'likes'
             end
             
-            musics = sort(musics) if @sort.present?
-            musics = musics.take(@limit)
-            musics
+            
             return musics
         end
     
@@ -28,14 +29,20 @@ module Musics
             case @sort
             when 'accuracy'
                 if @query.present?
-                    musics = musics.order(
-                      Arel.sql("SOUNDEX(title) = SOUNDEX(#{@query.inspect}) DESC, SOUNDEX(artist) = SOUNDEX(#{@query.inspect}) DESC, SOUNDEX(album) = SOUNDEX(#{@query.inspect}) DESC")
-                    )
+                    musics = musics.sort_by do |music|
+                        [-String::Similarity.cosine(music.title, @query),
+                        -String::Similarity.cosine(music.artist, @query),
+                        -String::Similarity.cosine(music.album, @query)]
+                    end
+                    
                 end
+                musics = musics.take(@limit)
             when 'likes'
-                musics = musics.order(user_likes_musics_count: :desc)
+                musics = musics.order(user_likes_musics_count: :desc).take(@limit)
             when 'created_at'
-                musics = musics.order(created_at: :desc)
+                musics = musics.order(created_at: :desc).take(@limit)
+            else
+                musics = musics.take(@limit)
             end
             musics
         end

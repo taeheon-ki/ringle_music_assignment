@@ -8,11 +8,12 @@ module UserMusics
         def call
 
             music_list = Music.joins(:user_musics).where('user_musics.user_id = ?', @current_user.id)
-            filtered_list = music_list.where(
+            music_list = music_list.where(
                 "title LIKE :like_query OR
                 artist LIKE :like_query OR
                 album LIKE :like_query",
-                like_query: "%#{@query}%")
+                like_query: "%#{@query}%") if @query
+            music_list
 
         end
         

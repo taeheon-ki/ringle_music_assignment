@@ -88,10 +88,11 @@ user_likes_musics_count = 1000
 user_likes_musics_count.times do
   # generate a fake user
   user_id = User.all.sample.id
-  music_id = 501023
+  music_id = rand(500..700)
   while UserLikesMusic.where(user_id: user_id, music_id: music_id).exists?
     # if it does, generate a new user_name
     user_id = User.all.sample.id
+    music_id = rand(500..700)
   end
   
   # add the user record to the array
