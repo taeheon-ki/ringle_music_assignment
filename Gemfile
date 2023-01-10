@@ -3,6 +3,18 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'grape'
+gem 'net-http'
+gem 'grape-api-generator'
+gem 'grape_on_rails_routes'
+gem 'grape-entity'
+gem 'string-similarity'
+gem 'devise'
+gem 'jwt'
+gem 'csv'
+gem 'faker'
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
 # Use mysql as the database for Active Record

@@ -1,0 +1,19 @@
+class IncrementLikesCountTrigger < ActiveRecord::Migration[6.0]
+  def up
+    execute <<-SQL
+      CREATE TRIGGER increment_likes_count AFTER INSERT ON likes
+      FOR EACH ROW
+      BEGIN
+          UPDATE music
+          SET likes = likes + 1
+          WHERE music.id = NEW.music_id;
+      END;
+    SQL
+  end
+
+  def down
+    execute <<-SQL
+      DROP TRIGGER increment_likes_count;
+    SQL
+  end
+end
